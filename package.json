@@ -1,9 +1,9 @@
 {
   "name": "tmp-3",
   "version": "3.0.0",
-  "description": "The Modern Proper | built with Craft.",
+  "description": "The Modern Proper | built with Craft, Sass & Vanilla JS.",
   "license": "MIT",
-  "main": "index.js",
+  "main": "index.php",
   "repository": {
     "type": "git",
     "url": "https://github.com/mortscode/tmp-3"
