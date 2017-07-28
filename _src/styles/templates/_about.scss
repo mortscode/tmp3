@@ -1,0 +1,70 @@
+.about {
+  @include content-wrapper();
+
+  &__intro {
+    @extend %content-inner-wrapper-narrow;
+    padding: rem(40) 0;
+    position: relative;
+
+    &--headline {
+      @extend %title-lg;
+      flex: 0 0 100%;
+      text-align: center;
+      margin: 0 0 rem(12);
+
+      @include bp($sm) {
+        padding: 0 rem(30);
+      }
+    }
+
+    &--subhead {
+      @extend %title-serif-sm;
+      flex: 0 0 100%;
+      text-align: center;
+      margin: 0 0 rem(40);
+
+      @include bp($sm) {
+        padding: 0 rem(30);
+      }
+    }
+
+    &--image {
+      display: flex;
+      height: 100%;
+      margin: 0 0 rem(40);
+      width: 100%;
+    }
+  }
+
+  &__intro-quote {
+    @extend %text-sm;
+    flex: 0 0 33%;
+    padding-right: 30px;
+
+    @include bp($sm) {
+      flex: 0 0 100%;
+      padding: 0 rem(30);
+    }
+
+    &--quote {
+      font-style: italic;
+      margin-bottom: rem(12);
+    }
+
+    &--author {
+      font-family: $sans;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+
+  &__intro-body {
+    @extend %text-lg;
+    flex: 0 0 66%;
+
+    @include bp($sm) {
+      flex: 0 0 100%;
+      padding: 0 rem(30);
+    }
+  }
+}

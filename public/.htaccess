@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  #301 Specific Posts
+  RewriteRule ^posts\/$ https:\/\/themodernproper\.com [L,R=301]
+  RewriteRule ^posts$ https:\/\/themodernproper\.com [L,R=301]
+
+  #301 Redirects
+  RewriteRule ^post\/(\d+)\/(.*)$ https:\/\/themodernproper\.com [L,R=301]
+  RewriteRule ^page\/(.*)$ https:\/\/themodernproper\.com [L,R=301]
+  RewriteRule ^tagged\/(.*)$ https:\/\/themodernproper\.com [L,R=301]
+
+  # Send would-be 404 requests to Craft
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !^/(favicon\.ico|apple-touch-icon.*\.png)$ [NC]
+  RewriteRule (.+) index.php?p=$1 [QSA,L]
+</IfModule>

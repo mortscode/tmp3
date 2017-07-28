@@ -1,0 +1,15 @@
+{% set eagerQuery = {
+  section: 'postEntries',
+  with: [
+    'featuredImage',
+  ],
+  limit: 18
+} %}
+
+{% set allPosts = craft.entries(eagerQuery) %}
+
+<div id="home-posts" class="home-posts js-home-posts">
+  {% paginate allPosts as posts %} 
+  {% include 'home/_posts' %}
+</div>
+ {% include 'home/_paginate' %} 

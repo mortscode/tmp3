@@ -1,0 +1,51 @@
+.insta {
+  @include content-wrapper($white);
+  position: relative;
+
+  &__inner-wrapper {
+    @extend %content-inner-wrapper;
+    padding: rem(80) 0;
+
+    @include bp($md) {
+      padding: rem(80) 0 rem(50);
+    }
+  }
+
+  &__headline {
+    @extend %title-lg;
+    flex: 0 0 100%;
+    margin-bottom: rem(40);
+    text-align: center;
+  }
+
+  &__grams {
+    flex: 0 0 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &--photo {
+      background: 50% 50% no-repeat;
+      background-size: cover;
+      flex: 0 0 calc(25% - 20px);
+      outline: 0px solid $tmp-brand;
+      transition: outline $ease-fast;
+
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 120%;
+      }
+
+      &:hover,
+      &:focus {
+        outline: 4px solid $tmp-brand;
+      }
+
+      @include bp($md) {
+        flex: 0 0 calc(50% - 15px);
+        margin-bottom: 30px;
+      }
+    }
+  }
+}

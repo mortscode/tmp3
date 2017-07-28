@@ -1,0 +1,54 @@
+{% if image | length %}
+    {% if forceVert is defined and true %}
+        {% set imageRatio = 2 / 3 %}
+    {% else %}
+        {% set imageRatio = image.width / image.height %}
+    {% endif %}
+
+    {% set tall = image.height > image.width %}
+    
+    {% if tall %}
+        {% set transformedImages = craft.imager.transformImage(image,
+            [
+                { width: 667, ratio: imageRatio },
+                { width: 400, ratio: imageRatio },
+            ],
+            {
+                format: 'jpg',
+                position: image.focalPoint
+            }
+        ) %}
+    {% else %}
+        {% set transformedImages = craft.imager.transformImage(image,
+            [
+                { width: 1000, ratio: image.width / image.height },
+                { width: 600, ratio: image.width / image.height },
+            ],
+            {
+                format: 'jpg',
+                position: image.focalPoint,
+            }
+        ) %}
+    {% endif %}
+    
+    <picture>
+        {% if lazyImage is defined and true %}
+            {% spaceless %}
+            <img class="{{classes}} lazyload"
+                src="{{ craft.imager.base64Pixel(2,1) }}"
+                data-sizes="auto"
+                data-srcset="{{ craft.imager.srcset(transformedImages) }}"
+                data-src="{{ transformedImages[0].url }}"
+                alt="{{ title ? title : entry.title }}">
+            {% endspaceless %}
+        {% else %}
+            {% spaceless %}
+            <img class="{{classes}}"
+                src="{{ transformedImages[0].url }}"
+                sizes="100vw"
+                srcset="{{ craft.imager.srcset(transformedImages) }}"
+                alt="{{ title ? title : entry.title }}">
+            {% endspaceless %}
+        {% endif %}
+    </picture>
+{% endif %}

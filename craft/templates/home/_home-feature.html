@@ -1,0 +1,34 @@
+{% set tall = image.height > image.width %}
+    
+{% if tall %}
+    {% set transformedImages = craft.imager.transformImage(image,
+        [
+            { width: 667, ratio: image.width / image.height },
+            { width: 400, ratio: image.width / image.height },
+        ],
+        {
+            format: 'jpg',
+            position: image.focalPoint
+        }
+    ) %}
+{% else %}
+    {% set transformedImages = craft.imager.transformImage(image,
+        [
+            { width: 1000, ratio: 667 / 1000 },
+            { width: 600, ratio: 667 / 1000 },
+        ],
+        {
+            format: 'jpg',
+            position: image.focalPoint,
+        }
+    ) %}
+{% endif %}
+<div class="home-feature">
+  <a href="{{url}}" class="home-feature__image lazyload" data-bg="{{image.url}}"></a>
+  <div class="home-feature__text">
+      <span class="home-feature__text--date">{{post.postDate|date("F j, Y")}}</span>
+      <a href="{{post.url}}"><h2 class="home-feature__text--title js-avoid-orphan">{{post.title}}</h2></a>
+      <p class="home-feature__text--summary js-avoid-orphan">{{post.postSummary}}</p>
+      <a href="{{post.url}}" class="home-feature__text--cta btn pop">Read post</a>
+  </div>
+</div>
