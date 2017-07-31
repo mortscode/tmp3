@@ -1,13 +1,12 @@
-import emitter from '../utils/emitter';
+import emitter from "../utils/emitter";
 
 export default class Navigation {
   constructor(element) {
-    console.log(element);
     this.$navigation = element;
     this.$body = document.body;
-    this.$navOpen = document.querySelector('.js-nav-open');
+    this.$navOpen = document.querySelector(".js-nav-open");
     this.navCloseArray = Array.from(
-      this.$navigation.querySelectorAll('.js-nav-close')
+      this.$navigation.querySelectorAll(".js-nav-close")
     );
 
     this.initialize();
@@ -18,23 +17,23 @@ export default class Navigation {
   }
 
   _bindEvents() {
-    this.$navOpen.addEventListener('click', () => {
+    this.$navOpen.addEventListener("click", () => {
       this._openNav();
     });
 
-    this.navCloseArray.forEach((elem) => {
-      elem.addEventListener('click', () => {
+    this.navCloseArray.forEach(elem => {
+      elem.addEventListener("click", () => {
         this._closeNav();
       });
     });
   }
 
   _attachEvents() {
-    window.addEventListener('keyup', this._keyUpHandler.bind(this));
+    window.addEventListener("keyup", this._keyUpHandler.bind(this));
   }
 
   _detachEvents() {
-    window.removeEventListener('keyup', this._keyUpHandler);
+    window.removeEventListener("keyup", this._keyUpHandler);
   }
 
   _keyUpHandler(event) {
@@ -44,16 +43,16 @@ export default class Navigation {
   }
 
   _openNav() {
-    this.$navigation.classList.add('-active');
-    this.$body.classList.add('no-scroll');
+    this.$navigation.classList.add("-active");
+    this.$body.classList.add("no-scroll");
     this._attachEvents();
-    emitter.fire('app--nav-open');
+    emitter.fire("app--nav-open");
   }
 
   _closeNav() {
-    this.$navigation.classList.remove('-active');
-    this.$body.classList.remove('no-scroll');
+    this.$navigation.classList.remove("-active");
+    this.$body.classList.remove("no-scroll");
     this._detachEvents();
-    emitter.fire('app--nav-closed');
+    emitter.fire("app--nav-closed");
   }
 }
