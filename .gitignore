@@ -17,6 +17,7 @@ public/icons/
 public/assets/imager/
 node_modules/
 data/
+.vscode/
 
 # Misc files
 # ----------------------------------------------------------------------
