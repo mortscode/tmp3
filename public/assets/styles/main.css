@@ -647,7 +647,7 @@ p, .contact__blurb, .featured__text--subtitle, .home-feature__text--summary, .pa
   color: #f2f2f2;
   font-family: "Montserrat", sans-serif;
   font-size: 2.25rem;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1; }
   @media only screen and (max-width: 500px) {
     .navigation__primary {
@@ -657,7 +657,7 @@ p, .contact__blurb, .featured__text--subtitle, .home-feature__text--summary, .pa
   color: #969997;
   font-family: "Montserrat", sans-serif;
   font-size: 1.3125rem;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1; }
   @media only screen and (max-width: 500px) {
     .navigation__secondary {
