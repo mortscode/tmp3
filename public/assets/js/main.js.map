@@ -1,1 +1,1 @@
-{"version":3,"names":[],"mappings":"","sources":["main.js"],"sourcesContent":["import App from './app/App';\n\nwindow.app = new App();\n"],"file":"main.js"}
+{"version":3,"sources":["fake_d8bda583.js"],"names":["window","app"],"mappings":"yaAAA,gcAEA,AAAO,AAAP,AAAa,AAAb","file":"main.js","sourcesContent":["import App from './app/App';\n\nwindow.app = new App();\n"]}
