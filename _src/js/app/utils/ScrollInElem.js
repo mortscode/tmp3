@@ -1,7 +1,6 @@
 import emitter from '../utils/emitter';
 
 export default class ScrollInElem {
-
   constructor(element) {
     this.$elem = element;
     this.topTrigger = this.$elem.dataset.offset;

@@ -6,15 +6,13 @@ const SELECTORS = {
   INPUT_LABEL: '.js-input-label',
 };
 
-export class ContactForm {
+export default class ContactForm {
   constructor(elem) {
     this.$elem = elem;
     this.inputWrappers = Array.from(
-      this.$elem.querySelectorAll(SELECTORS.INPUT_WRAPPERS)
+      this.$elem.querySelectorAll(SELECTORS.INPUT_WRAPPERS),
     );
-    this.allInputs = Array.from(
-      this.$elem.querySelectorAll(SELECTORS.INPUT)
-    );
+    this.allInputs = Array.from(this.$elem.querySelectorAll(SELECTORS.INPUT));
 
     this.initialize();
   }
@@ -24,7 +22,7 @@ export class ContactForm {
   }
 
   _bindEvents() {
-    this.inputWrappers.forEach((wrapper) => {
+    this.inputWrappers.forEach(wrapper => {
       const $input = wrapper.querySelector(SELECTORS.INPUT);
       $input.addEventListener('focus', () => {
         this._activateInput(wrapper);
@@ -53,7 +51,7 @@ export class ContactForm {
   }
 
   teardown() {
-    this.inputWrappers.forEach((wrapper) => {
+    this.inputWrappers.forEach(wrapper => {
       const $input = wrapper.querySelector(SELECTORS.INPUT);
       $input.removeEventListener('focus', () => {
         this._activateInput(wrapper);

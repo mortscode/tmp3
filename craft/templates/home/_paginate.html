@@ -3,9 +3,9 @@
   <div class="paginate">
     {% if paginate.prevUrl %}
     <div class="paginate__button -left">
-        <a href="{{ paginate.prevUrl }}" class="paginate__button--link">
+      <a href="{{ paginate.prevUrl }}" class="paginate__button--link">
           {% include 'utils/icon' with {'icon':'arrow-paginate','classes':'paginate__button--icon -left'} %}
-          Newer posts
+          Newer
         </a>
     </div>
     {% endif %}
@@ -14,10 +14,7 @@
     </a>
     {% if paginate.nextUrl %}
     <div class="paginate__button -right {% if not bothBtns %}-solo{% endif %}">
-        <a href="{{ paginate.nextUrl }}" class="paginate__button--link">
-          {% if bothBtns %}Older posts{% else %}More posts{% endif %}
-          {% include 'utils/icon' with {'icon':'arrow-paginate','classes':'paginate__button--icon'} %}
-        </a>
+      <a href="{{ paginate.nextUrl }}" class="paginate__button--link">{% if bothBtns %}Older{% else %}Older{% endif %}{% include 'utils/icon' with {'icon':'arrow-paginate','classes':'paginate__button--icon'} %}</a>
     </div>
     {% endif %}
   </div>
