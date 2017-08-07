@@ -2,14 +2,14 @@ import $ from 'properjs-hobo';
 import lazySizes from 'lazysizes';
 import avoidOrphan from './utils/avoid-orphan';
 import emitter from './utils/emitter';
-import { modules } from './utils/module-loader';
+import {modules} from './utils/module-loader';
 import resizer from './utils/resizer';
 import scroller from './utils/scroller';
 
 export default class App {
   constructor() {
     this.orphanArray = Array.from(
-      document.querySelectorAll('.js-avoid-orphan')
+      document.querySelectorAll('.js-avoid-orphan'),
     );
     this.moduleInstances = this.getInstances();
     this.initialize();
@@ -24,7 +24,7 @@ export default class App {
   }
 
   _lazyConfig() {
-    document.addEventListener('lazybeforeunveil', (e) => {
+    document.addEventListener('lazybeforeunveil', e => {
       const bg = e.target.getAttribute('data-bg');
       if (bg) {
         e.target.style.backgroundImage = 'url(' + bg + ')';
@@ -47,22 +47,22 @@ export default class App {
   }
 
   _mapOrphans() {
-    this.orphanArray.map((orphan) => {
+    this.orphanArray.map(orphan => {
       avoidOrphan(orphan);
     });
   }
 
   _printRecipe() {
-    $('.js-print-recipe').on('click', (e) => {
+    $('.js-print-recipe').on('click', e => {
       e.preventDefault();
       window.print();
     });
   }
 
   getInstances() {
-    return modules.map((module) => {
+    return modules.map(module => {
       const elements = Array.from(document.querySelectorAll(module.class));
-      const references = elements.map((el) => {
+      const references = elements.map(el => {
         return new module.Source(el);
       });
 
@@ -74,8 +74,8 @@ export default class App {
   }
 
   tearDown() {
-    this.moduleInstances.forEach((item) => {
-      item.ref.forEach((ref) => {
+    this.moduleInstances.forEach(item => {
+      item.ref.forEach(ref => {
         if (ref.teardown) {
           ref.teardown();
         }
