@@ -6,11 +6,11 @@ export default function avoidOrphan(elem) {
   let wordCount;
 
   // On mobile, do not apply ophan rule to paragraph tags. It looks funny.
-  if (windowWidth < 900) {
+  if (windowWidth < 600) {
     return;
   }
 
-  if (last && (last.nodeType === 3)) {
+  if (last && last.nodeType === 3) {
     trimmed = last.nodeValue.trim();
     wordArray = trimmed.match(/\S+/g);
     wordCount = wordArray ? wordArray.length : 0;

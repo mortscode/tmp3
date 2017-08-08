@@ -1,4 +1,5 @@
 import ContactForm from '../components/ContactForm';
+import HomePosts from '../components/HomePosts';
 import Navigation from '../components/Navigation';
 import Search from '../components/Search';
 import ScrollInElem from './ScrollInElem';
@@ -14,6 +15,11 @@ export const modules = [
     name: 'Navigation',
     class: '.js-navigation',
     Source: Navigation,
+  },
+  {
+    name: 'HomePosts',
+    class: '.js-home-posts',
+    Source: HomePosts,
   },
   {
     name: 'ScrollInElem',
