@@ -107,7 +107,8 @@
       width: rem(40);
       height: rem(40);
       position: relative;
-      transition: background-color $ease-fast, height $ease-fast, width $ease-fast;
+      transition: background-color $ease-fast, height $ease-fast,
+        width $ease-fast;
 
       @include bp($lg) {
         height: rem(36);
@@ -223,6 +224,9 @@
   }
 
   &__close {
+    width: rem(24);
+    height: rem(24);
+
     &--wrapper {
       cursor: pointer;
       position: absolute;
@@ -240,9 +244,13 @@
       }
 
       @include bp($sm) {
+        background-color: rgba($white, 0.1);
+        border-radius: 50%;
+        width: rem(60);
+        height: rem(60);
         top: auto;
-        left: rem(4);
-        bottom: rem(16);
+        bottom: rem(44);
+        left: -(rem(12));
       }
 
       &:hover,
