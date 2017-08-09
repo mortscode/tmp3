@@ -4,10 +4,11 @@
     <div class="navigation__left">
       {% include 'partials/navigation/_social' %}
       {% include 'partials/navigation/_menu' %}
+      {% include 'partials/navigation/_search' %}
       <div class="navigation__brand">
         {% include 'utils/icon' with {'icon':'logotype', 'classes':'navigation__brand--logo'} %}
-        <div class="navigation__brand--copyright">&copy;{{ now.year }}</div>
       </div>
+      <div class="navigation__copyright">&copy;{{ now.year }}</div>
       <div class="navigation__close--wrapper js-nav-close">
         <div class="navigation__close">
           {% include 'utils/icon' with {'icon':'close', 'classes':'navigation__close--icon'} %}

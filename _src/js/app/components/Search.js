@@ -8,12 +8,14 @@ export default class Search {
     this.$searchInput = this.$search.querySelector('.js-search-input');
     this.searchOpen = false;
     this.disableSearch = false;
+    this.isMobileWidth = window.innerWidth <= 500;
     this.$body = document.body;
 
     this.initialize();
   }
 
   initialize() {
+    console.log(this.isMobileWidth);
     this._bindEvents();
 
     emitter.on('app--nav-open', () => {
@@ -54,11 +56,11 @@ export default class Search {
   }
 
   _inputHandler(event) {
-    if (this.disableSearch || event.keyCode === 91) {
+    if (this.disableSearch || event.keyCode === 91 || this.isMobileWidth) {
       return;
     }
 
-    if ((!this.searchOpen) && event.keyCode >= 65 && event.keyCode <= 90) {
+    if (!this.searchOpen && event.keyCode >= 65 && event.keyCode <= 90) {
       this.$searchInput.value = event.key;
       this._openSearch();
     }
