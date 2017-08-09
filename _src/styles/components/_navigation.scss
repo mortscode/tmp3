@@ -38,6 +38,7 @@
     @include bp($md) {
       flex: 0 0 100%;
       max-width: none;
+      transition: transform $ease-fast;
     }
   }
 
@@ -216,12 +217,11 @@
   &__search {
     display: none;
     flex: 0 0 auto;
-    margin: 0 0 rem(36);
+    margin-bottom: rem(18);
     order: 3;
-    padding: 0 rem(36);
+    padding: 0 rem(30) 0 rem(72);
 
     @include bp($sm) {
-      margin: 0 0 rem(24);
       display: block;
     }
 
@@ -237,7 +237,7 @@
       background-color: none;
       font-size: rem(18);
       font-style: italic;
-      height: 40px;
+      height: 48px;
       padding: 0 0 0 rem(18);
       width: calc(100% - 50px);
       border: none;
@@ -262,7 +262,7 @@
     &--icon {
       position: absolute;
       right: 12px;
-      top: 10px;
+      top: 14px;
       height: 20px;
       width: 20px;
       fill: $tmp-gray;
@@ -303,7 +303,6 @@
 
     @include bp($sm) {
       margin-bottom: rem(12);
-      margin-top: rem(70);
     }
   }
 
@@ -332,13 +331,11 @@
 
       @include bp($sm) {
         background-color: rgba($white, 0.1);
-        border-radius: 50%;
         width: rem(48);
         height: rem(48);
         top: auto;
         bottom: rem(48);
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
       }
 
       &:hover,
