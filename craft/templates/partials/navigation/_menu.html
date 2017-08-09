@@ -1,14 +1,17 @@
+ {% set currentPage = entry.section %}
 <ul class="navigation__menu">
   {% for navLink in mainNavigation.navigationItems.type('navigationLink') %}
     {% set link = navLink.linkInfo %}
     <li class="navigation__item">
-      <a href="{{link.url}}" class="navigation__primary" {{ link.target ? ' target="_blank"' }} title="{{ link.linkText }}">{{ link.linkText }}</a>
+      {% set linkSection = link.entry.section %}
+      <a href="{{link.url}}" class="navigation__primary {% if currentPage == linkSection %}-selected{% endif %}" {{ link.target ? ' target="_blank"' }} title="{{ link.linkText }}">{{ link.linkText }}</a>
     </li>
   {% endfor %}
   {% for navLink in mainNavigation.navigationItems.type('secondaryLink') %}
     {% set link = navLink.linkInfo %}
+    {% set linkSection = link.entry.section %}
     <li class="navigation__item">
-      <a href="{{link.url}}" class="navigation__secondary" {{ link.target ? ' target="_blank"' }} title="{{ link.linkText }}">{{ link.linkText }}</a>
+      <a href="{{link.url}}" class="navigation__secondary {% if currentPage == linkSection %}-selected{% endif %}" {{ link.target ? ' target="_blank"' }} title="{{ link.linkText }}">{{ link.linkText }}</a>
     </li>
   {% endfor %}
 </ul>

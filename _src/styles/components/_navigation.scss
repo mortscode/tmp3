@@ -76,6 +76,7 @@
   &__social {
     display: flex;
     flex: 0 0 82px;
+    order: 0;
     align-items: flex-end;
     justify-content: center;
 
@@ -85,6 +86,7 @@
 
     @include bp($sm) {
       flex: 0 0 50px;
+      order: 1;
     }
 
     li {
@@ -162,6 +164,7 @@
     flex: 1 0 auto;
     flex-direction: column;
     justify-content: center;
+    order: 2;
     position: relative;
     text-align: center;
   }
@@ -174,9 +177,19 @@
     @extend %nav-primary;
     display: block;
     padding: rem(24) 0;
+    transition: background $ease-fast, color $ease-fast;
 
     @include bp($sm) {
       padding: rem(16) 0;
+    }
+
+    &.-selected {
+      color: $tmp-brand;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: rgba($tmp-gray, 0.1);
     }
   }
 
@@ -184,15 +197,87 @@
     @extend %nav-secondary;
     display: block;
     padding: rem(24) 0;
+    transition: background $ease-fast, color $ease-fast;
 
     @include bp($sm) {
-      padding: rem(16) 0;
+      padding: rem(14) 0;
+    }
+
+    &.-selected {
+      color: $tmp-brand;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: rgba($tmp-gray, 0.1);
+    }
+  }
+
+  &__search {
+    display: none;
+    flex: 0 0 auto;
+    margin: 0 0 rem(36);
+    order: 3;
+    padding: 0 rem(36);
+
+    @include bp($sm) {
+      margin: 0 0 rem(24);
+      display: block;
+    }
+
+    &--form {
+      background-color: $white;
+      border-radius: 40px;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+    }
+
+    &--input {
+      background-color: none;
+      font-size: rem(18);
+      font-style: italic;
+      height: 40px;
+      padding: 0 0 0 rem(18);
+      width: calc(100% - 50px);
+      border: none;
+      outline: 0;
+
+      &:focus {
+        border: none;
+        outline: 0;
+      }
+    }
+
+    &--submit {
+      background: transparent;
+      border: none;
+      outline: 0;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      width: 48px;
+    }
+
+    &--icon {
+      position: absolute;
+      right: 12px;
+      top: 10px;
+      height: 20px;
+      width: 20px;
+      fill: $tmp-gray;
     }
   }
 
   &__brand {
     flex: 0 0 auto;
+    order: 4;
     text-align: center;
+
+    @include bp($sm) {
+      padding: rem(36) 0 0;
+      order: 0;
+    }
 
     &--logo {
       height: rem(20);
@@ -201,25 +286,24 @@
       margin-bottom: rem(8);
 
       @include bp($sm) {
-        height: rem(14);
-        margin-bottom: rem(3);
-      }
-
-      @include bp($sm) {
-        height: rem(12);
-        margin-bottom: 0;
+        height: rem(18);
+        margin-bottom: rem(4);
       }
     }
+  }
 
-    &--copyright {
-      color: $tmp-gray;
-      font-family: $sans;
-      font-size: rem(12);
-      margin-bottom: rem(40);
+  &__copyright {
+    flex: 0 0 auto;
+    color: $tmp-gray;
+    font-family: $sans;
+    font-size: rem(12);
+    margin-bottom: rem(36);
+    order: 5;
+    text-align: center;
 
-      @include bp($sm) {
-        margin-bottom: rem(15);
-      }
+    @include bp($sm) {
+      margin-bottom: rem(12);
+      margin-top: rem(70);
     }
   }
 
@@ -238,19 +322,23 @@
       top: rem(40);
       left: rem(40);
 
+      @include bp($lg) {
+        left: rem(12);
+      }
+
       @include bp($md) {
         top: rem(24);
-        left: rem(12);
       }
 
       @include bp($sm) {
         background-color: rgba($white, 0.1);
         border-radius: 50%;
-        width: rem(60);
-        height: rem(60);
+        width: rem(48);
+        height: rem(48);
         top: auto;
-        bottom: rem(44);
-        left: -(rem(12));
+        bottom: rem(48);
+        left: 50%;
+        transform: translateX(-50%);
       }
 
       &:hover,
@@ -266,6 +354,10 @@
       height: rem(24);
       fill: $tmp-gray;
       transition: fill $ease-fast;
+
+      @include bp($sm) {
+        fill: rgba($tmp-light, 0.8);
+      }
     }
   }
 }

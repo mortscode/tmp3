@@ -57,13 +57,15 @@
         top: rem(24);
       }
       @include bp($sm) {
-        background-color: rgba($white, 0.9);
+        background-color: $white;
         border-radius: 50%;
-        width: rem(60);
-        height: rem(60);
+        width: rem(48);
+        height: rem(48);
         top: auto;
         bottom: rem(44);
-        left: -(rem(12));
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 4px 12px rgba($tmp-dark, 0.5);
       }
       &:hover,
       &:focus {
@@ -85,7 +87,18 @@
       fill: $tmp-gray;
       transition: fill $ease-fast;
       @include bp($sm) {
-        width: rem(24);
+        display: none;
+        width: rem(20);
+        height: rem(15);
+      }
+    }
+    &--tmp-icon {
+      display: none;
+      @include bp($sm) {
+        display: block;
+        width: rem(44);
+        height: rem(44);
+        fill: $tmp-dark;
       }
     }
   }
@@ -110,6 +123,7 @@
         top: rem(24);
       }
       @include bp($sm) {
+        display: none;
         background-color: rgba($white, 0.9);
         border-radius: 50%;
         width: rem(60);

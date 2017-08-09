@@ -1,0 +1,7 @@
+<div class="navigation__search">
+  <form class="navigation__search--form" action="{{ url('search/results') }}">
+    <input class="navigation__search--input" autocomplete="off" type="search" name="q" placeholder="Search">
+    {% include 'utils/icon' with {'icon':'search', 'classes':'navigation__search--icon'} %}
+    <input class="navigation__search--submit" type="submit" value="">
+  </form>
+</div>
