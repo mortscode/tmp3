@@ -27,15 +27,13 @@
         {% include 'utils/picture' with vars %}
       </div>
     </div>
-    <div class="grid">
-      <div class="post">
+    <div class="post">
 
-        {% include 'posts/_post-builder' %}
+      {% include 'posts/_post-builder' %}
 
-        {% if recipe|length %}
-          {% include 'posts/_recipe-builder' %}
-        {% endif %}
-      </div>
+      {% if recipe|length %}
+        {% include 'posts/_recipe-builder' %}
+      {% endif %}
     </div>
   </article>
   {% endcache %}

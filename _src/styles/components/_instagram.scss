@@ -3,7 +3,7 @@
   position: relative;
 
   &__inner-wrapper {
-    @extend %content-inner-wrapper;
+    @include content-inner();
     padding: rem(80) 0;
 
     @include bp($md) {
