@@ -1,9 +1,15 @@
 .builder {
-  @include full;
+  flex: 0 0 100%;
 
   &__section {
     @include clearfix;
-    display: block;
+    display: flex;
+    justify-content: flex-start;
+
+    @include bp($sm) {
+      padding-left: rem(50);
+      padding-right: rem(50);
+    }
 
     &.top-none {
       padding-top: 0;
@@ -29,79 +35,24 @@
       padding-bottom: $large-spacing;
     }
 
-    .center {
-      @include span(6 wide);
-      @include push(4);
-
-      @include bp($lg) {
-        @include span(6);
-        @include push(3);
-      }
-
-      @include bp($md) {
-        @include span(8);
-        @include push(2);
-      }
-
-      @include bp($sm) {
-        @include span(10);
-        @include push(1);
-      }
+    .center,
+    .narrow {
+      max-width: 500px;
+      margin: 0 auto;
     }
 
-    .left {
-      @include span(5);
-      @include push(2);
-
-      @include bp($lg) {
-        @include push(1);
-      }
-
-      @include bp($md) {
-        @include span(6);
-        @include push(0);
-      }
-
-      @include bp($sm) {
-        @include span(10);
-        @include push(1);
-      }
-    }
-
-    .right {
-      @include span(last 5);
-
-      @include bp($md) {
-        @include span(last 6);
-      }
-
-      @include bp($sm) {
-        @include span(10);
-        @include push(1);
-      }
+    .wider {
+      max-width: 860px;
+      margin: 0 auto;
     }
 
     .full {
-      @include span(10 wide);
-      @include push(2);
-
-      @include bp($lg) {
-        @include span(10);
-        @include push(2);
-      }
-
-      @include bp($md) {
-        @include span(12);
-        @include push(0)
-      }
-
-      @include bp($sm) {
-        @include span(10);
-        @include push(1);
-      }
+      flex: 0 0 100%;
     }
 
     &--text p {
+      @extend %text-lg;
+
       &:last-child {
         margin-bottom: 0;
       }
@@ -111,23 +62,11 @@
       text-align: center;
       font-style: italic;
       margin-bottom: 0;
-      color: $tmp-gray;
+      color: darken($tmp-gray, 10%);
     }
 
     &--callout {
-      @include span(8 wide);
-      @include push(3);
       text-align: center;
-
-      @include bp($lg) {
-        @include span(8);
-        @include push(2);
-      }
-
-      @include bp($md) {
-        @include span(10);
-        @include push(1);
-      }
 
       .bq-hr {
         width: 65%;
@@ -174,61 +113,22 @@
     &--photos {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between; 
+      justify-content: space-between;
+      flex: 0 1 100%;
 
       &.wide {
-        @include span(10 wide);
-        @include push(2);
-
-        @include bp($lg) {
-          @include span(10);
-          @include push(1)
-        }
-
-        @include bp($md) {
-          @include span(12);
-          @include push(0)
-        }
+        max-width: rem(1100);
+        margin: 0 auto;
       }
 
       &.normal {
-        @include span(6 wide);
-        @include push(4);
-
-        @include bp($lg) {
-          @include span(6);
-          @include push(3);
-        }
-
-        @include bp($md) {
-          @include span(8);
-          @include push(2);
-        }
-
-        @include bp($sm) {
-          @include span(12);
-          @include push(0);
-        }
+        max-width: rem(860);
+        margin: 0 auto;
       }
 
       &.slim {
-        @include span(4 wide);
-        @include push(5);
-
-        @include bp($lg) {
-          @include span(5);
-          @include push(7 of 24);
-        }
-
-        @include bp($md) {
-          @include span(6);
-          @include push(3);
-        }
-
-        @include bp($sm) {
-          @include span(10);
-          @include push(1);
-        }
+        max-width: rem(600);
+        margin: 0 auto;
       }
 
       .image-wrapper {
@@ -269,44 +169,13 @@
     }
 
     &--button {
-      @include span(6 wide);
-      @include push(4);
-      text-align: center;
-
-      @include bp($lg) {
-        @include span(6);
-        @include push(3);
-      }
-
-      @include bp($md) {
-        @include span(8);
-        @include push(2);
-      }
-
-      @include bp($sm) {
-        @include span(10);
-        @include push(1);
-      }
+      max-width: rem(500);
+      margin: 0 auto;
     }
 
     &--ingredients {
-      @include span(6 wide);
-      @include push(4);
-
-      @include bp($lg) {
-        @include span(6);
-        @include push(3);
-      }
-
-      @include bp($md) {
-        @include span(8);
-        @include push(2);
-      }
-
-      @include bp($sm) {
-        @include span(10);
-        @include push(1);
-      }
+      max-width: rem(500);
+      margin: 0 auto;
 
       .ingredients-title {
         margin: $base-spacing 0 0;
@@ -355,7 +224,6 @@
           padding-left: $small-spacing;
           padding-right: $small-spacing;
         }
-
       }
 
       .method {
@@ -381,7 +249,6 @@
     }
 
     .suggestion {
-      @include full;
       margin-top: $large-spacing;
       background-color: rgba($tmp-gray, 0.2);
       padding: $base-spacing;

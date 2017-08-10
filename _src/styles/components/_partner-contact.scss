@@ -2,7 +2,7 @@
   @include content-wrapper();
 
   &__inner-wrapper {
-    @extend %content-inner-wrapper-narrow;
+    @include content-inner(860);
     padding: rem(80) 0;
   }
 

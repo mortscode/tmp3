@@ -1,25 +1,27 @@
 @media print {
-
   body {
     background-color: $white;
   }
 
   body.print-styles {
-
     .aside-column,
-    .site-header,
-    .footer,
-    .mobile-nav,
-    .post__title,
-    .post__share,
-    .post__image--wrapper,
+    .author,
+    .builder--callout,
     .builder--photos,
     .builder--text,
-    .builder--callout,
+    .disqus,
+    .footer,
+    .header__hamburger--wrapper,
+    .header__search--wrapper,
+    .mobile-nav,
     .more-posts,
-    .sticky-wrapper,
+    .post__image--wrapper,
+    .post__title,
+    .post__share,
+    .post-intro,
     .recipe__download,
-    .instructions {
+    .site-header,
+    .sticky-wrapper {
       display: none;
     }
 
@@ -55,33 +57,21 @@
 
     .post {
       margin: 0;
+      width: 100%;
 
       &__title {
-        @include full;
         padding: 0 0 $base-spacing;
         margin: 0;
-
-        &--text {
-          @include full;
-        }
       }
 
       .builder__section {
-
-        &--ingredients {
-          @include full;
-        }
-
         &.top-double,
         &.bot-double {
           padding: 0;
         }
-
       }
 
       .ingredients-list {
-        @include full;
-
         .row {
           border-bottom: 1px solid $tmp-gray;
 

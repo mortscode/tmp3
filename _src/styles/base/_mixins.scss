@@ -23,12 +23,14 @@
 
 // breakpoints
 @mixin bp($breaker, $feature: max-width) {
-  @media only screen and (#{$feature}: $breaker) { @content; }
+  @media only screen and (#{$feature}: $breaker) {
+    @content;
+  }
 }
 
 @mixin content-wrapper($bg: $tmp-light) {
   position: relative;
-  padding: 0 rem(120);
+  padding: 0 rem(150);
   overflow: hidden;
   background-color: #{$bg};
   z-index: 1;
@@ -42,7 +44,7 @@
   }
 }
 
-@mixin content-inner($width: 1280px, $justify: space-between) {
+@mixin content-inner($width: 1200, $justify: space-between) {
   max-width: #{$width}px;
   margin: 0 auto;
   display: flex;

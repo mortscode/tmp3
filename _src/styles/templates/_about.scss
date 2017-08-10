@@ -2,7 +2,7 @@
   @include content-wrapper();
 
   &__intro {
-    @extend %content-inner-wrapper-narrow;
+    @include content-inner(860);
     padding: rem(40) 0;
     position: relative;
 

@@ -19,16 +19,16 @@
   white-space: nowrap;
   transition: background-color $ease-fast, padding $ease-fast, width $ease-fast;
 
-  @include breakpoint($vp4) {
+  @include bp($lg) {
     padding: rem(18) rem(50);
   }
 
-  @include breakpoint($vp3) {
+  @include bp($md) {
     padding: rem(18) rem(40);
     font-size: rem(16);
   }
 
-  @include breakpoint($vp2) {
+  @include bp($sm) {
     padding: rem(18);
     font-size: rem(13);
     width: 100%;

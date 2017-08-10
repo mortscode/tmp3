@@ -13,7 +13,7 @@
   }
 
   &__wrapper {
-    @extend %content-inner-wrapper-narrow;
+    @include content-inner();
 
     @include bp($md) {
       padding: 0 rem(30);
