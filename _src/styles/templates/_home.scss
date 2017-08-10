@@ -9,5 +9,5 @@
 }
 
 .post-wrapper {
-  @extend %content-inner-wrapper
+  @include content-inner();
 }

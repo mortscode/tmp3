@@ -85,10 +85,10 @@
       flex: 0 0 68px;
     }
 
-    @include bp($sm) {
-      flex: 0 0 50px;
-      order: 1;
-    }
+    // @include bp($sm) {
+    //   flex: 0 0 50px;
+    //   order: 1;
+    // }
 
     li {
       margin: 0 rem(12);
@@ -217,12 +217,16 @@
   &__search {
     display: none;
     flex: 0 0 auto;
-    margin-bottom: rem(18);
+    margin-bottom: rem(44);
     order: 3;
     padding: 0 rem(30) 0 rem(72);
 
     @include bp($sm) {
       display: block;
+    }
+
+    @include bp($xs) {
+      margin-bottom: rem(4);
     }
 
     &--form {
@@ -276,7 +280,6 @@
 
     @include bp($sm) {
       padding: rem(36) 0 0;
-      order: 0;
     }
 
     &--logo {
@@ -288,6 +291,10 @@
       @include bp($sm) {
         height: rem(18);
         margin-bottom: rem(4);
+      }
+
+      @include bp($sm) {
+        height: rem(14);
       }
     }
   }
@@ -302,7 +309,7 @@
     text-align: center;
 
     @include bp($sm) {
-      margin-bottom: rem(12);
+      margin-bottom: rem(24);
     }
   }
 
@@ -334,8 +341,12 @@
         width: rem(48);
         height: rem(48);
         top: auto;
-        bottom: rem(48);
+        bottom: rem(150);
         left: 0;
+      }
+
+      @include bp($xs) {
+        bottom: rem(106);
       }
 
       &:hover,

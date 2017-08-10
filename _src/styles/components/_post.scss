@@ -1,0 +1,6 @@
+.post {
+  @include content-inner();
+  z-index: $z-post-content;
+  margin-top: $large-spacing;
+  position: relative;
+}

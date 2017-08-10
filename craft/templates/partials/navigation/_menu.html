@@ -1,4 +1,8 @@
- {% set currentPage = entry.section %}
+{% if entry is defined %}
+  {% set currentPage = entry.section %}
+{% else %}
+  {% set currentPage = 'unknown' %}
+{% endif %}
 <ul class="navigation__menu">
   {% for navLink in mainNavigation.navigationItems.type('navigationLink') %}
     {% set link = navLink.linkInfo %}

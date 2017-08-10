@@ -1,5 +1,5 @@
 .staff {
-  @extend %content-inner-wrapper;
+  @include content-inner();
   display: flex;
   flex: 0 0 100%;
   flex-wrap: wrap;
@@ -28,7 +28,7 @@
 
     @include bp($md) {
       justify-content: space-between;
-      align-content: flex-start
+      align-content: flex-start;
     }
 
     &--bio-wrapper {

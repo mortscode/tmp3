@@ -61,9 +61,13 @@
         width: rem(48);
         height: rem(48);
         top: auto;
-        bottom: rem(44);
+        bottom: rem(150);
         left: 0;
         box-shadow: 0 3px 8px rgba($tmp-dark, 0.15);
+      }
+      @include bp($xs) {
+        bottom: rem(106);
+        width: rem(36);
       }
       &:hover,
       &:focus {
@@ -112,13 +116,6 @@
       }
       @include bp($sm) {
         display: none;
-        background-color: rgba($white, 0.9);
-        border-radius: 50%;
-        width: rem(60);
-        height: rem(60);
-        top: auto;
-        bottom: rem(44);
-        right: -(rem(12));
       }
       &:hover,
       &:focus {
