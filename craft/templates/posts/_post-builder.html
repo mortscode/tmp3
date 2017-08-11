@@ -1,5 +1,9 @@
 <div class="builder">
   {% for block in entry.postBuilder %}
+    {% include ('posts/_builder-partials/_block_' ~ block.type.handle) %}
+  {% endfor %}
+
+  {# {% for block in entry.postBuilder %}
 
     {% if block.type == "textBlock" %}
       <div class="builder__section builder--text top-double bot-double">
@@ -155,5 +159,5 @@
       </div>
     {% endif %}
 
-  {% endfor %}
+  {% endfor %} #}
 </div>

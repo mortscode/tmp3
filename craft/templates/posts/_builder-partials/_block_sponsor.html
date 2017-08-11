@@ -1,0 +1,8 @@
+<div class="builder__section top-double bot-double">
+  {% if block.sponsorDisclaimer | length %}
+    <div class="builder__sponsor narrow">
+      <p class="js-avoid-orphan">{{ block.sponsorDisclaimer }}</p>
+    </div>
+  {% endif %}
+</div>
+{{ block.sponsorCode|raw }}

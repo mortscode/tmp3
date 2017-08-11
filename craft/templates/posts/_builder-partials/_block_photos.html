@@ -1,0 +1,21 @@
+<div class="builder__section top-{{ block.paddingTop}} bot-{{ block.paddingBottom}} js-scrolls animate -fade-in" data-offset="0.95">
+  <div class="builder__photos {{ block.photoWidth }}">
+    {% for photo in block.imageFiles %}
+      {% if photo.height > photo.width %}
+        {% set ratio = 'vertical' %}
+      {% else %}
+        {% set ratio = 'horizontal' %}
+      {% endif %}
+      {% set gallery = block.imageFiles|length %}
+      <div class="image-wrapper {% if gallery >= 2 %}gallery{% endif %} {% if block.mobileStack.contains('stack') %}m-stack{% endif %}" data-ratio="{{ratio}}">
+        {% set vars = {
+          'image': photo,
+          'lazyImage': true,
+          'classes': 'image',
+          'title': entry.title,
+        }%}
+        {% include 'utils/picture' with vars %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
