@@ -1,0 +1,57 @@
+.builder__photos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex: 0 1 100%;
+
+  &.wide {
+    max-width: rem(1100);
+    margin: 0 auto;
+  }
+
+  &.normal {
+    max-width: rem(860);
+    margin: 0 auto;
+  }
+
+  &.slim {
+    max-width: rem(600);
+    margin: 0 auto;
+  }
+
+  .image-wrapper {
+    flex: 0 0 100%;
+    background-color: rgba($tmp-gray, 0.1);
+    position: relative;
+    margin-bottom: $small-spacing;
+
+    &[data-ratio="vertical"]::after {
+      content: "";
+      display: block;
+      padding-bottom: (1000 / 667) * 100%;
+    }
+
+    &[data-ratio="horizontal"]::after {
+      content: "";
+      display: block;
+      padding-bottom: (667 / 1000) * 100%;
+    }
+
+    &.gallery {
+      flex: 0 0 calc(50% - (1.5em / 4));
+    }
+
+    &.m-stack,
+    &.m-stack:nth-child(2n) {
+      @include bp($sm) {
+        flex: 0 0 100%;
+      }
+    }
+  }
+
+  .image {
+    position: absolute;
+    width: 100%;
+    height: auto;
+  }
+}

@@ -1,1 +1,1 @@
-{"version":3,"sources":["fake_99d8d85c.js"],"names":["window","app"],"mappings":"yaAAA,gcAEA,AAAO,AAAP,AAAa,AAAb","file":"main.js","sourcesContent":["import App from './app/App';\n\nwindow.app = new App();\n"]}
+{"version":3,"sources":["fake_3bf15e2f.js"],"names":["window","app"],"mappings":"yaAAA,gcAEA,AAAO,AAAP,AAAa,AAAb","file":"main.js","sourcesContent":["import App from './app/App';\n\nwindow.app = new App();\n"]}

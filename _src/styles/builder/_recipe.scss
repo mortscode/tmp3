@@ -1,0 +1,74 @@
+.builder__recipe {
+  max-width: rem(500);
+  margin: 0 auto;
+
+  .ingredients-title {
+    margin: $base-spacing 0 0;
+
+    &.caps {
+      margin-top: 0;
+      text-transform: uppercase;
+    }
+  }
+
+  .servings {
+    margin-top: $small-spacing;
+  }
+
+  .ingredients-list {
+    margin-bottom: $large-spacing;
+    border-bottom: 1px solid darken($tmp-light, 10%);
+  }
+
+  .row {
+    &:nth-child(odd) {
+      background: darken($tmp-light, 5%);
+    }
+  }
+
+  .amount {
+    padding-left: $base-spacing;
+    padding-right: $base-spacing;
+    width: 20%;
+    font-weight: 600;
+    font-style: italic;
+
+    @include bp($md) {
+      width: 25%;
+      padding-left: $small-spacing;
+      padding-right: $small-spacing;
+    }
+  }
+
+  .ingredient {
+    padding-left: $base-spacing;
+    padding-right: $base-spacing;
+    border-left: 1px solid darken($tmp-light, 10%);
+
+    @include bp($md) {
+      padding-left: $small-spacing;
+      padding-right: $small-spacing;
+    }
+  }
+
+  .method {
+    ol {
+      list-style-type: decimal;
+      padding-left: $base-font-size;
+      font-size: rem(18);
+
+      li {
+        margin-bottom: $small-spacing;
+      }
+    }
+  }
+
+  .recipe__download {
+    margin: $base-spacing auto 0;
+    text-align: center;
+
+    @include bp($md) {
+      display: none;
+    }
+  }
+}

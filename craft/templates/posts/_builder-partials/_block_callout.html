@@ -1,0 +1,10 @@
+<div class="builder__section top-{{ block.paddingTop }} bot-{{ block.paddingBottom }}">
+  <div class="builder__callout wider">
+    <hr class="bq-hr top">
+    <blockquote class="text {{ block.textColor }} js-avoid-orphan">{{ block.text }}</blockquote>
+    {% if block.cite|length %}
+      <p class="cite {{ block.textColor }}">~ {{ block.cite }}</span>
+    {% endif %}
+    <hr class="bq-hr bot">
+  </div>
+</div>

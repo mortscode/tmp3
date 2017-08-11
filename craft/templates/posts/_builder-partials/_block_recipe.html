@@ -1,0 +1,70 @@
+<div class="builder__section top-double bot-double js-scroll-target-recipe">
+  <div class="builder__recipe">
+    <h3 class="ingredients-title caps">{{ entry.title }}</h3>
+    <p class="servings">Serves {{ block.servings }}</p>
+
+    {% if block.mainListTitle|length %}
+      <h3 class="ingredients-title">{{ block.mainListTitle }}</h3>
+    {% else %}
+      <h3 class="ingredients-title">Ingredients</h3>
+    {% endif %}
+
+    <table class="ingredients-list" style="width:100%">
+    {% for ingredient in block.mainIngredientsList %}
+        <tr class="row">
+          <td class="amount">{{ ingredient.amount }}</td>
+          {% if ingredient.linkUrl|length %}
+            <td class="ingredient"><a href="{{ ingredient.linkUrl }}" target="_blank">{{ ingredient.ingredient }}</a></td>
+          {% else %}
+            <td class="ingredient">{{ ingredient.ingredient }}</td>
+          {% endif %}
+        </tr>
+    {% endfor %}
+    </table>
+
+    {% if block.secondListTitle|length %}
+      <h3 class="ingredients-title">{{ block.secondListTitle }}</h3>
+    {% endif %}
+
+    {% if block.secondIngredientsList|length %}
+      <table class="ingredients-list" style="width:100%">
+      {% for ingredient in block.secondIngredientsList %}
+          <tr class="row">
+            <td class="amount">{{ ingredient.amount }}</td>
+            {% if ingredient.linkUrl|length %}
+              <td class="ingredient"><a href="{{ ingredient.linkUrl }}" target="_blank">{{ ingredient.ingredient }}</a></td>
+            {% else %}
+              <td class="ingredient">{{ ingredient.ingredient }}</td>
+            {% endif %}
+          </tr>
+      {% endfor %}
+      </table>
+    {% endif %}
+
+    {% if block.thirdListTitle|length %}
+      <h3 class="ingredients-title">{{ block.thirdListTitle }}</h3>
+    {% endif %}
+
+    {% if block.thirdIngredientsList|length %}
+      <table class="ingredients-list" style="width:100%">
+      {% for ingredient in block.thirdIngredientsList %}
+          <tr class="row">
+            <td class="amount">{{ ingredient.amount }}</td>
+            {% if ingredient.linkUrl|length %}
+              <td class="ingredient"><a href="{{ ingredient.linkUrl }}" target="_blank">{{ ingredient.ingredient }}</a></td>
+            {% else %}
+              <td class="ingredient">{{ ingredient.ingredient }}</td>
+            {% endif %}
+          </tr>
+      {% endfor %}
+      </table>
+    {% endif %}
+    <h3>Method</h3>
+    <div class="method">
+      {{ block.method }}
+    </div>
+    <div class="recipe__download">
+      <a href="#" target="_blank" class="js-print-recipe"><div class="recipe__download--button btn pop small">Print Recipe</div></a>
+    </div>
+  </div>
+</div>
