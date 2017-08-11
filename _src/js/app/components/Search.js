@@ -15,7 +15,6 @@ export default class Search {
   }
 
   initialize() {
-    console.log(this.isMobileWidth);
     this._bindEvents();
 
     emitter.on('app--nav-open', () => {

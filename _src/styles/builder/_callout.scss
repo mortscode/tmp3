@@ -1,0 +1,44 @@
+.builder__callout {
+  text-align: center;
+
+  .bq-hr {
+    width: 65%;
+    margin: 0 auto;
+
+    &.top {
+      margin-bottom: $large-spacing;
+    }
+
+    &.bot {
+      margin-top: $large-spacing;
+    }
+  }
+
+  .gray {
+    color: $tmp-gray;
+  }
+
+  .dark {
+    color: $tmp-dark;
+  }
+
+  .red {
+    color: $action-color;
+  }
+
+  .cite {
+    margin-top: $small-spacing;
+
+    &.gray {
+      color: $tmp-gray;
+    }
+
+    &.dark {
+      color: $tmp-dark;
+    }
+
+    &.red {
+      color: $action-color;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+.builder {
+  flex: 0 0 100%;
+
+  &__section {
+    @include clearfix;
+    display: flex;
+    justify-content: flex-start;
+
+    @include bp($sm) {
+      padding-left: rem(50);
+      padding-right: rem(50);
+    }
+
+    &.top-none {
+      padding-top: 0;
+    }
+
+    &.top-normal {
+      padding-top: $base-spacing;
+    }
+
+    &.top-double {
+      padding-top: $large-spacing;
+    }
+
+    &.bot-none {
+      padding-bottom: 0;
+    }
+
+    &.bot-normal {
+      padding-bottom: $base-spacing;
+    }
+
+    &.bot-double {
+      padding-bottom: $large-spacing;
+    }
+
+    .center,
+    .narrow {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .wider {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .full {
+      flex: 0 0 100%;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.builder__text {
+  p {
+    @extend %text-lg;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
