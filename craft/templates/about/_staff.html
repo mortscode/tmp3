@@ -9,8 +9,14 @@
           format: 'jpg',
           position: image.focalPoint
         }) %}
+        {% set transformedImageWebP = craft.imager.transformImage(image, { 
+          width: 500,
+          ratio: 1 / 1,
+          format: 'webp',
+          position: image.focalPoint
+        }) %}
         <li class="staff__bios--bio-wrapper">
-          <div class="staff__bios--bio-photo lazyload" data-bg="{{ transformedImage.url }}"></div>
+          <div class="staff__bios--bio-photo lazyload" data-bg="{% if craft.imager.serverSupportsWebp() %}{{ transformedImageWebP.url }}{% else %}{{ transformedImageWebP.url }}{% endif %}"></div>
           <h2 class="staff__bios--bio-name">{{ bio.fullName }}</h2>
           <p class="staff__bios--bio-text">{{ bio.bio }}</p>
         </li>

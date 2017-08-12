@@ -11,6 +11,10 @@ return array(
   'interlace' => true,
   'mode' => 'crop',
   'instanceReuseEnabled' => true,
+  'webpQuality' => 90,
+  'webpImagickOptions' => array(
+    'lossless' => true,
+  ),
   
   'jpegoptimEnabled' => true,
   'jpegoptimPath' => '/usr/bin/jpegoptim',
