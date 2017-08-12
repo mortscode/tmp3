@@ -15,6 +15,18 @@
             ],
             {
                 format: 'jpg',
+                mode: 'crop',
+                position: image.focalPoint
+            }
+        ) %}
+        {% set transformedImagesWebP = craft.imager.transformImage(image,
+            [
+                { width: 667, ratio: imageRatio },
+                { width: 400, ratio: imageRatio },
+            ],
+            {
+                format: 'webp',
+                mode: 'crop',
                 position: image.focalPoint
             }
         ) %}
@@ -26,15 +38,33 @@
             ],
             {
                 format: 'jpg',
+                mode: 'crop',
+                position: image.focalPoint,
+            }
+        ) %}
+        {% set transformedImagesWebP = craft.imager.transformImage(image,
+            [
+                { width: 1000, ratio: image.width / image.height },
+                { width: 600, ratio: image.width / image.height },
+            ],
+            {
+                format: 'webp',
+                mode: 'crop',
                 position: image.focalPoint,
             }
         ) %}
     {% endif %}
     
-    <picture>
+    <picture class="{{classes}}">
         {% if lazyImage is defined and true %}
             {% spaceless %}
-            <img class="{{classes}} lazyload"
+            {% if craft.imager.serverSupportsWebp() %}
+                <source class="lazyload"
+                    data-sizes="100vw"
+                    data-srcset="{{ craft.imager.srcset(transformedImagesWebP) }}"
+                    type="image/webp">
+            {% endif %}
+            <img class="lazyload"
                 src="{{ craft.imager.base64Pixel(2,1) }}"
                 data-sizes="auto"
                 data-srcset="{{ craft.imager.srcset(transformedImages) }}"
@@ -43,7 +73,13 @@
             {% endspaceless %}
         {% else %}
             {% spaceless %}
-            <img class="{{classes}}"
+            {% if craft.imager.serverSupportsWebp() %}
+                <source
+                    sizes="100vw"
+                    srcset="{{ craft.imager.srcset(transformedImagesWebP) }}"
+                    type="image/webp">
+            {% endif %}
+            <img
                 src="{{ transformedImages[0].url }}"
                 sizes="100vw"
                 srcset="{{ craft.imager.srcset(transformedImages) }}"

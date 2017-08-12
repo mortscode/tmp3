@@ -2,7 +2,14 @@
   {% for intro in entry.aboutIntro %}
     <h1 class="about__intro--headline">{{ intro.headline }}</h1>
     <h2 class="about__intro--subhead">{{ intro.subhead }}</h2>
-    <img src="{{ craft.imager.base64Pixel(2,1) }}" alt="The Ladies of The Modern Proper" class="about__intro--image lazyload" data-src="{{ intro.image[0].url }}">
+    {% set vars = {
+      'image': intro.image[0],
+      'lazyImage': true,
+      'classes': 'about__intro--image',
+      'title': 'The Ladies of The Modern Proper',
+    }%}
+    {% include 'utils/picture' with vars %}
+    {# <img src="{{ craft.imager.base64Pixel(2,1) }}" alt="The Ladies of The Modern Proper" class="about__intro--image lazyload" data-src="{{ intro.image[0].url }}"> #}
   {% endfor %}
   <div class="about__intro-quote">
     {% for quote in entry.aboutQuote %}
