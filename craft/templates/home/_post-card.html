@@ -1,51 +1,17 @@
-{% set tall = image.height > image.width %}
-    
-{% if tall %}
-  {% set transformedImages = craft.imager.transformImage(image,
-    [
-      { width: 667, ratio: image.width / image.height }
-    ],
-    {
-      format: 'jpg',
-      position: image.focalPoint
-    }
-  ) %}
-  {% set transformedImagesWebP = craft.imager.transformImage(image,
-    [
-      { width: 667, ratio: image.width / image.height }
-    ],
-    {
-      format: 'webp',
-      position: image.focalPoint
-    }
-  ) %}
-{% else %}
-  {% set transformedImages = craft.imager.transformImage(image,
-    [
-      { width: 1000, ratio: 667 / 1000 }
-    ],
-    {
-      format: 'jpg',
-      position: image.focalPoint,
-    }
-  ) %}
-  {% set transformedImagesWebP = craft.imager.transformImage(image,
-    [
-      { width: 1000, ratio: 667 / 1000 }
-    ],
-    {
-      format: 'webp',
-      position: image.focalPoint,
-    }
-  ) %}
-{% endif %}
-<div class="post-card {% if homePage %}first-loop{% endif %} {% if index > 6 %}after-featured{% endif %} js-scrolls animate -fade-up" data-offset="0.9">
-  {% spaceless %}
-  <a href="{{url}}" class="post-card__image lazyload" data-bg="{% if craft.imager.serverSupportsWebp() %}{{ transformedImagesWebP[0].url }}{% else %}{{ transformedImages[0].url }}{% endif %}">
+
+<div class="post-card {% if homePage %}first-loop{% endif %} {% if index > 6 %}after-featured{% endif %} js-scrolls animate -fade-up" data-offset="0.92">
+  <a href="{{url}}" class="post-card__image">
+    {% set vars = {
+      'image': image,
+      'forceVert': true,
+      'lazyImage': true,
+      'classes': 'post-card__asset',
+      'title': title,
+    }%}
+    {% include 'utils/picture' with vars %}
     <div class="post-card__image--border"></div>
     <span class="post-card__image--cta">Read post</span>
   </a>
-  {% endspaceless %}
   <div class="post-card__text">
     <a href="{{url}}">
       <h2 class="post-card__title js-avoid-orphan">{{title}}</h2>
