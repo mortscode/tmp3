@@ -1,11 +1,12 @@
 {% if image | length %}
     {% if forceVert is defined and true %}
         {% set imageRatio = 2 / 3 %}
+        {% set tall = true %}
     {% else %}
         {% set imageRatio = image.width / image.height %}
+        {% set tall = image.height > image.width %}
     {% endif %}
 
-    {% set tall = image.height > image.width %}
     
     {% if tall %}
         {% set transformedImages = craft.imager.transformImage(image,
@@ -55,7 +56,7 @@
         ) %}
     {% endif %}
     
-    <picture class="{{classes}}">
+    <picture>
         {% if lazyImage is defined and true %}
             {% spaceless %}
             {% if craft.imager.serverSupportsWebp() %}
@@ -64,7 +65,7 @@
                     data-srcset="{{ craft.imager.srcset(transformedImagesWebP) }}"
                     type="image/webp">
             {% endif %}
-            <img class="lazyload"
+            <img class="{{ classes }} lazyload"
                 src="{{ craft.imager.base64Pixel(2,1) }}"
                 data-sizes="auto"
                 data-srcset="{{ craft.imager.srcset(transformedImages) }}"
@@ -80,6 +81,7 @@
                     type="image/webp">
             {% endif %}
             <img
+                class="{{classes}}"
                 src="{{ transformedImages[0].url }}"
                 sizes="100vw"
                 srcset="{{ craft.imager.srcset(transformedImages) }}"
