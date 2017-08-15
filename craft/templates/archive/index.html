@@ -5,7 +5,7 @@
     with: [
       ['featuredImage', {
         withTransforms: ['archive']
-      }],
+      }]
     ],
     limit: null
 }) %}
@@ -15,13 +15,14 @@
 {% block content %}
   <div class="archive">
     <h1 class="archive__title">Post archive: <span class="message">{{ archive|length }} {{ random(snark).description }}</span></h1>
-    {% cache for 8 hours if not craft.config.devMode %}
     <ul class="archive__list">
       {% for entry in archive %}
       <li class="archive__list-item">
         <a href="{{entry.url}}" class="archive__list-item--link">
           {% if entry.featuredImage | length %}
+            {% cache for 8 hours if not craft.config.devMode %}
             <img data-src="{{entry.featuredImage[0].url('archive')}}" class="archive__list-item--picture lazyload" alt="{{entry.title}}">
+            {% endcache %}
           {% endif %}
           <div class="archive__list-item--date">{{entry.postDate.format('F d, Y')}}</div>
           <h2 class="archive__list-item--title">{{ entry.title }}</h2>
@@ -29,6 +30,5 @@
       </li>
       {% endfor %}
     </ul>
-    {% endcache %}
   </div>
 {% endblock %}

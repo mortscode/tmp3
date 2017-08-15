@@ -33,9 +33,7 @@
     </main>
   </div>
 
-  {% cache for 4 hours if not craft.config.devMode %}
   <script src="/assets/js/main.js"></script>
-  {% endcache %}
   {% block newsletterJs %}{% endblock %}
   {% block footerJs %}{% endblock %} 
   {% include 'scripts/_analytics' %}

@@ -1,6 +1,4 @@
 <div class="post-wrapper">
-  {% cache for 4 hours if not craft.config.devMode %}
-
   {% if not paginate.prevUrl %}
   {% set homePage = true %}
   {% else %}
@@ -24,5 +22,4 @@
       {% include 'home/_post-card' with vars %}
     {% endif %}
   {% endfor %}
-  {% endcache %}
 </div>

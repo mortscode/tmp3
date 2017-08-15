@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "The Modern Proper",
-  "short_name": "Modern Proper",
+  "short_name": "TMP",
   "version": "3.0",
 
   "default_locale": "en",
