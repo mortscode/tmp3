@@ -13,9 +13,9 @@ return array(
   'instanceReuseEnabled' => true,
   'webpQuality' => 90,
   'webpImagickOptions' => array(
-    'lossless' => true,
+    'lossless' => 'true',
+    'method' => '5',
   ),
-  
   'jpegoptimEnabled' => true,
   'jpegoptimPath' => '/usr/bin/jpegoptim',
   'jpegoptimOptionString' => '-s',
