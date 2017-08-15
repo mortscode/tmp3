@@ -34,6 +34,7 @@
   overflow: hidden;
   background-color: #{$bg};
   z-index: 1;
+  transition: padding $ease-fast;
 
   @include bp($lg) {
     padding: 0 rem(80);
