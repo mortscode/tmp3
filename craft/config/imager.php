@@ -11,7 +11,7 @@ return array(
   'interlace' => true,
   'mode' => 'crop',
   'instanceReuseEnabled' => true,
-  'webpQuality' => 90,
+  'webpQuality' => 80,
   'webpImagickOptions' => array(
     'lossless' => 'true',
     'method' => '5',
