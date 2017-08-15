@@ -16,6 +16,16 @@ body {
   display: none;
 }
 
+.off-screen {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  user-select: none;
+  width: 1px;
+}
+
 .no-scroll {
   overflow: hidden;
 
@@ -25,7 +35,7 @@ body {
 }
 
 .tk-fade {
-  transition: opacity 400ms ease-out;
+  transition: opacity $ease-med;
 
   .wf-loading & {
     opacity: 0;

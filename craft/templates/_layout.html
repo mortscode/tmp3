@@ -18,9 +18,8 @@
   {% set homePage = false %}
 {% endif %}
 
-<body class="tk-fade{% if recipe is defined and true %} print-styles{% endif %}">
-  <div class="content">
-
+<body class="{% if recipe is defined and true %} print-styles{% endif %}">
+  <div class="content tk-fade">
     {% include 'partials/header' %}
     {% include 'partials/navigation' %}
     {% include 'partials/search' %}

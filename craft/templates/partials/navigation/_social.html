@@ -1,17 +1,22 @@
 <ul class="navigation__social">
-  <li><a href="https://instagram.com/themodernproper/" class="navigation__social--item" target="_blank">
+  <li><a href="https://instagram.com/themodernproper/" class="navigation__social--item" target="_blank" rel="noopener">
     {% include 'utils/icon' with {'icon':'instagram', 'classes':'navigation__social--icon -tall'} %}
+    <span class="off-screen">Follow TMP on Instagram</span>
   </a></li>
-  <li><a href="https://www.pinterest.com/themodernproper/" class="navigation__social--item" target="_blank">
+  <li><a href="https://www.pinterest.com/themodernproper/" class="navigation__social--item" target="_blank" rel="noopener">
     {% include 'utils/icon' with {'icon':'pinterest', 'classes':'navigation__social--icon -tall'} %}
+    <span class="off-screen">Follow TMP on Pinterest</span>
   </a></li>
-  <li><a href="https://www.facebook.com/themodernproper" class="navigation__social--item" target="_blank">
+  <li><a href="https://www.facebook.com/themodernproper" class="navigation__social--item" target="_blank" rel="noopener">
     {% include 'utils/icon' with {'icon':'facebook', 'classes':'navigation__social--icon -tall'} %}
+    <span class="off-screen">Follow TMP on Facebook</span>
   </a></li>
-  <li><a href="https://twitter.com/themodernproper" class="navigation__social--item" target="_blank">
+  <li><a href="https://twitter.com/themodernproper" class="navigation__social--item" target="_blank" rel="noopener">
     {% include 'utils/icon' with {'icon':'twitter', 'classes':'navigation__social--icon -wide'} %}
+    <span class="off-screen">Follow TMP on Twitter</span>
   </a></li>
   <li><a href="{{ siteUrl }}feed.rss" class="navigation__social--item">
     {% include 'utils/icon' with {'icon':'rss', 'classes':'navigation__social--icon -rss'} %}
+    <span class="off-screen">RSS Feed</span>
   </a></li>
 </ul>
