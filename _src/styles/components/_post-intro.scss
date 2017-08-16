@@ -58,10 +58,18 @@
       text-align: center;
     }
 
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: (1000 / 667) * 100%;
+    }
+
     &--asset {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: auto;
-      vertical-align: top;
+      height: 100%;
     }
   }
 }
