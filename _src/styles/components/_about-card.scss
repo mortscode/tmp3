@@ -26,10 +26,9 @@
     padding: rem(36);
   }
   &__image {
-    background: 50% 50% no-repeat;
-    background-size: cover;
     flex: 0 0 auto;
     max-height: 70vh;
+    overflow: hidden;
     position: relative;
     @include bp($md) {
       flex: 1 0 180px;
@@ -47,6 +46,16 @@
       @include bp($md) {
         padding-bottom: 66%;
       }
+    }
+    &--asset {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: auto;
+      min-height: 100%;
+      width: 100%;
+      min-width: 100%;
+      transform: translate(-50%, -50%);
     }
   }
   &__text {

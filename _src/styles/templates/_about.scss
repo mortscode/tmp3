@@ -2,7 +2,7 @@
   @include content-wrapper();
 
   &__intro {
-    @include content-inner(860);
+    @include content-inner(900);
     padding: rem(40) 0;
     position: relative;
 
@@ -29,12 +29,12 @@
     }
 
     &--img-wrapper {
+      flex: 0 0 100%;
       margin: 0 0 rem(40);
     }
 
     &--image {
-      display: flex;
-      height: 100%;
+      height: auto;
       width: 100%;
     }
   }

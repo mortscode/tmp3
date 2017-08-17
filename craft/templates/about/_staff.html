@@ -5,11 +5,10 @@
         <li class="staff__bios--bio-wrapper">
           {% set vars = {
             'image': bio.photo[0],
-            'lazyImage': true,
             'classes': 'staff__bios--bio-photo',
             'title': bio.fullName,
           }%}
-          {% include 'utils/images/staff-photo' with vars %}
+          {% include 'utils/images/staff-photo-pic' with vars %}
           <h2 class="staff__bios--bio-name">{{ bio.fullName }}</h2>
           <p class="staff__bios--bio-text">{{ bio.bio }}</p>
         </li>
