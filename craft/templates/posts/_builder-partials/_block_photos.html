@@ -10,11 +10,10 @@
       <div class="image-wrapper {% if gallery >= 2 %}gallery{% endif %} {% if block.mobileStack.contains('stack') %}m-stack{% endif %}" data-ratio="{{ratio}}">
         {% set vars = {
           'image': photo,
-          'lazyImage': true,
           'classes': 'image',
           'title': entry.title,
         }%}
-        {% include 'utils/images/post-entries' with vars %}
+        {% include 'utils/images/post-entry-pic' with vars %}
       </div>
     {% endfor %}
   </div>

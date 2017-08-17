@@ -5,13 +5,13 @@ return array(
   'imagerUrl' => '/assets/imager/',
   'cacheEnabled' => true,
   'cacheDuration' => 31536000, // 1 year
-  'jpegQuality' => 90,
+  'jpegQuality' => 85,
   'allowUpscale' => false,
   'smartResizeEnabled' => true,
   'interlace' => true,
   'mode' => 'crop',
   'instanceReuseEnabled' => true,
-  'webpQuality' => 80,
+  'webpQuality' => 85,
   'webpImagickOptions' => array(
     'lossless' => 'true',
     'method' => '5',

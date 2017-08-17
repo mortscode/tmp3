@@ -6,10 +6,7 @@
         ],
         {
             format: 'jpg',
-            allowUpscale: false,
-            mode: 'crop',
-            position: image.focalPoint,
-            interlace: true
+            position: image.focalPoint
         }
     ) %}
     {% set transformedImagesWebP = craft.imager.transformImage(image,
@@ -18,11 +15,8 @@
         ],
         {
             format: 'webp',
-            allowUpscale: false,
-            mode: 'crop',
-            position: image.focalPoint,
-            interlace: true
+            position: image.focalPoint
         }
     ) %}
-    {% include 'utils/images/_picture' %}
+    {% include 'utils/images/_picture-lazy' %}
 {% endif %}

@@ -2,13 +2,14 @@
   {% for intro in entry.aboutIntro %}
     <h1 class="about__intro--headline">{{ intro.headline }}</h1>
     <h2 class="about__intro--subhead">{{ intro.subhead }}</h2>
+    {% set image = intro.image[0] %}
     {% set vars = {
-      'image': intro.image[0],
+      'image': image,
       'picClasses': 'about__intro--img-wrapper',
       'classes': 'about__intro--image',
-      'title': 'The Ladies of The Modern Proper',
+      'title': image.title,
     }%}
-    {% include 'utils/images/about-intro' with vars %}
+    {% include 'utils/images/about-intro-pic' with vars %}
   {% endfor %}
   <div class="about__intro-quote">
     {% for quote in entry.aboutQuote %}

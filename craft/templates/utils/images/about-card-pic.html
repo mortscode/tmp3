@@ -1,0 +1,24 @@
+{% if image | length %}
+    {% set imageRatio = image.height / image.width %}
+    {% set transformedImages = craft.imager.transformImage(image,
+        [
+            { width: 667, ratio: imageRatio },
+            { width: 400, ratio: imageRatio },
+        ],
+        {
+            format: 'jpg',
+            position: image.focalPoint
+        }
+    ) %}
+    {% set transformedImagesWebP = craft.imager.transformImage(image,
+        [
+            { width: 667, ratio: imageRatio },
+            { width: 400, ratio: imageRatio },
+        ],
+        {
+            format: 'webp',
+            position: image.focalPoint
+        }
+    ) %}
+    {% include 'utils/images/_picture-lazy' %}
+{% endif %}

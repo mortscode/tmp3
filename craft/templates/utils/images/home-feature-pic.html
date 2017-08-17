@@ -1,31 +1,23 @@
 {% if image | length %}
-    {% set imageRatio = image.width / image.height %}
+    {% set imageRatio = 667 / 1000 %}
     {% set transformedImages = craft.imager.transformImage(image,
         [
-            { width: 1000, ratio: imageRatio },
             { width: 667, ratio: imageRatio },
             { width: 400, ratio: imageRatio },
         ],
         {
             format: 'jpg',
-            allowUpscale: false,
-            mode: 'crop',
-            position: image.focalPoint,
-            interlace: true
+            position: image.focalPoint
         }
     ) %}
     {% set transformedImagesWebP = craft.imager.transformImage(image,
         [
-            { width: 1000, ratio: imageRatio },
             { width: 667, ratio: imageRatio },
             { width: 400, ratio: imageRatio },
         ],
         {
             format: 'webp',
-            allowUpscale: false,
-            mode: 'crop',
-            position: image.focalPoint,
-            interlace: true
+            position: image.focalPoint
         }
     ) %}
     {% include 'utils/images/_picture' %}
