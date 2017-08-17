@@ -3,12 +3,11 @@
   <a href="{{url}}" class="post-card__image">
     {% set vars = {
       'image': image,
-      'forceVert': true,
       'lazyImage': true,
       'classes': 'post-card__asset',
       'title': title,
     }%}
-    {% include 'utils/picture' with vars %}
+    {% include 'utils/images/home-posts' with vars %}
     <div class="post-card__image--border"></div>
     <span class="post-card__image--cta">Read post</span>
   </a>

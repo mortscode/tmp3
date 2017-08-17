@@ -28,10 +28,13 @@
       }
     }
 
+    &--img-wrapper {
+      margin: 0 0 rem(40);
+    }
+
     &--image {
       display: flex;
       height: 100%;
-      margin: 0 0 rem(40);
       width: 100%;
     }
   }
@@ -41,7 +44,7 @@
     flex: 0 0 33%;
     padding-right: 30px;
 
-    @include bp($sm) {
+    @include bp($md) {
       flex: 0 0 100%;
       padding: 0 rem(30);
     }
@@ -52,9 +55,13 @@
     }
 
     &--author {
-      font-family: $sans;
-      font-weight: 600;
-      text-transform: uppercase;
+      font-weight: 800;
+      font-style: italic;
+
+      @include bp($md) {
+        display: block;
+        margin-bottom: rem(24);
+      }
     }
   }
 
@@ -62,7 +69,7 @@
     @extend %text-lg;
     flex: 0 0 66%;
 
-    @include bp($sm) {
+    @include bp($md) {
       flex: 0 0 100%;
       padding: 0 rem(30);
     }
