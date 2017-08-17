@@ -51,15 +51,8 @@
     }
 
     &--bio-photo {
-      background: 50% 50% no-repeat;
-      background-size: cover;
-      width: 100%;
-
-      &::after {
-        content: "";
-        display: block;
-        padding-bottom: 100%;
-      }
+      height: auto;
+      max-width: 100%;
     }
 
     &--bio-name {
