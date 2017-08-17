@@ -1,5 +1,5 @@
 .post {
-  @include content-inner();
+  @include content-inner(1000);
   z-index: $z-post-content;
   margin-top: $large-spacing;
   position: relative;

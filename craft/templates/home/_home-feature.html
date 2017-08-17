@@ -2,12 +2,11 @@
   <a href="{{url}}" class="home-feature__image">
     {% set vars = {
       'image': image,
-      'forceVert': true,
       'lazyImage': true,
       'classes': 'home-feature__asset',
       'title': post.title,
     }%}
-    {% include 'utils/picture' with vars %}
+    {% include 'utils/images/home-feature' with vars %}
   </a>
   <div class="home-feature__text">
     <span class="home-feature__text--date">{{post.postDate|date("F j, Y")}}</span>
