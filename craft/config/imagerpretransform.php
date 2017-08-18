@@ -2,10 +2,11 @@
 
 return [
     'transforms' => [
-        'posts' => [
-            // JPG
+        'about' => [
+            //JPG
             [
                 'format' => 'jpg',
+                'jpegQuality' => 95,
                 'width' => function ($asset) {
                     if ($asset->width > $asset->height) {
                         return 1000;
@@ -16,23 +17,19 @@ return [
                 'position' => function ($asset) {
                     return $asset->focalPoint;
                 },
-                'ratio' => function ($asset) {
-                    return $asset->width / $asset->height;
-                }
             ],
             [
                 'format' => 'jpg',
+                'jpegQuality' => 95,
                 'width' => 500,
                 'position' => function ($asset) {
                     return $asset->focalPoint;
                 },
-                'ratio' => function ($asset) {
-                    return $asset->width / $asset->height;
-                }
             ],
-            // WEBP
+            //WEBP
             [
                 'format' => 'webp',
+                'webpQuality' => 95,
                 'width' => function ($asset) {
                     if ($asset->width > $asset->height) {
                         return 1000;
@@ -43,20 +40,115 @@ return [
                 'position' => function ($asset) {
                     return $asset->focalPoint;
                 },
-                'ratio' => function ($asset) {
-                    return $asset->width / $asset->height;
-                }
             ],
             [
                 'format' => 'webp',
+                'webpQuality' => 95,
                 'width' => 500,
                 'position' => function ($asset) {
                     return $asset->focalPoint;
                 },
-                'ratio' => function ($asset) {
-                    return $asset->width / $asset->height;
-                }
             ]
+        ],
+        'global' => [
+            //JPG
+            [
+                'format' => 'jpg',
+                'width' => function ($asset) {
+                    if ($asset->width > $asset->height) {
+                        return 1000;
+                    } else {
+                        return 667;
+                    }
+                },
+                'position' => function ($asset) {
+                    return $asset->focalPoint;
+                },
+            ],
+            [
+                'format' => 'jpg',
+                'width' => 400,
+                'position' => function ($asset) {
+                    return $asset->focalPoint;
+                },
+            ],
+            //WEBP
+            [
+                'format' => 'webp',
+                'width' => function ($asset) {
+                    if ($asset->width > $asset->height) {
+                        return 1000;
+                    } else {
+                        return 667;
+                    }
+                },
+                'position' => function ($asset) {
+                    return $asset->focalPoint;
+                },
+            ],
+            [
+                'format' => 'webp',
+                'width' => 400,
+                'position' => function ($asset) {
+                    return $asset->focalPoint;
+                },
+            ],
+        ],
+        'posts' => [
+            //JPG
+            [
+                'format' => 'jpg',
+                'width' => function ($asset) {
+                    if ($asset->width > $asset->height) {
+                        return 1000;
+                    } else {
+                        return 667;
+                    }
+                },
+                'position' => function ($asset) {
+                    return $asset->focalPoint;
+                },
+                'ratio' => function ($asset) {
+                    return $asset->width / $asset->height;
+                }
+            ],
+            [
+                'format' => 'jpg',
+                'width' => 400,
+                'position' => function ($asset) {
+                    return $asset->focalPoint;
+                },
+                'ratio' => function ($asset) {
+                    return $asset->width / $asset->height;
+                }
+            ],
+            //WEBP
+            [
+                'format' => 'webp',
+                'width' => function ($asset) {
+                    if ($asset->width > $asset->height) {
+                        return 1000;
+                    } else {
+                        return 667;
+                    }
+                },
+                'position' => function ($asset) {
+                    return $asset->focalPoint;
+                },
+                'ratio' => function ($asset) {
+                    return $asset->width / $asset->height;
+                }
+            ],
+            [
+                'format' => 'webp',
+                'width' => 400,
+                'position' => function ($asset) {
+                    return $asset->focalPoint;
+                },
+                'ratio' => function ($asset) {
+                    return $asset->width / $asset->height;
+                }
+            ],
         ],
         'staff' => [
             [
@@ -74,63 +166,6 @@ return [
                     return $asset->focalPoint;
                 },
                 'ratio' => 1 / 1
-            ]
-        ],
-        'global' => [
-            [
-                'format' => 'jpg',
-                'width' => function ($asset) {
-                    if ($asset->width > $asset->height) {
-                        return 1000;
-                    } else {
-                        return 667;
-                    }
-                },
-                'position' => function ($asset) {
-                    return $asset->focalPoint;
-                },
-                'ratio' => function ($asset) {
-                    return $asset->width / $asset->height;
-                }
-            ],
-            [
-                'format' => 'jpg',
-                'width' => 400,
-                'position' => function ($asset) {
-                    return $asset->focalPoint;
-                },
-                'ratio' => function ($asset) {
-                    return $asset->width / $asset->height;
-                }
-            ],
-            // WEBP
-            [
-                'format' => 'webp',
-                'webpQuality' => 85,
-                'width' => function ($asset) {
-                    if ($asset->width > $asset->height) {
-                        return 1000;
-                    } else {
-                        return 667;
-                    }
-                },
-                'position' => function ($asset) {
-                    return $asset->focalPoint;
-                },
-                'ratio' => function ($asset) {
-                    return $asset->width / $asset->height;
-                }
-            ],
-            [
-                'format' => 'webp',
-                'webpQuality' => 85,
-                'width' => 400,
-                'position' => function ($asset) {
-                    return $asset->focalPoint;
-                },
-                'ratio' => function ($asset) {
-                    return $asset->width / $asset->height;
-                }
             ]
         ]
     ]
