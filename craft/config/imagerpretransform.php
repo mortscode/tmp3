@@ -106,6 +106,7 @@ return [
             // WEBP
             [
                 'format' => 'webp',
+                'webpQuality' => 85,
                 'width' => function ($asset) {
                     if ($asset->width > $asset->height) {
                         return 1000;
@@ -122,6 +123,7 @@ return [
             ],
             [
                 'format' => 'webp',
+                'webpQuality' => 85,
                 'width' => 400,
                 'position' => function ($asset) {
                     return $asset->focalPoint;
