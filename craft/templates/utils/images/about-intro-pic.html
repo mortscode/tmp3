@@ -1,19 +1,19 @@
 {% if image | length %}
-    {% set imageRatio = image.width / image.height %}
     {% set transformedImages = craft.imager.transformImage(image,
         [
-            { width: 1000, ratio: imageRatio },
-            { width: 400, ratio: imageRatio },
+            { width: 1000},
+            { width: 500},
         ],
         {
             format: 'jpg',
+            jpegQuality: 95,
             position: image.focalPoint
         }
     ) %}
     {% set transformedImagesWebP = craft.imager.transformImage(image,
         [
-            { width: 1000, ratio: imageRatio },
-            { width: 400, ratio: imageRatio },
+            { width: 1000},
+            { width: 500},
         ],
         {
             format: 'webp',

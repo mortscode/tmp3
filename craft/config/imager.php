@@ -5,12 +5,10 @@ return array(
   'imagerUrl' => '/assets/imager/',
   'cacheEnabled' => true,
   'cacheDuration' => 31536000, // 1 year
-  'jpegQuality' => 85,
+  'jpegQuality' => 90,
   'allowUpscale' => false,
-  'smartResizeEnabled' => true,
   'interlace' => true,
   'mode' => 'crop',
-  'instanceReuseEnabled' => true,
   'webpQuality' => 85,
   'webpImagickOptions' => array(
     'lossless' => 'true',
@@ -21,6 +19,6 @@ return array(
   'jpegoptimOptionString' => '-s',
   'optipngEnabled' => true,
   'optipngPath' => '/usr/bin/optipng',
-  'optipngOptionString' => '-o5',
   'optimizeType' => 'runtime',
+  'smartResizeEnabled' => true
 );
