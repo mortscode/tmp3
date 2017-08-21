@@ -1,3 +1,4 @@
+{% cache for 8 hours %}
 <div class="search js-search">
   <div class="search__inner">
     <h1 class="search__title">Search</h1>
@@ -12,3 +13,4 @@
     {% include 'utils/icon' with {'icon':'close', 'classes':'search__close--icon'} %}
   </div>
 </div>
+{% endcache %}

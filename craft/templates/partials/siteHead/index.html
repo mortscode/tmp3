@@ -9,7 +9,9 @@
   {% include 'partials/siteHead/_typekit' %}
   {% include 'partials/siteHead/_favicons' %}
 
+  {% cache for 8 hours%}
   <link rel="stylesheet" href="/assets/styles/main.css" media="all">
-
+  {% endcache %}
+  
   {% include 'partials/siteHead/_rss' %}
  </head>

@@ -10,6 +10,7 @@
             position: image.focalPoint
         }
     ) %}
+    {% if craft.imager.serverSupportsWebp() %}
     {% set transformedImagesWebP = craft.imager.transformImage(image,
         [
             { width: 1000},
@@ -21,5 +22,6 @@
             position: image.focalPoint
         }
     ) %}
+    {% endif %}
     {% include 'utils/images/_picture' %}
 {% endif %}
