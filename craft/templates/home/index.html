@@ -7,9 +7,8 @@
 } %}
 
 {% set allPosts = craft.entries(eagerQuery) %}
-
 <div id="home-posts" class="home-posts js-home-posts">
   {% paginate allPosts as posts %} 
   {% include 'home/_posts' %}
 </div>
- {% include 'home/_paginate' %} 
+{% include 'home/_paginate' %} 

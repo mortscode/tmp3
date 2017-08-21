@@ -23,7 +23,7 @@
           'classes': 'post-intro__image--asset',
           'title': entry.title,
         }%}
-        {% include 'utils/picture' with vars %}
+        {% include 'utils/images/home-feature-pic' with vars %}
       </div>
     </div>
     <div class="post">
@@ -45,7 +45,6 @@
 {% endblock %}
 
 {% block footerJs %}
-
 <script async defer data-pin-hover="true" data-pin-color="white" src="//assets.pinterest.com/js/pinit.js"></script>
 
 {# FB SHARE #}

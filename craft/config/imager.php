@@ -9,16 +9,16 @@ return array(
   'allowUpscale' => false,
   'interlace' => true,
   'mode' => 'crop',
+  'useCwebp' => true,
+  'cwebpPath' => '/usr/bin/cwebp',
   'webpQuality' => 85,
   'webpImagickOptions' => array(
     'lossless' => 'true',
     'method' => '5',
   ),
   'jpegoptimEnabled' => true,
-  'jpegoptimPath' => '/usr/bin/jpegoptim',
   'jpegoptimOptionString' => '-s',
   'optipngEnabled' => true,
-  'optipngPath' => '/usr/bin/optipng',
-  'optimizeType' => 'runtime',
+  // 'optimizeType' => 'runtime',
   'smartResizeEnabled' => true
 );
