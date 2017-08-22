@@ -42,17 +42,19 @@
       flex: 0 0 calc(50% - (1.5em / 4));
     }
 
-    &.m-stack,
-    &.m-stack:nth-child(2n) {
-      @include bp($sm) {
-        flex: 0 0 100%;
-      }
-    }
+    // &.m-stack,
+    // &.m-stack:nth-child(2n) {
+    //   @include bp($sm) {
+    //     flex: 0 0 100%;
+    //   }
+    // }
   }
 
   .image {
+    @include lazy-photo;
     position: absolute;
     width: 100%;
     height: auto;
+    opacity: 0;
   }
 }

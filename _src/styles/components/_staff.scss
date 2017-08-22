@@ -51,6 +51,7 @@
     }
 
     &--bio-photo {
+      @include lazy-photo;
       height: auto;
       max-width: 100%;
     }

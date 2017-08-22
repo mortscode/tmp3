@@ -32,7 +32,7 @@ export default class App {
     });
 
     window.lazySizes.config = {
-      loadMode: 1,
+      loadMode: 2,
     };
   }
 
