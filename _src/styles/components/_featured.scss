@@ -87,11 +87,13 @@
   }
 
   &__image {
+    @include lazy-photo;
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
+    opacity: 0;
     outline: 0px solid $tmp-brand;
-    transition: outline $ease-fast;
+    transition: outline $ease-fast, opacity $ease-fast;
 
     @include bp($md) {
       position: absolute;

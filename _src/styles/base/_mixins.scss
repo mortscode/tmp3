@@ -21,6 +21,15 @@
   transition: $navi-transition;
 }
 
+@mixin lazy-photo {
+  opacity: 0;
+  transition: opacity $ease-med;
+
+  &.lazyloaded {
+    opacity: 1;
+  }
+}
+
 // breakpoints
 @mixin bp($breaker, $feature: max-width) {
   @media only screen and (#{$feature}: $breaker) {

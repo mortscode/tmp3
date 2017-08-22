@@ -73,6 +73,7 @@
     }
   }
   &__asset {
+    @include lazy-photo;
     position: absolute;
     width: 100%;
     height: 100%;
