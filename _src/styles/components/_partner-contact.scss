@@ -4,6 +4,10 @@
   &__inner-wrapper {
     @include content-inner(860);
     padding: rem(80) 0;
+
+    @include bp($sm) {
+      padding: rem(48) rem(50);
+    }
   }
 
   &__headline {

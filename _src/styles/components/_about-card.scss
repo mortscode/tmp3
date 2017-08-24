@@ -44,19 +44,27 @@
       display: block;
       padding-bottom: 100%;
       @include bp($md) {
-        padding-bottom: 66%;
+        padding-bottom: 100%;
       }
     }
+
+    &--wrapper {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+
     &--asset {
       @include lazy-photo;
       position: absolute;
+      top: -5%;
       left: 50%;
-      top: 50%;
-      height: auto;
-      min-height: 100%;
-      width: 100%;
-      min-width: 100%;
-      transform: translate(-50%, -50%);
+      max-width: 100%;
+      transform: translateX(-50%);
+
+      @include bp($md) {
+        top: -15%;
+      }
     }
   }
   &__text {

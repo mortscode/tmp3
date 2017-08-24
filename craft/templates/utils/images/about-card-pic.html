@@ -1,5 +1,5 @@
 {% if image | length %}
-    {% set imageRatio = image.height / image.width %}
+    {% set imageRatio = 2 / 3 %}
     {% set transformedImages = craft.imager.transformImage(image,
         [
             { width: 667, ratio: imageRatio },
