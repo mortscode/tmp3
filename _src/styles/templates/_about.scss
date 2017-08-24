@@ -6,6 +6,10 @@
     padding: rem(40) 0;
     position: relative;
 
+    @include bp($md) {
+      padding: rem(40) 0 0;
+    }
+
     &--headline {
       @extend %title-lg;
       flex: 0 0 100%;
@@ -46,7 +50,7 @@
 
     @include bp($md) {
       flex: 0 0 100%;
-      padding: 0 rem(30);
+      padding: 0 rem(50);
     }
 
     &--quote {
@@ -71,7 +75,7 @@
 
     @include bp($md) {
       flex: 0 0 100%;
-      padding: 0 rem(30);
+      padding: 0 rem(50);
     }
   }
 }

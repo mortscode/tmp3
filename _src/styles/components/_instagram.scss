@@ -7,7 +7,7 @@
     padding: rem(80) 0;
 
     @include bp($md) {
-      padding: rem(80) 0 rem(50);
+      padding: rem(48) 0 rem(18);
     }
   }
 
@@ -23,6 +23,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    @include bp($sm) {
+      padding: 0 24px;
+    }
 
     &--photo {
       background: 50% 50% no-repeat;
@@ -43,7 +47,7 @@
       }
 
       @include bp($md) {
-        flex: 0 0 calc(50% - 15px);
+        flex: 0 0 calc(50% - 12px);
         margin-bottom: 30px;
       }
     }

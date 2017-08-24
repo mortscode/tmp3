@@ -10,7 +10,7 @@
   }
 
   @include bp($sm) {
-    padding: rem(40) rem(30) rem(50);
+    padding: rem(40) rem(50) rem(50);
   }
 
   &__headline {
@@ -41,12 +41,17 @@
       }
 
       @include bp($md) {
-        flex: 0 0 calc(50% - 15px);
+        flex: 0 0 calc(50% - 12px);
         margin: 0 0 30px;
       }
 
-      @include bp($xs) {
+      @include bp($sm) {
         flex: 0 0 100%;
+        text-align: center;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
     }
 
