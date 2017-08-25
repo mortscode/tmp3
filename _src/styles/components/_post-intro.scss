@@ -45,6 +45,26 @@
         display: none;
       }
     }
+
+    &--mobile-jump {
+      display: none;
+      margin: rem(50) auto 0;
+      outline: none;
+      border: none;
+
+      @include bp($md) {
+        display: block;
+      }
+
+      @include bp($sm) {
+        width: calc(100% - 100px);
+        display: block;
+      }
+
+      @include bp($xs) {
+        width: calc(100% - 80px);
+      }
+    }
   }
 
   &__image {

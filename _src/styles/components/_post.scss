@@ -3,4 +3,8 @@
   z-index: $z-post-content;
   margin-top: $large-spacing;
   position: relative;
+
+  @include bp($md) {
+    margin-top: 0;
+  }
 }
