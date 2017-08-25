@@ -11,6 +11,11 @@
       padding-right: rem(50);
     }
 
+    @include bp($xs) {
+      padding-left: rem(40);
+      padding-right: rem(40);
+    }
+
     &.-wide-mobile {
       @include bp($sm) {
         padding-left: 0;
