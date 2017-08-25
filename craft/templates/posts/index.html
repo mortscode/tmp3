@@ -26,6 +26,9 @@
         {% include 'utils/images/home-feature-pic' with vars %}
       </div>
     </div>
+    {% if recipe|length %}
+      <button class="post-intro__title--mobile-jump btn gray small js-scroll-to" data-scroll-target='recipe'>Jump to recipe</button>
+    {% endif %}
     <div class="post">
 
       {% include 'posts/_post-builder' %}
