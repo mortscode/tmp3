@@ -1,8 +1,7 @@
-{% set recipe = entry.recipeStatus %}
-
 {% extends "_layout" %}
 
 {% block content %}
+  {% set recipe = entry.recipeBuilder|length or entry.recipeMethod|length %}
   <article class="post-entry">
     <div class="post-intro">
       <div class="post-intro__title">
@@ -12,7 +11,7 @@
           <span class="post-intro__title--author author">Story by {{entry.postAuthor}}</span>
         {% endif %}
         {% include 'posts/_share' %}
-        {% if recipe|length %}
+        {% if recipe %}
           <button class="post-intro__title--button btn pop small js-scroll-to" data-scroll-target='recipe'>Jump to recipe</button>
         {% endif %}
       </div>
@@ -26,14 +25,13 @@
         {% include 'utils/images/home-feature-pic' with vars %}
       </div>
     </div>
-    {% if recipe|length %}
-      <button class="post-intro__title--mobile-jump btn gray small js-scroll-to" data-scroll-target='recipe'>Jump to recipe</button>
+    {% if recipe %}
+      <button class="post-intro__title--mobile-jump js-scroll-to" data-scroll-target='recipe'>Jump to recipe</button>
     {% endif %}
     <div class="post">
-
       {% include 'posts/_post-builder' %}
 
-      {% if recipe|length %}
+      {% if recipe %}
         {% include 'posts/_recipe-builder' %}
       {% endif %}
     </div>

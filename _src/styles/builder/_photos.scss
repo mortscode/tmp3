@@ -52,6 +52,7 @@
 
   .image {
     @include lazy-photo;
+    background-color: rgba($tmp-gray, 0.3);
     position: absolute;
     width: 100%;
     height: auto;
