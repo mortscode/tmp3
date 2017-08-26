@@ -9,16 +9,16 @@
 
   &__category {
     display: flex;
-    flex: 0 0 180px;
+    flex: 0 1 180px;
     flex-wrap: wrap;
-    margin-right: rem(20);
+    margin-right: rem(12);
 
     &:last-child {
       margin: 0;
     }
 
     &.-double {
-      flex: 0 0 300px;
+      flex: 0 1 300px;
 
       .categories__list {
         flex: 0 0 50%;
@@ -29,6 +29,7 @@
   &__title {
     background-color: $tmp-light;
     color: $tmp-gray;
+    height: rem(37);
     flex: 1 0 100%;
     padding: 8px;
     text-transform: uppercase;
@@ -36,6 +37,7 @@
 
   &__list {
     padding: 8px;
+    height: calc(100% - 37px);
 
     &--item,
     a {
