@@ -48,7 +48,13 @@
 
     &--mobile-jump {
       display: none;
-      margin: rem(50) auto 0;
+      color: $tmp-brand;
+      font-family: $sans;
+      font-size: rem(16);
+      font-weight: 600;
+      text-transform: uppercase;
+      background: none;
+      margin: rem(24) auto 0;
       outline: none;
       border: none;
 

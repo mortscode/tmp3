@@ -19,4 +19,8 @@
       padding: 0 rem(30);
     }
   }
+
+  &__image {
+    background-color: rgba($tmp-gray, 0.3);
+  }
 }
