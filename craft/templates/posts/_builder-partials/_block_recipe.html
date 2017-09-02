@@ -1,7 +1,9 @@
 <div class="builder__section top-double bot-double js-scroll-target-recipe">
   <div class="builder__recipe">
-    <h3 class="ingredients-title caps">{{ entry.title }}</h3>
+    <h2 class="recipe-title">{{ entry.title }}</h2>
+    {% if block.servings > 0 %}
     <p class="servings">Serves {{ block.servings }}</p>
+    {% endif %}
 
     {% if block.mainListTitle|length %}
       <h3 class="ingredients-title">{{ block.mainListTitle }}</h3>
