@@ -114,36 +114,6 @@ h6 {
   }
 }
 
-// h1,
-// h2 {
-//   @extend %title-lg;
-// }
-h3 {
-  font-size: rem(16);
-  line-height: rem(21);
-  font-style: italic;
-  font-weight: 400;
-}
-
-h4 {
-  font-size: rem(16);
-  line-height: rem(21);
-  font-weight: 600;
-  font-family: $sans;
-}
-
-h5 {
-  font-size: rem(21);
-  line-height: rem(24);
-  font-weight: 600;
-  font-style: italic;
-  letter-spacing: 1px;
-  @include bp($sm) {
-    font-size: rem(18);
-    line-height: rem(21);
-  }
-}
-
 p {
   @extend %text-lg;
   &.caption {
@@ -265,35 +235,25 @@ hr {
 
 .builder {
   h1 {
-    font-size: rem(36);
-    line-height: rem(48);
+    @extend %title-serif-lg;
     font-style: italic;
-    font-weight: 600;
     margin-bottom: rem(8);
   }
   h2 {
-    font-size: rem(28);
-    line-height: rem(34);
+    @extend %title-serif-lg;
     font-style: italic;
-    text-transform: none;
-    font-weight: 600;
     margin: rem(12) 0 rem(8);
   }
   h3 {
-    font-size: rem(24);
-    line-height: rem(30);
+    @extend %title-serif-md;
     font-style: italic;
     font-weight: 600;
     margin: rem(12) 0 rem(8);
   }
   h4 {
-    font-size: rem(18);
-    line-height: rem(24);
-    font-family: $serif;
-    font-weight: 600;
+    @extend %title-serif-sm;
     font-style: italic;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    font-weight: 600;
     margin: rem(12) 0 rem(8);
   }
   p a {

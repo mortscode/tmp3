@@ -2,9 +2,9 @@
   <div class="builder__section top-double bot-double">
     <div class="builder__recipe">
       {% if entry.recipeTitle|length %}
-        <h3 class="ingredients-title caps">{{ entry.recipeTitle }}</h3>
+        <h3 class="recipe-title">{{ entry.recipeTitle }}</h3>
       {% else %}
-        <h3 class="ingredients-title caps">{{ entry.title }}</h3>
+        <h3 class="recipe-title">{{ entry.title }}</h3>
       {% endif %}
 
       {% if entry.recipeServings > 0 %}
