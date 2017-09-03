@@ -6,8 +6,7 @@
     <a href="{{'https://twitter.com/share?text=' ~ entry.title ~ ' from @themodernproper:&' ~ entry.url }}" class="share__icon" target="_blank">
         <span class="icon-logo twitter"></span>
     </a>
-    <div id="fb-root" style="display:none;"></div>
-    <a href="{{ entry.url }}" class="share__icon" data-image="{{ siteUrl ~ entry.featuredImage.first.url }}" data-title="{{ entry.title }}" data-desc="{{ entry.postSummary }}" class="fb_share">
+    <a data-href="{{ entry.url }}" class="share__icon fb-share-button" data-layout="button_count">
         <span class="icon-logo facebook"></span>
     </a>
 </div>
