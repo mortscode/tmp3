@@ -31,6 +31,7 @@
   }
 
   &__icon {
+    cursor: pointer;
     flex: 0 0 20%;
     background-color: rgba($tmp-gray, 0.6);
     border-radius: 50%;

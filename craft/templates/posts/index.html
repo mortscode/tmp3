@@ -45,9 +45,7 @@
 
 {% endblock %}
 
-{% block footerJs %}
-<script async defer data-pin-hover="true" data-pin-color="white" src="//assets.pinterest.com/js/pinit.js"></script>
-
+{% block introJs %}
 {# FB SHARE #}
 <script>
   window.fbAsyncInit = function() {
@@ -67,6 +65,10 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
+{% endblock %}
+
+{% block footerJs %}
+<script async defer data-pin-hover="true" data-pin-color="white" src="//assets.pinterest.com/js/pinit.js"></script>
 
 <script>
 var disqus_config = function () {

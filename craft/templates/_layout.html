@@ -19,6 +19,7 @@
 {% endif %}
 
 <body class="{% if recipe is defined and true %} print-styles{% endif %}">
+  {% block introJs %}{% endblock %} 
   <div class="content tk-fade">
     {% include 'partials/header' %}
     {% include 'partials/navigation' %}
