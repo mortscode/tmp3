@@ -38,6 +38,7 @@
     margin: 0 15px;
     position: relative;
     transition: background-color $ease-fast;
+    border: none;
 
     @include bp($lg) {
       flex: 0 0 18%;
