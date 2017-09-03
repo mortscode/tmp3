@@ -44,6 +44,11 @@
       flex: 0 0 18%;
     }
 
+    &:focus {
+      border: none;
+      outline: none;
+    }
+
     &::after {
       content: "";
       display: block;
