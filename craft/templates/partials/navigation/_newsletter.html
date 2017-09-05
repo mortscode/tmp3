@@ -1,7 +1,7 @@
 <div class="newsletter">
   {% include 'utils/icon' with {'icon':'tmp-icon', 'classes':'newsletter__icon'} %}
   <div id="mc_embed_signup" class="newsletter__form">
-    <form action="//cityharvestchurch.us3.list-manage.com/subscribe/post?u=3d4cd56fcb4d0627ba228943e&amp;id=0f9d1d7457" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <form action="//themodernproper.us3.list-manage.com/subscribe/post?u=3d4cd56fcb4d0627ba228943e&amp;id=0f9d1d7457" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
       <div id="mc_embed_signup_scroll">
         <h2 class="newsletter__title">Join our Newsletter</h2>
         <div class="mc-field-group newsletter__form--field-wrapper">
@@ -23,3 +23,7 @@
     </form>
   </div>
 </div>
+
+{% block newsletterJs %}
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+{% endblock %}

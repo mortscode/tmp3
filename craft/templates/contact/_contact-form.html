@@ -17,8 +17,8 @@
 
     <form method="post" action="" accept-charset="UTF-8" class="contact__form">
         {{ getCsrfInput() }}
-        <input type="hidden" name="action" value="contact-form/send">
-        <input type="hidden" name="redirect" value="{{ 'contact/thanks'|hash }}">
+        <input type="hidden" name="action" value="contactForm/sendMessage">
+        <input type="hidden" name="redirect" value="contact/thanks">
 
         <div class="contact__input-wrapper js-input-wrapper">
           <input class="contact__input js-input" id="from-name" type="text" name="fromName" value="{{ message.fromName ?? '' }}">
