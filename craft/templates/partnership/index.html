@@ -42,7 +42,7 @@
       <ul class="logo-grid">
         {% for item in entry.partners %}
           <li class="logo-grid__item">
-            <img src="{{ item.partnerLogo.first.url }}" alt="{{item.partnerName}}" class="logo-grid__item--logo">
+            <img data-src="{{ item.partnerLogo.first.url }}" alt="{{item.partnerName}}" class="logo-grid__item--logo lazyload">
           </li>
         {% endfor %}
       </ul>
