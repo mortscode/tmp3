@@ -1,7 +1,56 @@
 {% extends "_layout" %}
 
 {% block content %}
-<section class="partnership">
-  <h1>Partnership Page</h1>
-</section>
+<div class="partnership">
+  <section class="partnership__section">
+    <div class="partnership__intro">
+      <h1 class="partnership__intro--headline">{{ entry.introHeadline }}</h1>
+      <div class="partnership__intro--body">
+        {{ entry.introBody }}
+      </div>
+      {{ entry.introButton.htmlLink({ 
+        class: 'partnership__intro--button btn pop' 
+        })
+      }}
+    </div>
+  </section>
+  <section class="partnership__services">
+    <div class="partnership__services--wrapper">
+      <div class="partnership__services--inner">
+        <h2 class="partnership__services--headline">{{ entry.servicesHeadline }}</h2>
+        {% for service in entry.services %}
+          <div class="partnership__service">
+            {% set vars = {
+              'image': service.image[0],
+              'classes': 'partnership__service--image',
+              'title': service.serviceTitle,
+            }%}
+            {% include 'utils/images/partnership-services-pic' with vars %}
+            <h3 class="partnership__service--title">{{ service.serviceTitle}}</h3>
+            {{ service.serviceBody }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <section class="partnership__section">
+    <div class="partnership__partners">
+      <h2 class="partnership__partners--headline">{{ entry.partnersHeadline }}</h2>
+      <div class="partnership__partners--body">
+        {{ entry.partnersBody }}
+      </div>
+      <ul class="logo-grid">
+        {% for item in entry.partners %}
+          <li class="logo-grid__item">
+            <img src="{{ item.partnerLogo.first.url }}" alt="{{item.partnerName}}" class="logo-grid__item--logo">
+          </li>
+        {% endfor %}
+      </ul>
+      {{ entry.introButton.htmlLink({ 
+        class: 'partnership__intro--button btn pop' 
+        })
+      }}
+    </div>
+  </section>
+</div>
 {% endblock %}

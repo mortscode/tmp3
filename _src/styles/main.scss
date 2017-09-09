@@ -14,6 +14,7 @@
 @import "components/header";
 @import "components/home-feature";
 @import "components/instagram";
+@import "components/logo-grid";
 @import "components/modal";
 @import "components/more-posts";
 @import "components/more-posts-card";
@@ -47,10 +48,10 @@
 @import "layout/print";
 
 // TEMPLATES =============================================
-
 @import "templates/about";
 @import "templates/archive";
 @import "templates/error";
 @import "templates/home";
+@import "templates/partnership";
 @import "templates/post-entry";
 @import "templates/results";

@@ -78,6 +78,17 @@ h6 {
   }
 }
 
+%title-xs {
+  font-family: $sans;
+  font-size: rem(16);
+  line-height: rem(21);
+  font-weight: 600;
+  @include bp($sm) {
+    font-size: rem(14);
+    line-height: rem(18);
+  }
+}
+
 %title-serif-lg {
   font-family: $serif;
   font-size: rem(36);
