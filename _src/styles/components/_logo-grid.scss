@@ -1,0 +1,47 @@
+.logo-grid {
+  display: flex;
+  justify-content: space-between;
+  flex: 0 0 100%;
+  flex-wrap: wrap;
+  margin-top: rem(36);
+
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 0 calc(25% - 36px);
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 rem(60);
+    padding: 0 rem(12);
+    position: relative;
+
+    @include bp($md) {
+      flex: 0 0 calc(50% - 36px);
+    }
+
+    @include bp($sm) {
+      flex: 0 0 calc(50% - 12px);
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 75%;
+    }
+
+    &--logo {
+      max-width: 100%;
+      height: auto;
+    }
+
+    // &--name {
+    //   @extend %title-sm;
+    //   color: $tmp-gray;
+    //   position: absolute;
+    //   bottom: 0;
+    //   left: 0;
+    //   right: 0;
+    //   text-align: center;
+    // }
+  }
+}

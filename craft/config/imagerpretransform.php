@@ -94,6 +94,15 @@ return [
                 },
             ],
         ],
+        'partners' => [
+            [
+                'format' => 'png',
+                'width' => 400,
+                'ratio' => function ($asset) {
+                    return $asset->width / $asset->height;
+                }
+            ]
+        ],
         'posts' => [
             //JPG
             [
