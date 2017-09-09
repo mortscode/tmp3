@@ -2,14 +2,10 @@
   <div class="builder__button">
     {% set linkit = block.button %}
     {% if linkit %}
-      {% switch linkit.type %}
-          {% case "entry" %}
-              <a href="{{ linkit.entry.url }}" {{ linkit.target ? ' target="_blank"' }} class="btn {{ block.color }}" title="{{ linkit.entry.title }}">{{ linkit.entry.title }}</a>
-          {% case "asset" %}
-              <a href="{{ linkit.asset.url }}" {{ linkit.target ? ' target="_blank"' }} class="btn {{ block.color }}" title="{{ linkit.asset.title }}" download>{{ linkit.linkText }}</a>
-          {% case "custom" %}
-              <a href="{{ linkit.custom }}" {{ linkit.target ? ' target="_blank"' }} class="btn {{ block.color }}" title="{{ linkit.linkText }}">{{ linkit.linkText }}</a>
-      {% endswitch %}
+      {% set attr = {
+        class: 'btn '~block.color
+      } %}
+      {{ linkit.htmlLink(attr)}}
     {% endif %}
   </div>
 </div>
