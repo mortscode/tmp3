@@ -85,11 +85,6 @@
       flex: 0 0 68px;
     }
 
-    // @include bp($sm) {
-    //   flex: 0 0 50px;
-    //   order: 1;
-    // }
-
     li {
       margin: 0 rem(12);
       transition: margin $ease-fast;
@@ -184,6 +179,10 @@
       padding: rem(16) 0;
     }
 
+    @include bp($xs) {
+      padding: rem(12) 0;
+    }
+
     &.-selected {
       color: $tmp-brand;
     }
@@ -202,6 +201,10 @@
 
     @include bp($sm) {
       padding: rem(14) 0;
+    }
+
+    @include bp($xs) {
+      padding: rem(11) 0;
     }
 
     &.-selected {
