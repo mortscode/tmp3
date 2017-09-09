@@ -5,6 +5,10 @@
   flex-wrap: wrap;
   margin-top: rem(36);
 
+  @include bp($sm) {
+    margin-top: rem(12);
+  }
+
   &__item {
     display: flex;
     flex-wrap: wrap;
@@ -21,6 +25,7 @@
 
     @include bp($sm) {
       flex: 0 0 calc(50% - 12px);
+      margin: 0 0 rem(24);
     }
 
     &::after {

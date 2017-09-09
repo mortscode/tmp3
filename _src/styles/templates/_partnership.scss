@@ -6,7 +6,11 @@
   &__intro {
     @include content-inner(900, center);
     text-align: center;
-    padding: rem(40);
+    padding: rem(60) rem(60) rem(80);
+
+    @include bp($md) {
+      padding: rem(60) rem(50);
+    }
 
     &--headline {
       @extend %title-lg;
@@ -17,10 +21,14 @@
       @extend %text-lg;
       max-width: rem(640);
       padding: 0 rem(36);
+
+      @include bp($sm) {
+        padding: 0;
+      }
     }
 
     &--button {
-      margin: rem(40) 0;
+      margin: rem(40) 0 0;
 
       @include bp($sm) {
         flex: 0 0 calc(100% - 96px);
@@ -31,6 +39,10 @@
   &__services {
     background-color: $white;
     padding: rem(80) 0;
+
+    @include bp($sm) {
+      padding: rem(60) 0;
+    }
 
     &--wrapper {
       @include content-wrapper($white);
@@ -90,11 +102,11 @@
   &__partners {
     @include content-inner(900);
     justify-content: center;
-    padding: rem(40) 0 rem(80);
+    padding: rem(80) 0 rem(80);
     text-align: center;
 
     @include bp($sm) {
-      padding: 0 rem(50);
+      padding: rem(60) rem(50) rem(80);
     }
 
     &--headline {
@@ -108,6 +120,10 @@
       @extend %text-lg;
       max-width: rem(640);
       padding: 0 rem(36);
+
+      @include bp($sm) {
+        padding: 0;
+      }
     }
   }
 }
