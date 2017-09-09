@@ -11,6 +11,7 @@
     display: flex;
     flex: 0 1 180px;
     flex-wrap: wrap;
+    align-content: flex-start;
     margin-right: rem(12);
 
     &:last-child {
@@ -27,6 +28,7 @@
   }
 
   &__title {
+    @extend %title-xs;
     background-color: $tmp-light;
     color: $tmp-gray;
     height: rem(37);
@@ -36,8 +38,11 @@
   }
 
   &__list {
+    display: flex;
+    flex: 0 0 100%;
+    flex-direction: column;
+    // height: calc(100% - 37px);
     padding: 8px;
-    height: calc(100% - 37px);
 
     &--item,
     a {
