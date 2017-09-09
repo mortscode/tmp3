@@ -115,13 +115,13 @@ h6 {
 
 %title-serif-sm {
   font-family: $serif;
-  font-size: rem(18);
+  font-size: rem(21);
   font-weight: 400;
-  line-height: rem(24);
+  line-height: rem(28);
   font-style: italic;
   @include bp($sm) {
-    font-size: rem(16);
-    line-height: rem(21);
+    font-size: rem(18);
+    line-height: rem(24);
   }
 }
 

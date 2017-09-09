@@ -14,7 +14,7 @@
     }
 
     &--body p {
-      @extend %title-serif-sm;
+      @extend %text-lg;
       max-width: rem(640);
       padding: 0 rem(36);
     }
@@ -105,7 +105,7 @@
     }
 
     &--body {
-      @extend %title-serif-sm;
+      @extend %text-lg;
       max-width: rem(640);
       padding: 0 rem(36);
     }
