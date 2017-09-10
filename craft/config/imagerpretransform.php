@@ -6,7 +6,21 @@ return [
             //JPG
             [
                 'format' => 'jpg',
-                'jpegQuality' => 95,
+                'jpegQuality' => 90,
+                'width' => function ($asset) {
+                    if ($asset->width > $asset->height) {
+                        return 1800;
+                    } else {
+                        return 1200;
+                    }
+                },
+                'position' => function ($asset) {
+                    return $asset->focalPoint;
+                },
+            ],
+            [
+                'format' => 'jpg',
+                'jpegQuality' => 90,
                 'width' => function ($asset) {
                     if ($asset->width > $asset->height) {
                         return 1000;
@@ -20,7 +34,7 @@ return [
             ],
             [
                 'format' => 'jpg',
-                'jpegQuality' => 95,
+                'jpegQuality' => 90,
                 'width' => 500,
                 'position' => function ($asset) {
                     return $asset->focalPoint;
@@ -29,7 +43,21 @@ return [
             //WEBP
             [
                 'format' => 'webp',
-                'webpQuality' => 95,
+                'webpQuality' => 90,
+                'width' => function ($asset) {
+                    if ($asset->width > $asset->height) {
+                        return 1800;
+                    } else {
+                        return 1200;
+                    }
+                },
+                'position' => function ($asset) {
+                    return $asset->focalPoint;
+                },
+            ],
+            [
+                'format' => 'webp',
+                'webpQuality' => 90,
                 'width' => function ($asset) {
                     if ($asset->width > $asset->height) {
                         return 1000;
@@ -43,7 +71,7 @@ return [
             ],
             [
                 'format' => 'webp',
-                'webpQuality' => 95,
+                'webpQuality' => 90,
                 'width' => 500,
                 'position' => function ($asset) {
                     return $asset->focalPoint;
