@@ -74,6 +74,16 @@
     }
   }
 
+  &__item {
+    &.-mobile {
+      display: none;
+
+      @include bp($sm) {
+        display: block;
+      }
+    }
+  }
+
   &__social {
     display: flex;
     flex: 0 0 82px;
