@@ -78,7 +78,7 @@
     &.-mobile {
       display: none;
 
-      @include bp($sm) {
+      @include bp($md) {
         display: block;
       }
     }
