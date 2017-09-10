@@ -18,4 +18,7 @@
       <a href="{{link.url}}" class="navigation__secondary {% if currentPage == linkSection %}-selected{% endif %}" {{ link.target ? ' target="_blank"' }} title="{{ link.linkText }}">{{ link.linkText }}</a>
     </li>
   {% endfor %}
+    <li class="navigation__item -mobile">
+      <a href="/newsletter" class="navigation__secondary {% if currentPage == 'Newsletter' %}-selected{% endif %}" title="newsletter">Newsletter</a>
+    </li>
 </ul>

@@ -1,3 +1,12 @@
+.newsletter-wrapper {
+  @include content-wrapper;
+
+  &__inner {
+    @include content-inner(800, center);
+    padding-top: rem(24);
+  }
+}
+
 .newsletter {
   background-color: $white;
   text-align: center;
@@ -8,6 +17,12 @@
   pointer-events: none;
   position: relative;
   z-index: $z-nav;
+
+  @include bp($sm) {
+    margin: 0 rem(24);
+    padding: rem(30) rem(50);
+    pointer-events: auto;
+  }
 
   &__icon {
     fill: $tmp-dark;
@@ -37,7 +52,6 @@
       &:focus {
         border-bottom: 2px solid $tmp-gray;
       }
-        
     }
 
     &--submit {
