@@ -1,24 +1,26 @@
 {% if image | length %}
     {% set transformedImages = craft.imager.transformImage(image,
         [
+            { width: 1800},
             { width: 1000},
             { width: 500},
         ],
         {
             format: 'jpg',
-            jpegQuality: 95,
+            jpegQuality: 90,
             position: image.focalPoint
         }
     ) %}
     {% if craft.imager.serverSupportsWebp() %}
     {% set transformedImagesWebP = craft.imager.transformImage(image,
         [
+            { width: 1800},
             { width: 1000},
             { width: 500},
         ],
         {
             format: 'webp',
-            webpQuality: 95,
+            webpQuality: 90,
             position: image.focalPoint
         }
     ) %}

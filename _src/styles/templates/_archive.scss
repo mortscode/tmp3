@@ -53,18 +53,22 @@
       }
     }
 
-    &--image {
-      background: 50% 50% no-repeat;
-      background-size: cover;
+    &--img-wrapper {
+      position: relative;
+      background-color: rgba($tmp-gray, 0.1);
 
       &::after {
-        content: '';
+        content: "";
         display: block;
         padding-bottom: (1000 / 667) * 100%;
       }
     }
 
     &--picture {
+      @include lazy-photo;
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: auto;
     }
