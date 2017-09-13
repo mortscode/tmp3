@@ -37,6 +37,12 @@
   }
 }
 
+@mixin bph($breaker, $feature: max-height) {
+  @media only screen and (#{$feature}: $breaker) {
+    @content;
+  }
+}
+
 @mixin content-wrapper($bg: $tmp-light) {
   position: relative;
   padding: 0 rem(150);

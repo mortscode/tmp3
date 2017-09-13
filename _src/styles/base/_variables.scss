@@ -1,8 +1,8 @@
 // Typography
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i');
 
-$serif: 'minion-pro', georgia, serif;
-$sans: 'Montserrat', sans-serif;
+$serif: "minion-pro", georgia, serif;
+$sans: "Montserrat", sans-serif;
 
 $base-font-family: $serif;
 $heading-font-family: $serif;
@@ -45,12 +45,14 @@ $breakpoint_small: 500px; // mobile
 $breakpoint_medium: 840px; // tablet
 $breakpoint_large: 1200px; // small desktop
 $breakpoint_xlarge: 1440px; // large desktop
+$breakpoint_short: 480px;
 
 $xs: $breakpoint_xsmall;
 $sm: $breakpoint_small;
 $md: $breakpoint_medium;
 $lg: $breakpoint_large;
 $xl: $breakpoint_xlarge;
+$short: $breakpoint_short;
 
 // Transitions
 $ease-fast: 150ms ease-in-out;
@@ -63,7 +65,8 @@ $base-border: 1px solid $base-border-color;
 
 // Forms
 $form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
-$form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);
+$form-box-shadow-focus: $form-box-shadow,
+  0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);
 
 // Navicon
 $navi-size: 18px;

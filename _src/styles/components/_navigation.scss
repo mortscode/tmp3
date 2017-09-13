@@ -92,7 +92,15 @@
     justify-content: center;
 
     @include bp($md) {
-      flex: 0 0 68px;
+      flex: 0 0 rem(68);
+    }
+
+    @include bp($sm) {
+      margin: 0 0 rem(36);
+    }
+
+    @include bp($xs) {
+      flex: 0 0 rem(48);
     }
 
     li {
@@ -173,6 +181,11 @@
     order: 2;
     position: relative;
     text-align: center;
+
+    @include bp($sm) {
+      justify-content: space-between;
+      padding: 0 0 rem(36);
+    }
   }
 
   &__item {
@@ -186,10 +199,6 @@
     transition: background $ease-fast, color $ease-fast;
 
     @include bp($sm) {
-      padding: rem(16) 0;
-    }
-
-    @include bp($xs) {
       padding: rem(12) 0;
     }
 
@@ -210,10 +219,6 @@
     transition: background $ease-fast, color $ease-fast;
 
     @include bp($sm) {
-      padding: rem(14) 0;
-    }
-
-    @include bp($xs) {
       padding: rem(11) 0;
     }
 
@@ -239,7 +244,11 @@
     }
 
     @include bp($xs) {
-      margin-bottom: rem(4);
+      margin-bottom: 0;
+    }
+
+    @include bph($short) {
+      margin-bottom: rem(48);
     }
 
     &--form {
@@ -295,6 +304,10 @@
       padding: rem(36) 0 0;
     }
 
+    @include bph($short) {
+      display: none;
+    }
+
     &--logo {
       height: rem(20);
       width: auto;
@@ -323,6 +336,10 @@
 
     @include bp($sm) {
       margin-bottom: rem(24);
+    }
+
+    @include bph($short) {
+      display: none;
     }
   }
 
@@ -359,9 +376,11 @@
       }
 
       @include bp($xs) {
-        bottom: rem(106);
+        bottom: rem(100);
       }
-
+      @include bph($short) {
+        bottom: rem(48);
+      }
       &:hover,
       &:focus {
         .navigation__close--icon {
