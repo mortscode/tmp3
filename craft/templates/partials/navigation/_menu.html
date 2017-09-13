@@ -6,16 +6,26 @@
 <ul class="navigation__menu">
   {% for navLink in mainNavigation.navigationItems.type('navigationLink') %}
     {% set link = navLink.linkInfo %}
+    {% set linkSection = link.entry.section %}
     <li class="navigation__item">
-      {% set linkSection = link.entry.section %}
-      <a href="{{link.url}}" class="navigation__primary {% if currentPage == linkSection %}-selected{% endif %}" {{ link.target ? ' target="_blank"' }} title="{{ link.linkText }}">{{ link.linkText }}</a>
+      {% if currentPage == linkSection %}
+        {% set primaryClass = "navigation__primary -selected" %}
+      {% else %}
+        {% set primaryClass = "navigation__primary" %}
+      {% endif %}
+      {{ link.htmlLink({class: primaryClass}) }}
     </li>
   {% endfor %}
   {% for navLink in mainNavigation.navigationItems.type('secondaryLink') %}
     {% set link = navLink.linkInfo %}
     {% set linkSection = link.entry.section %}
     <li class="navigation__item">
-      <a href="{{link.url}}" class="navigation__secondary {% if currentPage == linkSection %}-selected{% endif %}" {{ link.target ? ' target="_blank"' }} title="{{ link.linkText }}">{{ link.linkText }}</a>
+      {% if currentPage == linkSection %}
+        {% set secondaryClass = "navigation__secondary -selected" %}
+      {% else %}
+        {% set secondaryClass = "navigation__secondary" %}
+      {% endif %}
+      {{ link.htmlLink({class: secondaryClass}) }}
     </li>
   {% endfor %}
     <li class="navigation__item -mobile">
