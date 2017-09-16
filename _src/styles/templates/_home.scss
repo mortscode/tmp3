@@ -1,7 +1,7 @@
 .home-posts {
   @include content-wrapper();
   margin-bottom: rem(170);
-  box-shadow: 0 rem(3) rem(5) rgba($tmp-dark, 0.3);
+  box-shadow: 0 rem(4) rem(3) rgba($tmp-dark, 0.3);
 
   @include bp($md) {
     margin-bottom: rem(150);
