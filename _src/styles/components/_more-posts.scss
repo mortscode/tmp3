@@ -1,8 +1,19 @@
 .more-posts {
   @include content-wrapper();
+  background-color: $white;
+
+  &__inner {
+    @include content-inner(1200, center);
+    padding: rem(48) 0 rem(24);
+
+    @include bp($sm) {
+      padding: rem(48) rem(42) rem(24);
+    }
+  }
 
   &__title {
     @extend %title-serif-md;
+    flex: 0 0 100%;
     color: $tmp-gray;
     margin-bottom: $base-spacing;
     text-align: center;
@@ -13,11 +24,10 @@
   }
 
   &__wrapper {
-    @include content-inner();
-
-    @include bp($md) {
-      padding: 0 rem(30);
-    }
+    flex: 0 0 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   &__image {
