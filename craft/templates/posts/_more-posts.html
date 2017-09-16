@@ -1,21 +1,22 @@
-{# look for a category first #}
-{% set cat = entry.postCategories %}
-{% set similar = craft.entries.section('postEntries').id('not ' ~ entry.id).relatedTo(cat).order('RAND()').limit(4) %}
+{% set cat = entry.postCategories.level(2).order('RAND()').first %}
+{% set similar = craft.entries.section('postEntries').relatedTo(cat).id('not ' ~ entry.id).after('2014-12-29').order('RAND()').limit(4) %}
 
 <div class="more-posts">
-  <div class="more-posts__title">
-    <h2 class="more-posts__title--text">You might also like...</h2>
-  </div>
-  <div class="more-posts__wrapper">
-    {% for post in similar %}
-      {% set vars = {
-        image: post.featuredImage[0],
-        summary: post.postSummary,
-        title: post.title,
-        url: post.url,
-        classes: "more-posts__image",
-      } %}
-      {% include 'posts/_more-posts-card' with vars %}
-    {% endfor %}
+  <div class="more-posts__inner">
+    <div class="more-posts__title">
+      <h2 class="more-posts__title--text">More recipes from our "{{cat|lower}}" category</h2>
+    </div>
+    <div class="more-posts__wrapper">
+      {% for post in similar %}
+        {% set vars = {
+          image: post.featuredImage[0],
+          summary: post.postSummary,
+          title: post.title,
+          url: post.url,
+          classes: "more-posts__image",
+        } %}
+        {% include 'posts/_more-posts-card' with vars %}
+      {% endfor %}
+    </div>
   </div>
 </div>

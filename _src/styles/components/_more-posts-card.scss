@@ -1,11 +1,12 @@
 .more-posts-card {
   display: flex;
-  flex: 0 0 calc(25% - 24px);
+  flex: 0 0 25%;
   flex-direction: column;
   margin-bottom: rem(30);
+  padding: 0 rem(12);
 
   @include bp($md) {
-    flex: 0 0 calc(50% - 15px);
+    flex: 0 0 calc(50%);
   }
 
   &__image {
@@ -58,13 +59,12 @@
 
         @include bp($md) {
           border: 2px solid white;
-        };
+        }
       }
 
       .more-posts-card__image--cta {
         transform: none;
       }
-
     }
   }
 
@@ -76,7 +76,7 @@
 
     @include bp($md) {
       padding-top: rem(12);
-    };
+    }
   }
 
   &__title {

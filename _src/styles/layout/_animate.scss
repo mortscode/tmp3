@@ -2,12 +2,12 @@
   &.-fade-up {
     opacity: 0.01;
     transform: translate(0, em(20));
-    transition: opacity $ease-med, transform $ease-med;
+    transition: opacity $ease-med, transform $ease-slow;
   }
 
   &.-fade-in {
     opacity: 0;
-    transition: opacity $ease-med;
+    transition: opacity $ease-slow;
   }
 
   &.active {
