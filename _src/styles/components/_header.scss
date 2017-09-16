@@ -57,13 +57,13 @@
         top: rem(24);
       }
       @include bp($sm) {
-        background-color: $white;
+        // background-color: $white;
         width: rem(48);
         height: rem(48);
-        top: auto;
-        bottom: rem(120);
+        top: rem(12);
+        // bottom: rem(120);
         left: 0;
-        box-shadow: 0 3px 8px rgba($tmp-dark, 0.15);
+        // box-shadow: 0 3px 8px rgba($tmp-dark, 0.15);
       }
       @include bp($xs) {
         bottom: rem(106);
