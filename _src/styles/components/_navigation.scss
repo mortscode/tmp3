@@ -65,6 +65,10 @@
     background-color: rgba($tmp-light, 0.95);
     pointer-events: auto;
 
+    @include bp($sm) {
+      background-color: rgba($tmp-light, 0.9);
+    }
+
     .navigation__left,
     .navigation__right {
       transform: none;
@@ -247,7 +251,6 @@
   &__search {
     display: none;
     flex: 0 0 auto;
-    margin-bottom: rem(18);
     order: 3;
     padding: 0 rem(36);
 
@@ -320,6 +323,10 @@
       padding: rem(36) 0 0;
     }
 
+    @include bp($xs) {
+      padding: rem(28) 0 0;
+    }
+
     @include bph($short) {
       padding: 0;
     }
@@ -332,7 +339,7 @@
 
       @include bp($sm) {
         height: rem(18);
-        margin-bottom: rem(4);
+        margin-bottom: 0;
       }
 
       @include bp($sm) {
@@ -394,7 +401,6 @@
       }
 
       @include bp($sm) {
-        // background-color: rgba($white, 0.1);
         width: rem(48);
         height: rem(48);
         top: 50%;
@@ -424,7 +430,7 @@
       transition: fill $ease-fast;
 
       @include bp($sm) {
-        // fill: rgba($tmp-light, 0.8);
+        fill: rgba($tmp-dark, 0.8);
       }
     }
   }
