@@ -40,6 +40,10 @@
       max-width: none;
       transition: transform $ease-fast;
     }
+
+    @include bp($sm) {
+      flex: 0 0 calc(100% - 50px);
+    }
   }
 
   &__right {
@@ -72,6 +76,10 @@
       transform: none;
       pointer-events: auto;
     }
+
+    .navigation__close {
+      opacity: 1;
+    }
   }
 
   &__item {
@@ -96,11 +104,12 @@
     }
 
     @include bp($sm) {
-      margin: 0 0 rem(36);
+      justify-content: space-between;
+      padding: 0 rem(36);
     }
 
-    @include bp($xs) {
-      flex: 0 0 rem(48);
+    @include bph($short) {
+      flex: 0 0 rem(50);
     }
 
     li {
@@ -112,7 +121,7 @@
       }
 
       @include bp($md) {
-        margin: 0 rem(12);
+        margin: 0;
       }
     }
 
@@ -181,11 +190,6 @@
     order: 2;
     position: relative;
     text-align: center;
-
-    @include bp($sm) {
-      justify-content: space-between;
-      padding: 0 0 rem(36);
-    }
   }
 
   &__item {
@@ -199,6 +203,10 @@
     transition: background $ease-fast, color $ease-fast;
 
     @include bp($sm) {
+      padding: rem(16) 0;
+    }
+
+    @include bp($xs) {
       padding: rem(12) 0;
     }
 
@@ -219,6 +227,10 @@
     transition: background $ease-fast, color $ease-fast;
 
     @include bp($sm) {
+      padding: rem(12) 0;
+    }
+
+    @include bp($xs) {
       padding: rem(11) 0;
     }
 
@@ -237,7 +249,7 @@
     flex: 0 0 auto;
     margin-bottom: rem(18);
     order: 3;
-    padding: 0 rem(30) 0 rem(72);
+    padding: 0 rem(36);
 
     @include bp($sm) {
       display: block;
@@ -245,10 +257,6 @@
 
     @include bp($xs) {
       margin-bottom: 0;
-    }
-
-    @include bph($short) {
-      margin-bottom: rem(48);
     }
 
     &--form {
@@ -263,11 +271,15 @@
       background-color: none;
       font-size: rem(18);
       font-style: italic;
-      height: 48px;
+      height: rem(48);
       padding: 0 0 0 rem(18);
       width: calc(100% - 50px);
       border: none;
       outline: 0;
+
+      @include bp($xs) {
+        height: rem(36);
+      }
 
       &:focus {
         border: none;
@@ -292,6 +304,10 @@
       height: 20px;
       width: 20px;
       fill: $tmp-gray;
+
+      @include bp($xs) {
+        top: 7px;
+      }
     }
   }
 
@@ -305,7 +321,7 @@
     }
 
     @include bph($short) {
-      display: none;
+      padding: 0;
     }
 
     &--logo {
@@ -321,6 +337,15 @@
 
       @include bp($sm) {
         height: rem(14);
+      }
+
+      @include bp($xs) {
+        height: rem(12);
+        width: rem(200);
+      }
+
+      @include bph($short) {
+        margin: rem(36) 0 rem(18);
       }
     }
   }
@@ -344,8 +369,10 @@
   }
 
   &__close {
-    width: rem(24);
     height: rem(24);
+    width: rem(24);
+    opacity: 0;
+    transition: opacity $ease-fast;
 
     &--wrapper {
       cursor: pointer;
@@ -367,12 +394,13 @@
       }
 
       @include bp($sm) {
-        background-color: rgba($white, 0.1);
+        // background-color: rgba($white, 0.1);
         width: rem(48);
         height: rem(48);
-        top: auto;
-        bottom: rem(120);
-        left: 0;
+        top: 50%;
+        left: auto;
+        right: 0;
+        transform: translate(100%, -50%);
       }
 
       @include bp($xs) {
@@ -396,7 +424,7 @@
       transition: fill $ease-fast;
 
       @include bp($sm) {
-        fill: rgba($tmp-light, 0.8);
+        // fill: rgba($tmp-light, 0.8);
       }
     }
   }
