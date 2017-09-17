@@ -3,7 +3,11 @@
   margin: 0 auto;
 
   @include bp($md) {
-    padding: 0 rem(30);
+    padding: 0 rem(50);
+  }
+
+  @include bp($xs) {
+    padding: 0 rem(36);
   }
 
   &__wrapper {

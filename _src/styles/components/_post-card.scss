@@ -24,7 +24,7 @@
     order: 3;
   }
   &__image {
-    background-color: $tmp-light;
+    background-color: rgba($tmp-gray, 0.15);
     flex: 0 0 auto;
     overflow: hidden;
     position: relative;
@@ -106,7 +106,6 @@
   &__read-post {
     @extend %title-sm;
     display: none;
-    text-transform: uppercase;
 
     @include bp($sm) {
       display: block;
