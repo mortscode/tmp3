@@ -17,11 +17,6 @@ export const modules = [
     Source: Navigation,
   },
   {
-    name: 'HomePosts',
-    class: '.js-home-posts',
-    Source: HomePosts,
-  },
-  {
     name: 'ScrollInElem',
     class: '.js-scrolls',
     Source: ScrollInElem,
