@@ -45,7 +45,7 @@
   }
 
   &.gray {
-    background-color: $tmp-gray;
+    background-color: lighten($tmp-gray, 10%);
 
     &:hover,
     &:focus {

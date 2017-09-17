@@ -24,10 +24,10 @@
         }%}
         {% include 'utils/images/home-feature-pic' with vars %}
       </div>
+      {% if recipe %}
+        <button class="post-intro__title--mobile-jump js-scroll-to btn gray small" data-scroll-target='recipe'>Jump to recipe</button>
+      {% endif %}
     </div>
-    {% if recipe %}
-      <button class="post-intro__title--mobile-jump js-scroll-to" data-scroll-target='recipe'>Jump to recipe</button>
-    {% endif %}
     <div class="post">
       {% include 'posts/_post-builder' %}
 

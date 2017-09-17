@@ -1,6 +1,8 @@
 .builder__recipe {
+  border-top: 1px solid $tmp-gray;
   max-width: rem(500);
   margin: 0 auto;
+  padding: rem(72) 0;
 
   .recipe-title {
     @extend %title-lg;
