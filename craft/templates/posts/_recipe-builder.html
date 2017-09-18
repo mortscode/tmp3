@@ -8,7 +8,7 @@
       {% endif %}
 
       {% if entry.recipeServings > 0 %}
-        <p class="servings">Serves {{ entry.recipeServings }}</p>
+        <p class="servings" itemprop="recipeYield">Serves {{ entry.recipeServings }}</p>
       {% endif %}
 
       {% for block in entry.recipeBuilder %}
@@ -21,7 +21,7 @@
       
         <table class="ingredients-list" style="width:100%">
         {% for ingredient in block.list %}
-          <tr class="row" itemprop="ingredients">
+          <tr class="row">
             <td class="amount">{{ ingredient.amount }}</td>
             {% if ingredient.linkUrl|length %}
               <td class="ingredient"><a href="{{ ingredient.linkUrl }}" target="_blank">{{ ingredient.ingredient }}</a></td>
@@ -37,7 +37,7 @@
       {% if entry.recipeMethod|length %}
       
         <h3>Method</h3>
-        <div class="method">
+        <div class="method" itemprop="recipeInstructions">
           {{ entry.recipeMethod }}
         </div>
       {% endif %}
@@ -48,3 +48,11 @@
     </div>
   </div>
 </div>
+
+{% block richPinIngredients %}
+  {% for block in entry.recipeBuilder %}
+    {% for item in block.list %}
+      <meta itemprop="ingredients" content="{{ item.amount }} {{ item.ingredient }}" />
+    {% endfor %}
+  {% endfor %}
+{% endblock %}
