@@ -28,7 +28,7 @@
 
   .row {
     &:nth-child(odd) {
-      background: darken($tmp-light, 5%);
+      background: rgba($white, 0.5);
     }
   }
 

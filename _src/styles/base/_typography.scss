@@ -194,14 +194,14 @@ p {
 }
 
 a {
-  color: $action-color;
+  color: darken($action-color, 10%);
   text-decoration: none;
   transition: color 0.1s linear;
   font-weight: 600;
   &:active,
   &:focus,
   &:hover {
-    color: darken($action-color, 10%);
+    color: darken($action-color, 20%);
   }
   &:active,
   &:focus {

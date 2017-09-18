@@ -58,6 +58,7 @@
     }
 
     &--logo {
+      pointer-events: none;
       fill: $white;
       position: absolute;
       width: 50%;

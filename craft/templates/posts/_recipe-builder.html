@@ -21,14 +21,15 @@
       
         <table class="ingredients-list" style="width:100%">
         {% for ingredient in block.list %}
-            <tr class="row">
-              <td class="amount">{{ ingredient.amount }}</td>
-              {% if ingredient.linkUrl|length %}
-                <td class="ingredient"><a href="{{ ingredient.linkUrl }}" target="_blank">{{ ingredient.ingredient }}</a></td>
-              {% else %}
-                <td class="ingredient">{{ ingredient.ingredient }}</td>
-              {% endif %}
-            </tr>
+          <tr class="row">
+            <meta itemprop="ingredients" content="{{ ingredient.amount }} {{ ingredient.ingredient }}" />
+            <td class="amount">{{ ingredient.amount }}</td>
+            {% if ingredient.linkUrl|length %}
+              <td class="ingredient"><a href="{{ ingredient.linkUrl }}" target="_blank">{{ ingredient.ingredient }}</a></td>
+            {% else %}
+              <td class="ingredient">{{ ingredient.ingredient }}</td>
+            {% endif %}
+          </tr>
         {% endfor %}
         </table>
 
