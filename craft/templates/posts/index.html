@@ -2,9 +2,11 @@
 
 {% block content %}
   {% set recipe = entry.recipeBuilder|length or entry.recipeMethod|length %}
-  <article class="post-entry">
+  <article class="post-entry" itemscope itemtype="http://schema.org/Recipe">
+    <meta itemprop="url" content="{{ entry.url }}" />
+    <meta itemprop="image" content="{{ entry.featuredImage[0] }}" />
     <div class="post-intro">
-      <div class="post-intro__title">
+      <div class="post-intro__title" itemprop="name">
         <time class="post-intro__title--date">{{entry.postDate.format('F d, Y')}}</time>
         <h1 class="post-intro__title--text">{{entry.title}}</h1>
         {% if entry.postAuthor|length %}
@@ -20,7 +22,7 @@
           'image': entry.featuredImage[0],
           'lazyImage': true,
           'classes': 'post-intro__image--asset',
-          'title': entry.title,
+          'title': entry.title
         }%}
         {% include 'utils/images/home-feature-pic' with vars %}
       </div>
@@ -45,16 +47,9 @@
 
 {% endblock %}
 
-{% block richPins %}
-  <script>
-    var hello = "hello"
-    console.warn(hello);
-  </script>
-{% endblock %}
-
 {% block footerJs %}
 {# pinterest #}
-<script async defer data-pin-hover="true" data-pin-tall="true" data-pin-round="true" data-pin-save="false" src="//assets.pinterest.com/js/pinit.js"></script>
+<script async defer data-pin-hover="true" data-pin-save="false" src="//assets.pinterest.com/js/pinit.js"></script>
 
 {# disqus #}
 <script>
