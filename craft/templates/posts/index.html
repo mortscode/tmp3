@@ -51,6 +51,16 @@
   <meta itemprop="image" content="{{ entry.featuredImage[0].url }}" />
 {% endblock %}
 
+{% if recipe %}
+  {% block richPinIngredients %}
+    {% for block in entry.recipeBuilder %}
+      {% for item in block.list %}
+        <meta itemprop="ingredients" content="{{ item.amount }} {{ item.ingredient }}" />
+      {% endfor %}
+    {% endfor %}
+  {% endblock %}
+{% endif %}
+
 {% block footerJs %}
 {# pinterest #}
 <script async defer data-pin-hover="true" data-pin-round="true" data-pin-tall="true" data-pin-save="false" src="//assets.pinterest.com/js/pinit.js"></script>

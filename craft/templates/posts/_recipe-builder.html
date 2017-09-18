@@ -48,11 +48,3 @@
     </div>
   </div>
 </div>
-
-{% block richPinIngredients %}
-  {% for block in entry.recipeBuilder %}
-    {% for item in block.list %}
-      <meta itemprop="ingredients" content="{{ item.amount }} {{ item.ingredient }}" />
-    {% endfor %}
-  {% endfor %}
-{% endblock %}
