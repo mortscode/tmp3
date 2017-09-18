@@ -7,9 +7,7 @@
   {% set section = entry.getSection() %}
   {% if section.handle == 'postEntries' %} 
     {% set recipe = true %} 
-  {% endif %} 
-{% else %}
-  {% set section = 'no-section' %}
+  {% endif %}
 {% endif %} 
 {% set pageUrl = url(craft.request.path) %}
 {% if pageUrl == siteUrl %}
@@ -19,7 +17,6 @@
 {% endif %}
 
 <body class="{% if recipe is defined and true %} print-styles{% endif %}">
-  {% block introJs %}{% endblock %} 
   <div class="content tk-fade">
     {% include 'partials/header' %}
     {% include 'partials/navigation' %}

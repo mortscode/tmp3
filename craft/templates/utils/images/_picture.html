@@ -11,6 +11,13 @@
     src="{{ transformedImages[0].url }}"
     sizes="100vw"
     srcset="{{ craft.imager.srcset(transformedImages) }}"
-    alt="{{ title ? title : entry.title }}">
+    alt="{{ title ? title : entry.title }}"
+    {% if nopin is defined and true %}
+      nopin = "nopin"
+    {% else %}
+      data-pin-media="{{ image.url }}"
+      data-pin-description="{{entry.title}}"
+      data-pin-url="{{entry.url}}"
+    {% endif %}>
   {% endspaceless %}
 </picture>
