@@ -2,9 +2,7 @@
 
 {% block content %}
   {% set recipe = entry.recipeBuilder|length or entry.recipeMethod|length %}
-  <article class="post-entry" itemscope itemtype="http://schema.org/Recipe">
-    <meta itemprop="url" content="{{ entry.url }}" />
-    <meta itemprop="image" content="{{ entry.featuredImage[0] }}" />
+  <article class="post-entry">
     <div class="post-intro">
       <div class="post-intro__title" itemprop="name">
         <time class="post-intro__title--date">{{entry.postDate.format('F d, Y')}}</time>
@@ -47,9 +45,15 @@
 
 {% endblock %}
 
+{% block richPin %}
+  <meta itemscope itemtype="http://schema.org/Recipe" />
+  <meta itemprop="url" content="{{ entry.url }}" />
+  <meta itemprop="image" content="{{ entry.featuredImage[0].url }}" />
+{% endblock %}
+
 {% block footerJs %}
 {# pinterest #}
-<script async defer data-pin-hover="true" data-pin-save="false" src="//assets.pinterest.com/js/pinit.js"></script>
+<script async defer data-pin-hover="true" data-pin-round="true" data-pin-tall="true" data-pin-save="false" src="//assets.pinterest.com/js/pinit.js"></script>
 
 {# disqus #}
 <script>
