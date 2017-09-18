@@ -21,8 +21,7 @@
       
         <table class="ingredients-list" style="width:100%">
         {% for ingredient in block.list %}
-          <tr class="row">
-            <meta itemprop="ingredients" content="{{ ingredient.amount }} {{ ingredient.ingredient }}" />
+          <tr class="row" itemprop="ingredients">
             <td class="amount">{{ ingredient.amount }}</td>
             {% if ingredient.linkUrl|length %}
               <td class="ingredient"><a href="{{ ingredient.linkUrl }}" target="_blank">{{ ingredient.ingredient }}</a></td>
