@@ -1,17 +1,24 @@
 <picture {% if picClasses is defined %}class={{ picClasses }}{% endif %}>
   {% spaceless %}
-    {% if craft.imager.serverSupportsWebp() %}
-    <source class="lazyload"
-      data-sizes="100vw"
-      data-srcset="{{ craft.imager.srcset(transformedImagesWebP) }}"
-      type="image/webp">
-    {% endif %}
-    <img
-      class="{{ classes }} lazyload"
-      src="{{ craft.imager.base64Pixel(2,1) }}"
-      data-sizes="100vw"
-      data-srcset="{{ craft.imager.srcset(transformedImages) }}"
-      data-src="{{ transformedImages[0].url }}"
-      alt="{{ title ? title : entry.title }}">
+  {% if craft.imager.serverSupportsWebp() %}
+  <source class="lazyload"
+    data-sizes="100vw"
+    data-srcset="{{ craft.imager.srcset(transformedImagesWebP) }}"
+    type="image/webp">
+  {% endif %}
+  <img
+    class="{{ classes }} lazyload"
+    src="{{ craft.imager.base64Pixel(2,1) }}"
+    data-sizes="100vw"
+    data-srcset="{{ craft.imager.srcset(transformedImages) }}"
+    data-src="{{ transformedImages[0].url }}"
+    alt="{{ title ? title : entry.title }}"
+    {% if nopin is defined and true %}
+      nopin = "nopin"
+    {% else %}
+      data-pin-media="{{ image.url }}"
+      data-pin-description="{{entry.title}}"
+      data-pin-url="{{entry.url}}"
+    {% endif %}>
   {% endspaceless %}
 </picture>

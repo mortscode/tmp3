@@ -3,10 +3,28 @@
 <div class="share">
     <hr class="share__title--line">
     <h3 class="share__title">Share</h3>
-    <a href="{{'https://twitter.com/share?text=' ~ entry.title ~ ' from @themodernproper:&' ~ entry.url }}" class="share__icon" target="_blank">
-        <span class="icon-logo twitter"></span>
+    <a class="share__icon" data-pin-do="buttonBookmark" data-pin-custom="true" data-pin-save="false" href="https://www.pinterest.com/pin/create/button/">
+        {% include 'utils/icon' with 
+            {
+                'icon': 'pinterest',
+                'classes': 'share__icon--logo'
+            } 
+        %}
     </a>
-    <button data-href="{{ entry.url }}" class="share__icon fb-share-button" data-layout="button_count">
-        <span class="icon-logo facebook"></span>
-    </button>
+    <div data-href="{{ entry.url }}" class="share__icon" data-layout="button_count">
+        {% include 'utils/icon' with 
+            {
+                'icon': 'facebook',
+                'classes': 'share__icon--logo'
+            } 
+        %}
+    </div>
+    <a href="{{'https://twitter.com/intent/tweet?text=' ~ entry.title ~ 'from @themodernproper:%20' ~ entry.url }}" class="share__icon" target="_blank">
+        {% include 'utils/icon' with 
+            {
+                'icon': 'twitter',
+                'classes': 'share__icon--logo'
+            } 
+        %}
+    </a>
 </div>

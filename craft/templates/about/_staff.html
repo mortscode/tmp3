@@ -7,6 +7,7 @@
             'image': bio.photo[0],
             'classes': 'staff__bios--bio-photo',
             'title': bio.fullName,
+            'nopin': true
           }%}
           {% include 'utils/images/staff-photo-pic' with vars %}
           <h2 class="staff__bios--bio-name">{{ bio.fullName }}</h2>

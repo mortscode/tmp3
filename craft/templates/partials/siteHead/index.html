@@ -1,17 +1,17 @@
 <head>
   <meta charset="utf-8">
 
-  <!-- Always force latest IE rendering engine or request Chrome Frame -->
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   {% hook 'seomaticRender' %}
+  {% block richPins %}{% endblock %}
   {% include 'partials/siteHead/_typekit' %}
   {% include 'partials/siteHead/_favicons' %}
 
-  {% cache for 8 hours %}
+  {# {% cache for 4 hours %} #}
   <link rel="stylesheet" href="/assets/styles/main.css" media="all">
-  {% endcache %}
+  {# {% endcache %} #}
   
   {% include 'partials/siteHead/_rss' %}
  </head>
