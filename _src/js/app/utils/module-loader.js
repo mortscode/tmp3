@@ -1,5 +1,5 @@
 import ContactForm from '../components/ContactForm';
-import HomePosts from '../components/HomePosts';
+import FixedShare from '../components/FixedShare';
 import Navigation from '../components/Navigation';
 import Search from '../components/Search';
 import ScrollInElem from './ScrollInElem';
@@ -10,6 +10,11 @@ export const modules = [
     name: 'ContactForm',
     class: '.js-contact-form',
     Source: ContactForm,
+  },
+  {
+    name: 'FixedShare',
+    class: '.js-fix-share-trigger',
+    Source: FixedShare,
   },
   {
     name: 'Navigation',

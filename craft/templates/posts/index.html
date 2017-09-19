@@ -28,7 +28,7 @@
         <button class="post-intro__title--mobile-jump js-scroll-to btn gray small" data-scroll-target='recipe'>Jump to recipe</button>
       {% endif %}
     </div>
-    <div class="post">
+    <div class="post js-fix-share-trigger">
       {% include 'posts/_post-builder' %}
 
       {% if recipe %}
@@ -42,7 +42,7 @@
   <div class="comments__wrapper disqus">
     <div id="disqus_thread" class="comments"></div>
   </div>
-
+  {% include 'posts/_fixed-share' %}
 {% endblock %}
 
 {% block richPin %}
@@ -51,7 +51,7 @@
   <meta itemprop="image" content="{{ entry.featuredImage[0].url }}" />
 {% endblock %}
 
-{% if recipe %}
+{% if entry.recipeBuilder|length %}
   {% block richPinIngredients %}
     {% for block in entry.recipeBuilder %}
       {% for item in block.list %}

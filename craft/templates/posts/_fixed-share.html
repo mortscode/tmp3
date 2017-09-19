@@ -1,0 +1,26 @@
+<div class="fix-share js-fix-share">
+  <a href="https://www.pinterest.com/pin/create/button/" class="fix-share__icon" data-pin-do="buttonBookmark" data-pin-custom="true" data-pin-save="false">
+      {% include 'utils/icon' with 
+          {
+              'icon': 'pinterest',
+              'classes': 'fix-share__icon--logo'
+          } 
+      %}
+  </a>
+  <a data-href="{{ entry.url }}" class="fix-share__icon fb-share-button" data-layout="button_count" data-mobile_iframe="true">
+      {% include 'utils/icon' with 
+          {
+              'icon': 'facebook',
+              'classes': 'fix-share__icon--logo'
+          } 
+      %}
+  </a>
+  <a href="{{'https://twitter.com/intent/tweet?text=' ~ entry.title ~ 'from @themodernproper:%20' ~ entry.url }}" class="fix-share__icon" target="_blank">
+      {% include 'utils/icon' with 
+          {
+              'icon': 'twitter',
+              'classes': 'fix-share__icon--logo'
+          } 
+      %}
+  </a>
+</div>
