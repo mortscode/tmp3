@@ -10,6 +10,8 @@ export default class ScrollToElem {
     );
     this.speed = this.$elem.dataset.scrollSpeed | 1;
     this.bindEvents();
+
+    console.log(this.$elem, this.$target);
   }
 
   bindEvents() {
@@ -22,6 +24,7 @@ export default class ScrollToElem {
     TweenLite.to(window, this.speed, {
       scrollTo: this.$target,
       ease: Power2.easeOut,
+      autoKill: false,
     });
   }
 }
