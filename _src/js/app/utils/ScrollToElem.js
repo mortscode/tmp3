@@ -10,8 +10,6 @@ export default class ScrollToElem {
     );
     this.speed = this.$elem.dataset.scrollSpeed | 1;
     this.bindEvents();
-
-    console.log(this.$elem, this.$target);
   }
 
   bindEvents() {

@@ -100,4 +100,29 @@
       height: 100%;
     }
   }
+
+  &__pintip {
+    display: none;
+    flex: 0 0 100%;
+    margin: rem(48) 0 0;
+    text-align: center;
+
+    @include bp($md) {
+      display: block;
+    }
+
+    &--message {
+      @extend %title-xs;
+      color: $tmp-gray;
+      padding-right: rem(12);
+    }
+
+    &--icon {
+      height: rem(20);
+      width: rem(20);
+      fill: $tmp-gray;
+      margin-right: rem(6);
+      transform: translateY(25%);
+    }
+  }
 }
