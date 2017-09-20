@@ -1,7 +1,7 @@
 .builder__recipe {
   max-width: rem(500);
   margin: 0 auto;
-  padding: rem(72) 0;
+  padding: 0 0 rem(72);
 
   .recipe-title {
     @extend %title-lg;

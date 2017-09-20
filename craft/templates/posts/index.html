@@ -27,6 +27,16 @@
       {% if recipe %}
         <button class="post-intro__title--mobile-jump js-scroll-to btn gray small" data-scroll-target='recipe'>Jump to recipe</button>
       {% endif %}
+      <div class="post-intro__pintip">
+        {% spaceless %}
+        <span class="post-intro__pintip--message"><span>
+          {% include 'utils/icon' with {
+            'icon': 'pinterest',
+            'classes': 'post-intro__pintip--icon'
+          } %}
+        </span>Tap any image to pin it.</span>
+        {% endspaceless %}
+      </div>
     </div>
     <div class="post js-fix-share-trigger">
       {% include 'posts/_post-builder' %}

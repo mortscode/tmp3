@@ -32,7 +32,7 @@
     transition: background $ease-fast;
 
     @include bp($sm) {
-      margin-bottom: rem(18);
+      margin-bottom: rem(16);
     }
 
     &:last-child {

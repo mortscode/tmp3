@@ -1,0 +1,22 @@
+
+{% spaceless %}
+  {% if craft.imager.serverSupportsWebp() %}
+    {% set srcset = craft.imager.srcset(transformedImagesWebP) %}
+  {% else %}
+    {% set srcset = craft.imager.srcset(transformedImages) %}
+  {% endif %}
+  <img
+    class="{{ classes }} lazyload"
+    src="{{ craft.imager.base64Pixel(2,1) }}"
+    data-sizes="100vw"
+    data-srcset="{{ srcset }}"
+    data-src="{{ transformedImages[0].url }}"
+    alt="{{ title ? title : entry.title }}"
+    {% if nopin is defined and true %}
+      nopin = "nopin"
+    {% else %}
+      data-pin-media="{{ image.url }}"
+      data-pin-description="{{entry.title}}"
+      data-pin-url="{{entry.url}}"
+    {% endif %}>
+{% endspaceless %}
