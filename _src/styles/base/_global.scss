@@ -36,10 +36,8 @@ body {
 
 .tk-fade {
   transition: opacity $ease-med;
-
-  .wf-loading & {
-    opacity: 0;
-  }
+  transition-delay: 500ms;
+  opacity: 0;
 
   .wf-active & {
     opacity: 1;
