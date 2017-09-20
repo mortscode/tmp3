@@ -22,9 +22,11 @@ export default class ScrollToElem {
 
   scrollToElem() {
     TweenLite.to(window, this.speed, {
-      scrollTo: this.$target,
+      scrollTo: {
+        y: this.$target,
+        autoKill: false,
+      },
       ease: Power2.easeOut,
-      autoKill: false,
     });
   }
 }
