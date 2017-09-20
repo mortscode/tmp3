@@ -10,6 +10,7 @@ export default class Search {
     this.disableSearch = false;
     this.isMobileWidth = window.innerWidth <= 500;
     this.$body = document.body;
+    this.hotkeyPressed = false;
 
     this.initialize();
   }
@@ -43,7 +44,8 @@ export default class Search {
       this._closeSearch();
     });
 
-    window.addEventListener('keyup', this._inputHandler.bind(this));
+    window.addEventListener('keydown', this._inputHandler.bind(this));
+    window.addEventListener('keyup', this._hotkeyHandler.bind(this));
   }
 
   _attachEvents() {
@@ -55,12 +57,15 @@ export default class Search {
   }
 
   _inputHandler(event) {
-    if (this.disableSearch || event.keyCode === 91 || this.isMobileWidth) {
+    if (event.keyCode === 91) {
+      this.hotkeyPressed = true;
+    }
+
+    if (this.disableSearch || this.hotkeyPressed || this.isMobileWidth) {
       return;
     }
 
     if (!this.searchOpen && event.keyCode >= 65 && event.keyCode <= 90) {
-      this.$searchInput.value = event.key;
       this._openSearch();
     }
   }
@@ -68,6 +73,12 @@ export default class Search {
   _escapeHandler(event) {
     if (this.searchOpen && event.keyCode === 27) {
       this._closeSearch();
+    }
+  }
+
+  _hotkeyHandler(event) {
+    if (event.keyCode === 91) {
+      this.hotkeyPressed = false;
     }
   }
 
@@ -84,5 +95,8 @@ export default class Search {
     this.$body.classList.remove('no-scroll');
     this._detachEvents();
     this.searchOpen = false;
+    setTimeout(() => {
+      this.$searchInput.value = '';
+    }, 500);
   }
 }
