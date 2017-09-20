@@ -15,8 +15,7 @@
   }
 
   &__image {
-    background: 50% 50% no-repeat;
-    background-size: cover;
+    background-color: rgba($tmp-gray, 0.1);
     flex: 0 0 auto;
     max-height: 70vh;
     overflow: hidden;
@@ -64,14 +63,25 @@
 
         @include bp($md) {
           border: 2px solid white;
-        };
+        }
       }
 
       .result-card__image--cta {
         transform: none;
       }
-
     }
+  }
+
+  &__asset {
+    @include lazy-photo;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    vertical-align: bottom;
   }
 
   &__text {
@@ -82,7 +92,7 @@
 
     @include bp($md) {
       padding-top: rem(12);
-    };
+    }
   }
 
   &__title {
