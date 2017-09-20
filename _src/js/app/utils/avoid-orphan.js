@@ -1,21 +1,24 @@
+import emitter from '../utils/emitter';
+
 export default function avoidOrphan(elem) {
   const last = elem.lastChild;
-  const windowWidth = window.innerWidth;
+  let windowWidth = window.innerWidth;
+  let skinnyWindow = windowWidth < 680;
   let trimmed;
   let wordArray;
   let wordCount;
 
-  // On mobile, do not apply ophan rule to paragraph tags. It looks funny.
-  if (windowWidth < 600) {
-    return;
-  }
+  emitter.on('app--resizer', () => {
+    windowWidth = window.innerWidth;
+    console.log(windowWidth);
+  });
 
   if (last && last.nodeType === 3) {
     trimmed = last.nodeValue.trim();
     wordArray = trimmed.match(/\S+/g);
     wordCount = wordArray ? wordArray.length : 0;
 
-    if (wordCount > 3) {
+    if (wordCount > 3 && !skinnyWindow) {
       last.nodeValue = trimmed.replace(/\s+([^\s]+\s*)$/g, '\xA0$1');
     }
   }
