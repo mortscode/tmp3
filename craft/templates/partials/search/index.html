@@ -1,5 +1,6 @@
 {% cache for 8 hours %}
 <div class="search js-search">
+  <span class="search__indicator js-searching">Coming right up...</span>
   <div class="search__inner">
     <h1 class="search__title">Search</h1>
     <form class="search__form js-search-form" action="{{ url('search/results') }}">

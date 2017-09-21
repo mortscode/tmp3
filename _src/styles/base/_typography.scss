@@ -83,7 +83,7 @@ h6 {
   font-size: rem(16);
   line-height: rem(21);
   font-weight: 600;
-  @include bp($sm) {
+  @include bp($md) {
     font-size: rem(14);
     line-height: rem(18);
   }
@@ -119,9 +119,21 @@ h6 {
   font-weight: 400;
   line-height: rem(28);
   font-style: italic;
-  @include bp($sm) {
+  @include bp($md) {
     font-size: rem(18);
     line-height: rem(24);
+  }
+}
+
+%title-serif-xs {
+  font-family: $serif;
+  font-size: rem(16);
+  font-weight: 400;
+  line-height: rem(21);
+  font-style: italic;
+  @include bp($sm) {
+    font-size: rem(13);
+    line-height: rem(18);
   }
 }
 

@@ -6,10 +6,12 @@ export default class Search {
     this.$searchOpen = document.querySelector('.js-search-open');
     this.$searchClose = this.$search.querySelector('.js-search-close');
     this.$searchInput = this.$search.querySelector('.js-search-input');
+    this.$searchForm = this.$search.querySelector('.js-search-form');
     this.searchOpen = false;
     this.disableSearch = false;
     this.isMobileWidth = window.innerWidth <= 500;
     this.$body = document.body;
+    this.hotKeysArr = [91, 93, 224, 17];
     this.hotkeyPressed = false;
 
     this.initialize();
@@ -44,8 +46,12 @@ export default class Search {
       this._closeSearch();
     });
 
+    this.$searchForm.addEventListener('submit', () => {
+      this._handleSubmit();
+    });
+
     window.addEventListener('keydown', this._inputHandler.bind(this));
-    window.addEventListener('keyup', this._hotkeyHandler.bind(this));
+    window.addEventListener('keyup', this._hotkeyUpHandler.bind(this));
   }
 
   _attachEvents() {
@@ -56,17 +62,23 @@ export default class Search {
     window.removeEventListener('keyup', this._escapeHandler.bind(this));
   }
 
+  _handleSubmit() {
+    console.log('seraching dude');
+    this.$search.classList.add('-searching');
+  }
+
   _inputHandler(event) {
-    if (event.keyCode === 91) {
+    const hotKeyDown = this.hotKeysArr.includes(event.keyCode);
+    if (hotKeyDown) {
       this.hotkeyPressed = true;
     }
 
     if (this.disableSearch || this.hotkeyPressed || this.isMobileWidth) {
       return;
-    }
-
-    if (!this.searchOpen && event.keyCode >= 65 && event.keyCode <= 90) {
+    } else if (!this.searchOpen && event.keyCode >= 65 && event.keyCode <= 90) {
       this._openSearch();
+    } else {
+      return;
     }
   }
 
@@ -76,8 +88,9 @@ export default class Search {
     }
   }
 
-  _hotkeyHandler(event) {
-    if (event.keyCode === 91) {
+  _hotkeyUpHandler(event) {
+    const hotKeyUp = this.hotKeysArr.includes(event.keyCode);
+    if (hotKeyUp) {
       this.hotkeyPressed = false;
     }
   }

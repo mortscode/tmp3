@@ -1,18 +1,27 @@
 .results {
-  padding: 0 rem(110);
-  overflow-x: hidden;
+  @include content-wrapper;
 
   @include bp($sm) {
     padding: 0 rem(12);
   }
 
+  @include bp($sm) {
+    padding: 0 rem(6);
+  }
+
   &__wrapper {
-    max-width: rem(1280);
+    @include content-inner(1280, flex-start);
+    padding-bottom: rem(60);
     margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
     align-items: stretch;
-    justify-content: flex-start;
+
+    @include bp($sm) {
+      padding: 0 rem(36) rem(48);
+    }
+
+    @include bp($xs) {
+      padding: 0 rem(24) rem(36);
+    }
   }
 
   &__header {

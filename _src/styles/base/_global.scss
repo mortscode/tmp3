@@ -42,6 +42,10 @@ body {
   .wf-active & {
     opacity: 1;
   }
+
+  .paginate__wrapper {
+    background-color: $tmp-dark;
+  }
 }
 
 .no-wrap {

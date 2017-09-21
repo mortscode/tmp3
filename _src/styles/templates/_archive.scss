@@ -1,8 +1,21 @@
 .archive {
   @include content-wrapper();
 
+  &__wrapper {
+    @include content-inner(1280);
+
+    @include bp($sm) {
+      padding: 0 rem(36);
+    }
+
+    @include bp($xs) {
+      padding: 0 rem(24);
+    }
+  }
+
   &__title {
     @extend %title-md;
+    flex: 0 0 100%;
     color: $tmp-gray;
     margin-bottom: rem(60);
     text-align: center;
@@ -32,15 +45,15 @@
 
     @include bp($lg) {
       flex: 0 0 20%;
+      padding: 0 rem(6);
     }
 
     @include bp($md) {
-      flex: 0 0 25%;
+      flex: 0 0 33.333%;
     }
 
     @include bp($sm) {
-      padding: 0 rem(6);
-      flex: 0 0 33.333%;
+      flex: 0 0 50%;
     }
 
     &--link {
@@ -74,7 +87,7 @@
     }
 
     &--date {
-      @extend %text-xs;
+      @extend %title-serif-xs;
       color: $tmp-gray;
       font-style: italic;
       margin: rem(12) 0 rem(6);
@@ -85,13 +98,9 @@
     }
 
     &--title {
-      @extend %title-sm;
+      @extend %title-xs;
 
       @include bp($md) {
-        font-size: rem(16);
-      }
-
-      @include bp($sm) {
         font-size: rem(14);
       }
     }
