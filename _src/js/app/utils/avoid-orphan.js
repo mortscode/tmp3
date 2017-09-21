@@ -10,7 +10,6 @@ export default function avoidOrphan(elem) {
 
   emitter.on('app--resizer', () => {
     windowWidth = window.innerWidth;
-    console.log(windowWidth);
   });
 
   if (last && last.nodeType === 3) {
