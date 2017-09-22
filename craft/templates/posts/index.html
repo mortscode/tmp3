@@ -77,76 +77,8 @@
 {% endif %}
 
 {% block footerJs %}
-{# pinterest #}
-<script async defer data-pin-hover="true" data-pin-round="true" data-pin-tall="true" data-pin-save="false" src="//assets.pinterest.com/js/pinit.js"></script>
-
-{# disqus #}
-<script>
-var disqus_config = function () {
-  this.page.url = "{{ url(craft.request.path) }}";  // Replace PAGE_URL with your page's canonical URL variable
-  this.page.identifier = {{ entry.id }}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://themodernproper.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-
-{# FB SHARE #}
-<script>
-  var fbShareBtnArr = Array.from(document.querySelectorAll('.fb_share'));
-  
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId            : '942027902529517',
-      autoLogAppEvents : true,
-      xfbml            : true,
-      version          : 'v2.10'
-    });
-    FB.AppEvents.logPageView();
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
-  fbShareBtnArr.forEach(function(fbShareBtn) {
-    fbShareBtn.addEventListener('click', function() {
-      FB.ui({
-        method: 'share',
-        href: '{{ entry.url }}',
-        image: '{{ entry.featuredImage.first.url("facebookSeo")}}',
-        quote: '{{ entry.postSummary }}',
-        mobile_iframe: true,
-      }, function(response){});
-    });
-  });
-</script>
-
-{# twitter #}
-<script>
-  window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
-
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
-
-  return t;
-}(document, "script", "twitter-wjs"));</script>
-
+{% include 'posts/scripts/_pinterest' %}
+{% include 'posts/scripts/_disqus' %}
+{% include 'posts/scripts/_facebook' %}
+{% include 'posts/scripts/_twitter' %}
 {% endblock %}
