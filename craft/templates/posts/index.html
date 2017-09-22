@@ -12,7 +12,12 @@
         {% endif %}
         {% include 'posts/_share' %}
         {% if recipe %}
-          <button class="post-intro__title--button btn pop small js-scroll-to" data-scroll-target='recipe'>Jump to recipe</button>
+          {% spaceless %}
+          <button class="post-intro__title--button js-scroll-to" data-scroll-target='recipe'>
+            <div class="post-intro__title--button-text">Jump to recipe</div>
+            {% include 'utils/icon' with {'icon':'chevron-down', 'classes':'post-intro__title--chevron'} %}
+          </button>
+          {% endspaceless %}
         {% endif %}
       </div>
       <div class="post-intro__image">

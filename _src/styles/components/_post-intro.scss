@@ -36,14 +36,35 @@
     }
 
     &--button {
+      @extend %title-xs;
+      color: $tmp-gray;
       width: 100%;
       max-width: rem(300);
       outline: none;
       border: none;
+      background-color: transparent;
+      transition: color $ease-fast;
 
       @include bp($md) {
         display: none;
       }
+
+      &:hover {
+        color: $tmp-brand;
+
+        .post-intro__title--chevron {
+          fill: $tmp-brand;
+          transform: translateY(6px);
+        }
+      }
+    }
+
+    &--chevron {
+      fill: rgba($tmp-gray, 0.5);
+      height: rem(8);
+      width: rem(36);
+      margin-top: rem(12);
+      transition: fill $ease-fast, transform $ease-med;
     }
 
     &--mobile-jump {

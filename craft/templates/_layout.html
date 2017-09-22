@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
-
 <head>
+{% include 'scripts/_analytics' %}
 {% include 'partials/siteHead' %}
 {% block richPin %}{% endblock %}
 {% block richPinIngredients %}{% endblock %}
@@ -25,7 +25,6 @@
     {% include 'partials/header' %}
     {% include 'partials/navigation' %}
     {% include 'partials/search' %}
-
     <main id="main" role="main" class="main js-main">
       {% block content %}
       {% endblock %}
@@ -35,7 +34,5 @@
   <script src="/assets/js/main.js"></script>
   {% block newsletterJs %}{% endblock %}
   {% block footerJs %}{% endblock %} 
-  {% include 'scripts/_analytics' %}
 </body>
-
 </html>

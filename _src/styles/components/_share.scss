@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin: rem(60) 0 rem(30);
+  margin: rem(60) 0 rem(36);
   max-width: rem(300);
   position: relative;
 
@@ -34,17 +34,13 @@
 
   &__icon {
     cursor: pointer;
-    flex: 0 0 20%;
+    flex: 0 1 48px;
     background-color: rgba($tmp-gray, 0.6);
     border-radius: 50%;
     margin: 0 15px;
     position: relative;
     transition: background-color $ease-fast;
     border: none;
-
-    @include bp($lg) {
-      flex: 0 0 18%;
-    }
 
     &:focus {
       border: none;

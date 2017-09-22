@@ -49,7 +49,7 @@
 
     &:hover,
     &:focus {
-      background-color: darken($tmp-gray, 15%);
+      background-color: $action-color;
       color: #fff;
     }
   }
@@ -61,17 +61,6 @@
     &:hover,
     &:focus {
       background-color: $white;
-    }
-  }
-
-  &.aside {
-    text-align: center;
-    width: 100%;
-    padding: $small-spacing 0;
-    font-size: rem(12);
-
-    &.buffer-bottom {
-      margin-bottom: $base-spacing;
     }
   }
 

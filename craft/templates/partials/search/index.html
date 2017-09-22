@@ -1,5 +1,5 @@
-{% cache for 8 hours %}
 <div class="search js-search">
+  <span class="search__tooltip">Type anywhere to search</span>
   <span class="search__indicator js-searching">Coming right up...</span>
   <div class="search__inner">
     <h1 class="search__title">Search</h1>
@@ -14,4 +14,3 @@
     {% include 'utils/icon' with {'icon':'close', 'classes':'search__close--icon'} %}
   </div>
 </div>
-{% endcache %}
