@@ -31,7 +31,7 @@
     display: block;
     margin-top: rem(6);
     @include bp($lg) {
-      margin-top: rem(4);
+      margin-top: 0;
     }
     @include bp($xs) {
       margin: 0 15%;
