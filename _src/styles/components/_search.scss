@@ -21,6 +21,14 @@
     opacity: 1;
     pointer-events: auto;
   }
+  &__tooltip {
+    @extend %title-serif-xs;
+    color: rgba($tmp-gray, 0.9);
+    position: absolute;
+    top: rem(50);
+    left: rem(40);
+    transition: opacity $ease-med;
+  }
   &__indicator {
     @extend %title-lg;
     color: $tmp-gray;
@@ -119,7 +127,8 @@
     }
   }
   &.-searching {
-    .search__inner {
+    .search__inner,
+    .search__tooltip {
       opacity: 0;
       pointer-events: none;
     }

@@ -14,7 +14,7 @@
     data-src="{{ transformedImages[0].url }}"
     alt="{{ title ? title : entry.title }}"
     {% if nopin is defined and true %}
-      nopin = "nopin"
+      nopin="nopin"
     {% else %}
       data-pin-media="{{ image.url }}"
       data-pin-description="{{entry.title}}"

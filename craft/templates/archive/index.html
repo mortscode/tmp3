@@ -22,7 +22,7 @@
           <a href="{{entry.url}}" class="archive__list-item--link">
             {% if entry.featuredImage | length %}
               <div class="archive__list-item--img-wrapper">
-                <img data-src="{{entry.featuredImage[0].url('archive')}}" class="archive__list-item--picture lazyload" alt="{{entry.title}}">
+                <img data-src="{{entry.featuredImage[0].url('archive')}}" class="archive__list-item--picture lazyload" alt="{{entry.title}}" nopin="nopin">
               </div>
             {% endif %}
             <div class="archive__list-item--date">{{entry.postDate.format('F d, Y')}}</div>

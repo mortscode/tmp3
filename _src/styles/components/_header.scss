@@ -7,18 +7,19 @@
   &__logo-wrapper {
     position: relative;
     text-align: center;
-    padding: rem(40) 0 rem(60);
+    padding: rem(40) 0 rem(64);
     @include bp($md) {
       padding: rem(24);
     }
   }
   &__logo {
     margin: 0 auto;
-    width: 352px;
-    height: 23px;
+    width: 380px;
+    height: 27px;
     fill: $tmp-dark;
     @include bp($md) {
       width: 269px;
+      height: 24px;
     }
     @include bp($sm) {
       width: 220px;
