@@ -97,11 +97,14 @@ s.setAttribute('data-timestamp', +new Date());
 
 {# FB SHARE #}
 <script>
+  var fbShareBtnArr = Array.from(document.querySelectorAll('.fb_share'));
+  
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '942027902529517',
-      xfbml      : true,
-      version    : 'v2.10'
+      appId            : '942027902529517',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.10'
     });
     FB.AppEvents.logPageView();
   };
@@ -113,10 +116,23 @@ s.setAttribute('data-timestamp', +new Date());
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+
+  fbShareBtnArr.forEach(function(fbShareBtn) {
+    fbShareBtn.addEventListener('click', function() {
+      FB.ui({
+        method: 'share',
+        href: '{{ entry.url }}',
+        image: '{{ entry.featuredImage.first.url("facebookSeo")}}',
+        quote: '{{ entry.postSummary }}',
+        mobile_iframe: true,
+      }, function(response){});
+    });
+  });
 </script>
 
 {# twitter #}
-<script>window.twttr = (function(d, s, id) {
+<script>
+  window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
     t = window.twttr || {};
   if (d.getElementById(id)) return t;
