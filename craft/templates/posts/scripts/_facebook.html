@@ -25,7 +25,6 @@
         method: 'share',
         href: '{{ entry.url }}',
         image: '{{ entry.featuredImage.first.url("facebookSeo")}}',
-        quote: '{{ entry.postSummary }}',
         mobile_iframe: true,
       }, function(response){});
     });
