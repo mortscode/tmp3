@@ -16,6 +16,14 @@
     flex: 0 0 100%;
     margin-bottom: rem(40);
     text-align: center;
+
+    @include bp($sm) {
+      padding: 0 rem(48);
+    }
+
+    @include bp($xs) {
+      padding: 0 rem(36);
+    }
   }
 
   &__grams {
