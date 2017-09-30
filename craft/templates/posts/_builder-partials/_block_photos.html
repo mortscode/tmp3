@@ -1,5 +1,9 @@
+{% set photoBlock = block.imageFiles %}
+{% if photoBlock|length == 1 and photoBlock[0].height >= photoBlock[0].width %}
+  {% set singleVert = true %}
+{% endif %}
 <div class="builder__section -wide-mobile top-{{ block.paddingTop}} bot-{{ block.paddingBottom}} js-scrolls animate -fade-in" data-offset="0.95">
-  <div class="builder__photos {{ block.photoWidth }}">
+  <div class="builder__photos {% if singleVert is defined and true %}slim{% else %}{{ block.photoWidth }}{% endif %}">
     {% for photo in block.imageFiles %}
       {% if photo.height > photo.width %}
         {% set ratio = 'vertical' %}
