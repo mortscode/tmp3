@@ -84,6 +84,19 @@ return [
                 'format' => 'jpg',
                 'width' => function ($asset) {
                     if ($asset->width > $asset->height) {
+                        return 1800;
+                    } else {
+                        return 1200;
+                    }
+                },
+                'position' => function ($asset) {
+                    return $asset->focalPoint;
+                },
+            ],
+            [
+                'format' => 'jpg',
+                'width' => function ($asset) {
+                    if ($asset->width > $asset->height) {
                         return 1000;
                     } else {
                         return 667;
@@ -101,6 +114,19 @@ return [
                 },
             ],
             //WEBP
+            [
+                'format' => 'webp',
+                'width' => function ($asset) {
+                    if ($asset->width > $asset->height) {
+                        return 1800;
+                    } else {
+                        return 1200;
+                    }
+                },
+                'position' => function ($asset) {
+                    return $asset->focalPoint;
+                },
+            ],
             [
                 'format' => 'webp',
                 'width' => function ($asset) {
@@ -137,9 +163,25 @@ return [
                 'format' => 'jpg',
                 'width' => function ($asset) {
                     if ($asset->width > $asset->height) {
-                        return 1000;
+                        return 1800;
                     } else {
-                        return 667;
+                        return 1200;
+                    }
+                },
+                'position' => function ($asset) {
+                    return $asset->focalPoint;
+                },
+                'ratio' => function ($asset) {
+                    return $asset->width / $asset->height;
+                }
+            ],
+            [
+                'format' => 'jpg',
+                'width' => function ($asset) {
+                    if ($asset->width > $asset->height) {
+                        return 900;
+                    } else {
+                        return 600;
                     }
                 },
                 'position' => function ($asset) {
@@ -164,9 +206,25 @@ return [
                 'format' => 'webp',
                 'width' => function ($asset) {
                     if ($asset->width > $asset->height) {
-                        return 1000;
+                        return 1800;
                     } else {
-                        return 667;
+                        return 1200;
+                    }
+                },
+                'position' => function ($asset) {
+                    return $asset->focalPoint;
+                },
+                'ratio' => function ($asset) {
+                    return $asset->width / $asset->height;
+                }
+            ],
+            [
+                'format' => 'webp',
+                'width' => function ($asset) {
+                    if ($asset->width > $asset->height) {
+                        return 900;
+                    } else {
+                        return 600;
                     }
                 },
                 'position' => function ($asset) {

@@ -5,8 +5,8 @@ return array(
   'imagerUrl' => '/assets/imager/',
   'cacheEnabled' => true,
   'cacheDuration' => 31536000, // 1 year
-  'jpegQuality' => 90,
-  'allowUpscale' => false,
+  'jpegQuality' => 85,
+  'allowUpscale' => true,
   'interlace' => true,
   'mode' => 'crop',
   'useCwebp' => true,
@@ -19,6 +19,5 @@ return array(
   'jpegoptimEnabled' => true,
   'jpegoptimOptionString' => '-s',
   'optipngEnabled' => true,
-  // 'optimizeType' => 'runtime',
   'smartResizeEnabled' => true
 );
