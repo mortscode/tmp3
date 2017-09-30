@@ -2,6 +2,7 @@
     {% set imageRatio = 1 / 1 %}
     {% set transformedImages = craft.imager.transformImage(image,
         [
+            { width: 800, ratio: imageRatio },
             { width: 500, ratio: imageRatio },
         ],
         {
@@ -12,6 +13,7 @@
     {% if craft.imager.serverSupportsWebp() %}
     {% set transformedImagesWebP = craft.imager.transformImage(image,
         [
+            { width: 800, ratio: imageRatio },
             { width: 500, ratio: imageRatio },
         ],
         {

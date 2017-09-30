@@ -1,9 +1,10 @@
 {% if image | length %}
     {% set imageRatio = image.width / image.height %}
-    {% set imageWidth = image.width > image.height ? 1000 : 667 %}
+    {% set imageWidth = image.width > image.height ? 1800 : 1200 %}
     {% set transformedImages = craft.imager.transformImage(image,
         [
             { width: imageWidth, ratio: imageRatio },
+            { width: imageWidth / 2, ratio: imageRatio },
             { width: 400, ratio: imageRatio },
         ],
         {
@@ -12,16 +13,17 @@
         }
     ) %}
     {% if craft.imager.serverSupportsWebp() %}
-    {% set transformedImagesWebP = craft.imager.transformImage(image,
-        [
-            { width: imageWidth, ratio: imageRatio },
-            { width: 400, ratio: imageRatio },
-        ],
-        {
-            format: 'webp',
-            position: image.focalPoint
-        }
-    ) %}
+        {% set transformedImagesWebP = craft.imager.transformImage(image,
+            [
+                { width: imageWidth, ratio: imageRatio },
+                { width: imageWidth / 2, ratio: imageRatio },
+                { width: 400, ratio: imageRatio },
+            ],
+            {
+                format: 'webp',
+                position: image.focalPoint
+            }
+        ) %}
     {% endif %}
     {% include 'utils/images/_picture-lazy' %}
 {% endif %}
