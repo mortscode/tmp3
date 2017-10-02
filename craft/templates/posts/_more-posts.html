@@ -1,5 +1,5 @@
 {% set cat = entry.postCategories.level(2).order('RAND()').first %}
-{% set similar = craft.entries.section('postEntries').relatedTo(cat).id('not ' ~ entry.id).after('2014-12-29').order('RAND()').limit(4) %}
+{% set similar = craft.entries.section('postEntries').relatedTo(cat).id('not ' ~ entry.id).after('2014-12-29').with(['featuredImage']).order('RAND()').limit(4) %}
 
 <div class="more-posts">
   <div class="more-posts__inner">

@@ -1,5 +1,6 @@
+{% set blocks = entry.postBuilder.with(['photos:imageFiles']) %}
 <div class="builder">
-  {% for block in entry.postBuilder %}
+  {% for block in blocks %}
     {% include ('posts/_builder-partials/_block_' ~ block.type.handle) %}
   {% endfor %}
 </div>

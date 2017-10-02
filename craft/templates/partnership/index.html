@@ -18,7 +18,8 @@
     <div class="partnership__services--wrapper">
       <div class="partnership__services--inner">
         <h2 class="partnership__services--headline">{{ entry.servicesHeadline }}</h2>
-        {% for service in entry.services %}
+        {% set services = entry.services.with(['service:image']) %}
+        {% for service in services %}
           <div class="partnership__service">
             {% set vars = {
               'image': service.image[0],
