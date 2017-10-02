@@ -5,7 +5,8 @@
 {% set results = {
   section: 'postEntries',
   search: query,
-  order: 'score'
+  order: 'score',
+  with: ['featuredImage']
 } %}
 
 {% set entries = craft.entries(results) %}
