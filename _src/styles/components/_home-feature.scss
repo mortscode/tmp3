@@ -38,6 +38,42 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  &__title {
+    background-color: $tmp-light;
+    padding: rem(24) 0;
+    &.-fixed {
+      @include bp($md) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: rem(24) rem(80);
+        z-index: $z-post-title;
+      }
+      @include bp($sm) {
+        padding: rem(24) rem(50);
+      }
+      @include bp($xs) {
+        padding: rem(24) rem(36);
+      }
+    }
+    &--date {
+      flex: 0 0 100%;
+      font-style: italic;
+      font-weight: bold;
+      color: $tmp-gray;
+      margin-bottom: rem(12);
+    }
+    &--headline {
+      @extend %title-lg;
+      color: $tmp-dark;
+      transition: color $ease-fast;
+      &:hover,
+      &:focus {
+        color: $tmp-brand;
+      }
+    }
+  }
   &__text {
     flex: 0 0 50%;
     display: flex;
@@ -55,27 +91,10 @@
       padding: rem(30) 0 0;
     }
     @include bp($sm) {
-      padding: rem(30) rem(50) 0;
+      padding: 0 rem(50);
     }
     @include bp($xs) {
-      padding: rem(30) rem(36) 0;
-    }
-    &--date {
-      flex: 0 0 100%;
-      font-style: italic;
-      font-weight: bold;
-      color: $tmp-gray;
-      margin-bottom: rem(12);
-    }
-    &--title {
-      @extend %title-lg;
-      color: $tmp-dark;
-      margin-bottom: rem(24);
-      transition: color $ease-fast;
-      &:hover,
-      &:focus {
-        color: $tmp-brand;
-      }
+      padding: 0 rem(36);
     }
     &--summary {
       @extend %text-lg;
