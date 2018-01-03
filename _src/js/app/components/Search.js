@@ -46,14 +46,6 @@ export default class Search {
       this._closeSearch();
     });
 
-    this.$searchForm.addEventListener('focus', () => {
-      emitter.fire('app--search-focus');
-    });
-
-    this.$searchForm.addEventListener('blur', () => {
-      emitter.fire('app--search-blur');
-    });
-
     this.$searchForm.addEventListener('submit', () => {
       this._handleSubmit();
     });
