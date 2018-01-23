@@ -2,9 +2,9 @@
   <div class="builder__section">
     <div class="builder__recipe">
       {% if entry.recipeTitle|length %}
-        <h3 class="recipe-title">{{ entry.recipeTitle }}</h3>
+        <h2 class="recipe-title">{{ entry.recipeTitle }}</h2>
       {% else %}
-        <h3 class="recipe-title">{{ entry.title }}</h3>
+        <h2 class="recipe-title">{{ entry.title }}</h2>
       {% endif %}
 
       {% if entry.recipeServings > 0 %}

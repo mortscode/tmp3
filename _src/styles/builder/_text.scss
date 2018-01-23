@@ -1,9 +1,55 @@
 .builder__text {
+  .-post-headline {
+    @extend %title-lg;
+    margin: 24px 0 12px;
+    @include bp($md) {
+      margin: 18px 0 11px;
+    }
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  .-post-subhead {
+    @extend %title-md;
+    margin: 24px 0 12px;
+    @include bp($md) {
+      margin: 18px 0 11px;
+    }
+  }
   p {
     @extend %text-lg;
-
+    
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+  p a {
+    font-style: italic;
+    &:active,
+    &:focus,
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  ul {
+    @extend %text-lg;
+    line-height: 1.3;
+    margin-bottom: 18px;
+    padding-left: 20px;
+    li {
+      list-style: disc;
+      margin-bottom: 10px;
+    }
+  }
+  ol {
+    @extend %text-lg;
+    line-height: 1.3;
+    margin-bottom: 18px;
+    padding-left: 12px;
+    li {
+      list-style: decimal;
+      padding-left: 8px;
+      margin-bottom: 10px;
     }
   }
 }
