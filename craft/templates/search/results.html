@@ -1,5 +1,7 @@
 {% extends "_layout" %}
 
+{% set noIndex = true %}
+
 {% set query = craft.request.getParam('q') %}
 
 {% set results = {
