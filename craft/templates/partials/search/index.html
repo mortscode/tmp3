@@ -2,12 +2,12 @@
   <span class="search__tooltip">Type anywhere to search</span>
   <span class="search__indicator js-searching">Coming right up...</span>
   <div class="search__inner">
-    <h1 class="search__title">Search</h1>
+    <span class="search__title">Search</span>
     <form class="search__form js-search-form" action="{{ url('search/results') }}">
       <input id="js-search" class="search__form--input js-search-input" autocomplete="off" type="search" name="q" placeholder="What sounds good?" aria-label="Search">
       <input class="search__form--submit js-search-submit" type="submit" value="Click enter to search" aria-label="Submit Search Query">
     </form>
-    <h1 class="search__title">View Recipes by Category</h1>
+    <span class="search__title">View Recipes by Category</span>
     {% include 'partials/search/_categories' %}
   </div>
   <div class="search__close js-search-close">

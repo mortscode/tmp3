@@ -7,3 +7,7 @@
   {% include 'partials/siteHead/_typekit' %}
   {% include 'partials/siteHead/_favicons' %}
   {% include 'partials/siteHead/_rss' %}
+  {% if noIndex is defined and true %}
+  <meta name="robots" content="noindex">
+  {% endif %}
+  
