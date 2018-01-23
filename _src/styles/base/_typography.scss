@@ -25,13 +25,13 @@ h6 {
 %title-xl {
   font-family: $sans;
   font-size: rem(48);
-  line-height: rem(60);
+  line-height: rem(54);
   font-weight: 600;
-  @include bp($xl) {
+  @include bp($lg) {
     font-size: rem(36);
     line-height: rem(48);
   }
-  @include bp($lg) {
+  @include bp($md) {
     font-size: rem(30);
     line-height: rem(40);
   }
@@ -39,12 +39,12 @@ h6 {
 
 %title-lg {
   font-family: $sans;
-  font-size: rem(36);
-  line-height: rem(48);
+  font-size: rem(30);
+  line-height: rem(40);
   font-weight: 600;
-  @include bp($lg) {
-    font-size: rem(30);
-    line-height: rem(36);
+  @include bp($md) {
+    font-size: rem(24);
+    line-height: rem(30);
   }
   @include bp($sm) {
     font-size: rem(21);
@@ -57,9 +57,9 @@ h6 {
   font-size: rem(24);
   line-height: rem(30);
   font-weight: 600;
-  @include bp($lg) {
+  @include bp($md) {
     font-size: rem(21);
-    line-height: rem(28);
+    line-height: rem(26);
   }
   @include bp($sm) {
     font-size: rem(18);
@@ -103,9 +103,9 @@ h6 {
 
 %title-serif-md {
   font-family: $serif;
-  font-size: rem(24);
+  font-size: rem(28);
   font-weight: 400;
-  line-height: rem(30);
+  line-height: rem(36);
   font-style: italic;
   @include bp($sm) {
     font-size: rem(18);
@@ -254,37 +254,4 @@ hr {
   border-right: 0;
   border-top: 0;
   margin: $large-spacing 0 0;
-}
-
-.builder {
-  h1 {
-    @extend %title-serif-lg;
-    font-style: italic;
-    margin-bottom: rem(8);
-  }
-  h2 {
-    @extend %title-serif-lg;
-    font-style: italic;
-    margin: rem(12) 0 rem(8);
-  }
-  h3 {
-    @extend %title-serif-md;
-    font-style: italic;
-    font-weight: 600;
-    margin: rem(12) 0 rem(8);
-  }
-  h4 {
-    @extend %title-serif-sm;
-    font-style: italic;
-    font-weight: 600;
-    margin: rem(12) 0 rem(8);
-  }
-  p a {
-    font-style: italic;
-    &:active,
-    &:focus,
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 }
