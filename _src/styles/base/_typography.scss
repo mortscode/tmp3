@@ -8,6 +8,8 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+// TITLE HEADLINE STYLES
+
 h1,
 h2,
 h3,
@@ -137,21 +139,16 @@ h6 {
   }
 }
 
-p {
-  @extend %text-lg;
-  &.caption {
-    font-size: rem(14);
-    line-height: rem(18);
-    font-family: $sans;
-    font-weight: 300;
-  }
-}
+// TEXT STYLES
 
 %text-lg {
-  font-size: rem(18);
+  font-size: rem(20);
   line-height: 1.6;
   margin: 0 0 $small-spacing;
   @include bp($md) {
+    font-size: rem(18);
+  }
+  @include bp($sm) {
     font-size: rem(16);
   }
 }
@@ -254,4 +251,14 @@ hr {
   border-right: 0;
   border-top: 0;
   margin: $large-spacing 0 0;
+}
+
+p {
+  @extend %text-lg;
+  &.caption {
+    font-size: rem(14);
+    line-height: rem(18);
+    font-family: $sans;
+    font-weight: 300;
+  }
 }

@@ -46,6 +46,7 @@
   }
   &__title {
     color: $tmp-gray;
+    display: block;
     text-align: center;
     font-size: rem(24);
     font-family: $serif;
