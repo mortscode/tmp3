@@ -1,0 +1,31 @@
+{
+  "buttons": [
+    "formatting",
+    "bold",
+    "underline",
+    "lists",
+    "link"
+  ],
+  "formatting": [
+    "p"
+  ],
+  "formattingAdd": {
+    "Heading": {
+      "title": "Headline",
+      "args": [
+        "h2",
+        "class",
+        "-post-headline"
+      ]
+    },
+    "Subhead": {
+      "title": "Subhead",
+      "args": [
+        "h3",
+        "class",
+        "-post-subhead"
+      ]
+    }
+  },
+  "toolbarFixed": true
+}
