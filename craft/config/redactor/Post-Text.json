@@ -2,6 +2,7 @@
   "buttons": [
     "formatting",
     "bold",
+    "italic",
     "underline",
     "lists",
     "link"
