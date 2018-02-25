@@ -9,7 +9,7 @@
   {% set vidHeight = 720 %}
 {% endif %}
 
-<div class="builder__section top-double bot-double -wide-mobile">
+<div class="builder__section top-{{ block.paddingTop ?? 'normal' }} bot-{{ block.paddingBottom ?? 'normal' }} -wide-mobile">
   <div class="builder__video -{{ block.videoRatio }}">
     <div class="builder__video--wrapper -{{ block.videoRatio }}">
       <iframe class="builder__video--iframe" width="{{ vidWidth }}" height="{{ vidHeight }}" src="https://www.youtube.com/embed/{{ block.videoId }}?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
