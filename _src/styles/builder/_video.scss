@@ -1,0 +1,46 @@
+.builder__video {
+  margin: 0 auto;
+  position: relative;
+  flex: 0 0 100%;
+  
+  &.-square {
+    max-width: 720px;
+  }
+
+  &--iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &--wrapper {
+    position: relative;
+    max-width: 100%;
+
+    &.-wide::after {
+      content: "";
+      display: block;
+      padding-bottom: (9 / 16) * 100%;
+    }
+
+    &.-square::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+  }
+
+  &--caption {
+    @extend %text-sm;
+    margin: 18px 0 0;
+    max-width: 500px;
+    border-left: 1px solid $tmp-gray;
+    padding-left: 12px;
+
+    @include bp($sm) {
+      margin: 12px 48px 0;
+    }
+  }
+}

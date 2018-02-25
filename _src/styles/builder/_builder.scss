@@ -39,7 +39,7 @@
     }
 
     &.top-double {
-      padding-top: rem(72);
+      padding-top: rem(90);
 
       @include bp($sm) {
         padding-top: rem(48);
@@ -59,7 +59,7 @@
     }
 
     &.bot-double {
-      padding-bottom: rem(72);
+      padding-bottom: rem(90);
 
       @include bp($sm) {
         padding-bottom: rem(48);
