@@ -1,8 +1,3 @@
 .privacy {
     @include content-wrapper();
-
-    &__inner-wrapper {
-        max-width: 720px;
-        margin: 0 auto;
-    }
 }
