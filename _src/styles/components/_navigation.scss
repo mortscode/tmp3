@@ -194,6 +194,10 @@
     order: 2;
     position: relative;
     text-align: center;
+    
+    @include bp($xs) {
+        justify-content: flex-start;
+    }
   }
 
   &__item {
@@ -212,6 +216,10 @@
 
     @include bp($xs) {
       padding: rem(12) 0;
+    }
+
+    @include bph($short) {
+        padding: rem(10) 0;
     }
 
     &.-selected {
@@ -238,6 +246,10 @@
       padding: rem(11) 0;
     }
 
+    @include bph($short) {
+        padding: rem(9) 0;
+    }
+
     &.-selected {
       color: $tmp-brand;
     }
@@ -262,6 +274,10 @@
       padding: rem(36) rem(36) rem(24);
       margin-bottom: 0;
     }
+
+    @include bph($short) {
+        padding: rem(24);
+      }
 
     &--form {
       background-color: $white;
@@ -353,7 +369,7 @@
       }
 
       @include bph($short) {
-        margin: rem(36) 0 rem(18);
+        margin-bottom: rem(8);
       }
     }
   }
@@ -370,9 +386,17 @@
     @include bp($sm) {
       margin-bottom: rem(24);
     }
-
+    
     @include bph($short) {
-      display: none;
+        margin-bottom: rem(18);
+    }
+
+    &--privacy {
+        color: $tmp-gray;
+        font-weight: 400;
+        &:hover {
+            color: $tmp-brand;
+        }
     }
   }
 

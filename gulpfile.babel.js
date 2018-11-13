@@ -41,7 +41,6 @@ gulp.task('scripts', () => {
 gulp.task('scripts-min', () => {
   return gulp
     .src('_src/js/*.js')
-    .pipe(sourcemaps.init())
     .pipe(
       browserify({
         transform: ['babelify'],
@@ -54,7 +53,6 @@ gulp.task('scripts-min', () => {
         },
       }),
     )
-    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('public/assets/js'));
 });
 
@@ -80,7 +78,6 @@ gulp.task('styles', () => {
 gulp.task('styles-min', () => {
   return gulp
     .src('_src/styles/**/*.scss')
-    .pipe(sourcemaps.init())
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(
       autoprefixer({
@@ -88,7 +85,6 @@ gulp.task('styles-min', () => {
         cascade: false,
       }),
     )
-    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('public/assets/styles'));
 });
 

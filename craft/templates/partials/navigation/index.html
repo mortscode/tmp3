@@ -9,7 +9,10 @@
       <div class="navigation__brand">
         {% include 'utils/icon' with {'icon':'logotype', 'classes':'navigation__brand--logo'} %}
       </div>
-      <div class="navigation__copyright">&copy;{{ now.year }}</div>
+      <div class="navigation__copyright">
+        <span>&copy;{{ now.year }}&nbsp;&nbsp;</span>
+        <a href="/privacy-policy" class="navigation__copyright--privacy">|&nbsp;&nbsp;Privacy Policy</a>
+      </div>
       <div class="navigation__close--wrapper js-nav-close">
         <div class="navigation__close">
           {% include 'utils/icon' with {'icon':'close', 'classes':'navigation__close--icon'} %}
