@@ -9,8 +9,8 @@ return array(
             },
         ],
         'pipeline' => 'manifest|querystring|passthrough',
-        'manifestPath' => 'public/assets/rev-manifest.json',
-        'assetsBasePath' => 'public/assets/',
+        'manifestPath' => '../public/assets/rev-manifest.json',
+        'assetsBasePath' => '../public/assets/',
         'assetUrlPrefix' => '/assets/resources/',
     ),
 );
