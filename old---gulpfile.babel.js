@@ -1,51 +1,30 @@
 import autoprefixer from 'gulp-autoprefixer';
+import babili from 'gulp-babili';
 import browserify from 'gulp-browserify';
-import clean from 'gulp-clean';
+import browserSync from 'browser-sync';
 import livereload from 'gulp-livereload';
 import gulp from 'gulp';
-import minify from 'gulp-babel-minify';
 import path from 'path';
-import rev from 'gulp-rev';
-import runSequence from 'run-sequence';
 import sass from 'gulp-sass';
 import sourcemaps from 'gulp-sourcemaps';
 import svgmin from 'gulp-svgmin';
 import svgstore from 'gulp-svgstore';
-
-const SOURCE = {
-  HTML: 'craft/templates/**/*.html',
-  JS: '_src/js/*.js',
-  SCSS: '_src/styles/*.scss',
-  SVG: '_src/svg/*.svg',
-};
-
-const DEST = {
-  ASSETS: 'public/assets',
-  //   STYLES: 'public/assets/local',
-  //   SCRIPTS: 'public/assets/local',
-  //   LOCAL: 'public/assets/local',
-  RESOURCES: 'public/assets/resources',
-  SVG: 'public/assets/svg',
-};
-
-const WATCH = {
-  HTML: 'craft/templates/**/*.html',
-  JS: '_src/js/**/*.js',
-  SCSS: '_src/styles/**/*.scss',
-  SVG: '_src/svg/*.svg',
-};
+import uglify from 'gulp-uglify';
 
 // TASKS *************
 
 // HTML
 gulp.task('html', () => {
-  return gulp.src(SOURCE.HTML).pipe(livereload());
+  return gulp
+    .src('craft/templates/**/*.html')
+    .pipe(browserSync.stream())
+    .pipe(livereload());
 });
 
 // SCRIPTS
 gulp.task('scripts', () => {
   return gulp
-    .src(SOURCE.JS)
+    .src('_src/js/*.js')
     .pipe(sourcemaps.init())
     .pipe(
       browserify({
@@ -53,34 +32,34 @@ gulp.task('scripts', () => {
       }),
     )
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(DEST.RESOURCES))
+    .pipe(gulp.dest('public/assets/js'))
+    .pipe(browserSync.stream())
     .pipe(livereload());
 });
 
 // SCRIPTS-MINIFIED
 gulp.task('scripts-min', () => {
   return gulp
-    .src(SOURCE.JS)
+    .src('_src/js/*.js')
     .pipe(
       browserify({
         transform: ['babelify'],
       }),
     )
     .pipe(
-      minify({
+      babili({
         mangle: {
           keepClassName: true,
         },
       }),
     )
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(DEST.RESOURCES));
+    .pipe(gulp.dest('public/assets/js'));
 });
 
 // STYLES
 gulp.task('styles', () => {
   return gulp
-    .src(SOURCE.SCSS)
+    .src('_src/styles/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(
@@ -90,14 +69,15 @@ gulp.task('styles', () => {
       }),
     )
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(DEST.RESOURCES))
+    .pipe(gulp.dest('public/assets/styles'))
+    .pipe(browserSync.stream())
     .pipe(livereload());
 });
 
 // STYLES-MINIFIED
 gulp.task('styles-min', () => {
   return gulp
-    .src(SOURCE.SCSS)
+    .src('_src/styles/**/*.scss')
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(
       autoprefixer({
@@ -105,14 +85,12 @@ gulp.task('styles-min', () => {
         cascade: false,
       }),
     )
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(DEST.RESOURCES));
+    .pipe(gulp.dest('public/assets/styles'));
 });
 
-// SVG's
 gulp.task('svgstore', () => {
   return gulp
-    .src(SOURCE.SVG)
+    .src('_src/svg/**/*.svg')
     .pipe(
       svgmin(file => {
         const prefix = path.basename(
@@ -132,21 +110,7 @@ gulp.task('svgstore', () => {
       }),
     )
     .pipe(svgstore())
-    .pipe(gulp.dest(DEST.SVG));
-});
-
-// CACHE BUSTING
-gulp.task('rev-revise', () =>
-  gulp
-    .src([`${DEST.RESOURCES}/main.css`, `${DEST.RESOURCES}/main.js`])
-    .pipe(rev())
-    .pipe(gulp.dest(DEST.RESOURCES))
-    .pipe(rev.manifest({path: 'rev-manifest.json'}))
-    .pipe(gulp.dest(DEST.ASSETS)),
-);
-
-gulp.task('remove-revs', function() {
-  return gulp.src('public/assets/resources', {read: false}).pipe(clean());
+    .pipe(gulp.dest('public/assets/img/svg'));
 });
 
 // Watch Files For Changes & Reload
@@ -155,19 +119,23 @@ gulp.task('default', ['html', 'scripts', 'styles', 'svgstore'], () => {
   livereload.listen({
     start: true,
   });
-  gulp.watch(WATCH.HTML, ['html']);
-  gulp.watch(WATCH.JS, ['scripts']);
-  gulp.watch(WATCH.SCSS, ['styles']);
-  gulp.watch(WATCH.SVG, ['svgstore']);
+  gulp.watch('craft/templates/**/*.html', ['html']);
+  gulp.watch('_src/js/**/*.js', ['scripts']);
+  gulp.watch('_src/styles/**/*.scss', ['styles']);
+  gulp.watch('_src/svg/**/*.svg', ['svgstore']);
+});
+
+gulp.task('sync', ['html', 'scripts', 'styles', 'svgstore'], () => {
+  browserSync.init({
+    proxy: 'http://tmp3.craft.dev',
+    port: 3000,
+  });
+  gulp.watch(['craft/templates/**/*.html'], browserSync.reload);
+  gulp.watch(['_src/js/**/*.js'], ['scripts'], browserSync.reload);
+  gulp.watch(['_src/styles/**/*.scss'], ['styles'], browserSync.reload);
+  gulp.watch(['_src/svg/**/*.svg'], ['svgstore'], browserSync.reload);
 });
 
 // Watch Files For Changes & Reload
 // Uncomment proxy and change to dev site local url
-gulp.task('build', callback => {
-  runSequence(
-    'remove-revs',
-    ['scripts-min', 'styles-min', 'svgstore'],
-    'rev-revise',
-    callback,
-  );
-});
+gulp.task('build', ['scripts-min', 'styles-min', 'svgstore'], () => {});
