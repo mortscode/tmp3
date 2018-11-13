@@ -13,10 +13,8 @@ craft/storage/
 # ----------------------------------------------------------------------
 public/assets/uploads/*
 public/assets/img/
-# !public/assets/img/svg/*.svg
 public/icons/
 public/assets/imager/
-public/assets/local
 node_modules/
 data/
 .vscode/
