@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   position: fixed;
-  bottom: rem(40);
+  bottom: rem(120);
   left: rem(40);
   width: rem(50);
   opacity: 0;
@@ -17,7 +17,7 @@
 
   @include bp($sm) {
     left: 0;
-    bottom: rem(60);
+    bottom: rem(80);
     padding: rem(10);
   }
 
