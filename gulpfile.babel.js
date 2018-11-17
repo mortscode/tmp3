@@ -21,9 +21,6 @@ const SOURCE = {
 
 const DEST = {
   ASSETS: 'public/assets',
-  //   STYLES: 'public/assets/local',
-  //   SCRIPTS: 'public/assets/local',
-  //   LOCAL: 'public/assets/local',
   RESOURCES: 'public/assets/resources',
   SVG: 'public/assets/svg',
 };
@@ -149,17 +146,27 @@ gulp.task('remove-revs', function() {
   return gulp.src('public/assets/resources', {read: false}).pipe(clean());
 });
 
+gulp.task('remove-mainifest', function() {
+  return gulp
+    .src('public/assets/rev-manifest.json', {force: true})
+    .pipe(clean());
+});
+
 // Watch Files For Changes & Reload
 // Uncomment proxy and change to dev site local url
-gulp.task('default', ['html', 'scripts', 'styles', 'svgstore'], () => {
-  livereload.listen({
-    start: true,
-  });
-  gulp.watch(WATCH.HTML, ['html']);
-  gulp.watch(WATCH.JS, ['scripts']);
-  gulp.watch(WATCH.SCSS, ['styles']);
-  gulp.watch(WATCH.SVG, ['svgstore']);
-});
+gulp.task(
+  'default',
+  ['remove-revs', 'remove-mainifest', 'html', 'scripts', 'styles', 'svgstore'],
+  () => {
+    livereload.listen({
+      start: true,
+    });
+    gulp.watch(WATCH.HTML, ['html']);
+    gulp.watch(WATCH.JS, ['scripts']);
+    gulp.watch(WATCH.SCSS, ['styles']);
+    gulp.watch(WATCH.SVG, ['svgstore']);
+  },
+);
 
 // Watch Files For Changes & Reload
 // Uncomment proxy and change to dev site local url

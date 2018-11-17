@@ -1,15 +1,17 @@
 .header {
   z-index: $z-nav;
   position: relative;
+  margin-bottom: rem(40);
   @include bp($sm) {
     background-color: $white;
+    margin-bottom: 0;
   }
   &__logo-wrapper {
     position: relative;
     text-align: center;
-    padding: rem(40) 0 rem(64);
+    padding: rem(40) 0;
     @include bp($md) {
-      padding: rem(24);
+        padding: rem(24);
     }
   }
   &__logo {
