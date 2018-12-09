@@ -19,6 +19,8 @@
     .post-intro,
     .recipe__download,
     .site-header,
+    .adthrive-ad,
+    .adthrive-comscore,
     .sticky-wrapper {
       display: none;
     }
@@ -71,6 +73,7 @@
         font-size: 18px;
         line-height: 24px;
         text-align: center;
+        margin-top: 0;
       }
 
       .servings {
