@@ -1,32 +1,32 @@
 {
-  "buttons": [
-    "formatting",
-    "bold",
-    "italic",
-    "underline",
-    "lists",
-    "link"
-  ],
-  "formatting": [
-    "p"
-  ],
-  "formattingAdd": {
-    "Heading": {
-      "title": "Headline",
-      "args": [
-        "h2",
-        "class",
-        "-post-headline"
-      ]
+    "buttons": [
+        "formatting",
+        "bold",
+        "italic",
+        "underline",
+        "lists",
+        "link"
+    ],
+    "formatting": [
+        "p"
+    ],
+    "formattingAdd": {
+        "Heading": {
+            "title": "H2",
+            "args": [
+                "h2",
+                "class",
+                "-post-headline"
+            ]
+        },
+        "Subhead": {
+            "title": "H3",
+            "args": [
+                "h3",
+                "class",
+                "-post-subhead"
+            ]
+        }
     },
-    "Subhead": {
-      "title": "Subhead",
-      "args": [
-        "h3",
-        "class",
-        "-post-subhead"
-      ]
-    }
-  },
-  "toolbarFixed": true
+    "toolbarFixed": true
 }
