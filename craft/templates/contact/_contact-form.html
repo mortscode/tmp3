@@ -32,11 +32,6 @@
           {{ message is defined and message ? errorList(message.getErrors('fromEmail')) }}
         </div>
 
-        <div class="contact__input-wrapper js-input-wrapper address-field">
-          <input class="contact__input js-input" id="address" type="text" name="address" value="address">
-          <label class="contact__input-label -text js-label" for="address">Your Address</label>
-        </div>
-
         <div class="contact__input-wrapper js-input-wrapper">
           <input class="contact__input js-input" id="subject" type="text" name="subject" value="{{ message.subject ?? '' }}">
           <label class="contact__input-label -text js-label" for="subject">Subject</label>
@@ -49,7 +44,7 @@
           {{ message is defined and message ? errorList(message.getErrors('message')) }}
         </div>
 
-        {# <input id="recipes" name="recipes" type="text"> #}
+        <input id="zipcode" name="zipcode" type="text">
 
         <input class="contact__submit btn pop" type="submit" value="Send">
     </form>
