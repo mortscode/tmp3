@@ -3,7 +3,7 @@
 
   &__inner-wrapper {
     @include content-inner(500, center);
-    padding: rem(30) 0;
+    padding: rem(30) 0 rem(124);
 
     @include bp($sm) {
       padding: rem(30) rem(36) rem(124);
@@ -114,7 +114,8 @@
     margin-bottom: $small-spacing / 2;
   }
 
-  #recipes {
+  #recipes,
+  .address-field {
     display: none;
   }
 }
