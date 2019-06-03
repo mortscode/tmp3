@@ -1,3 +1,16 @@
+{% set pinDescription = entry.postEntrySeo.seoTitle ? entry.postEntrySeo.seoTitle : entry.title %}
+
+{% set pinId = null %}
+
+{% if image.pinUrl %}
+  {% set parseUrl = image.pinUrl|split('/') %}
+  {% for chunk in parseUrl %}
+    {% if chunk == 'pin' %}
+      {% set pinId = parseUrl[loop.index] %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
 <picture {% if picClasses is defined %}class={{ picClasses }}{% endif %}>
   {% spaceless %}
   {% if craft.imager.serverSupportsWebp() %}
@@ -18,8 +31,11 @@
       nopin="nopin"
     {% else %}
       data-pin-media="{{ image.url }}"
-      data-pin-description="{{entry.title}}"
-      data-pin-url="{{entry.url}}"
+      data-pin-url="{{ entry.url }}"
+      data-pin-description="{{ pinDescription }} by The Modern Proper"
+      {% if pinId %}
+        data-pin-id="{{ pinId }}"
+      {% endif %}
     {% endif %}>
   {% endspaceless %}
 </picture>
