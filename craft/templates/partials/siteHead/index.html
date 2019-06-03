@@ -6,6 +6,9 @@
   {% hook 'seomaticRender' %}
   {% include 'partials/siteHead/_typekit' %}
   {% include 'partials/siteHead/_favicons' %}
+  {% if noPinPage %}
+    {% include 'partials/siteHead/_no-pins' %}
+  {% endif %}
   {% if adThrive.showGlobalAds is defined and true %}
     {% include 'partials/siteHead/_adThrive' %}
   {% endif %}
@@ -13,4 +16,5 @@
   {% if noIndex is defined and true %}
     <meta name="robots" content="noindex">
   {% endif %}
+  
   
