@@ -5,6 +5,18 @@
     {% set homePage = false %}
 {% endif %}
 
+{% set noPinPage = false %}
+
+{% if entry is defined %}
+    {% set section = entry.getSection() %}
+    {% if section.handle in ['homepage', 'about', 'archive', 'contact', 'searchResults', 'newsletter', 'privacyPolicy'] %}
+      {% set noPinPage = true %}
+    {% endif %}
+    {% if section.handle == 'postEntries' %}
+        {% set recipe = true %} 
+    {% endif %}
+{% endif %}
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
     <head>
@@ -12,12 +24,6 @@
         {% block richPin %}{% endblock %}
         {% block richPinIngredients %}{% endblock %}
     </head>
-    {% if entry is defined %}
-        {% set section = entry.getSection() %}
-        {% if section.handle == 'postEntries' %} 
-            {% set recipe = true %} 
-        {% endif %}
-    {% endif %} 
     <body class="{% if section %}page-{{ section.handle|lower }}{% endif %}{% if recipe is defined and true %} print-styles{% endif %}">
         <div class="content tk-fade">
             {% include 'partials/header' %}
