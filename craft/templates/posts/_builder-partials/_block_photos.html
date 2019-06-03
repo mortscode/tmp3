@@ -12,10 +12,12 @@
       {% endif %}
       {% set gallery = block.imageFiles|length %}
       <div class="image-wrapper {% if gallery >= 2 %}gallery{% endif %} {% if block.mobileStack.contains('stack') %}m-stack{% endif %}" data-ratio="{{ratio}}">
+        {% set imageAlt = photo.imageAlt ? photo.imageAlt : entry.postEntrySeo.seoTitle %}
         {% set vars = {
           'image': photo,
           'classes': 'image',
-          'title': entry.title
+          'title': imageAlt,
+          'pinDescription': imageAlt,
         }%}
         {% include 'utils/images/post-entry-pic' with vars %}
       </div>

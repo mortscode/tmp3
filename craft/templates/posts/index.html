@@ -21,11 +21,12 @@
         {% endif %}
       </div>
       <div class="post-intro__image">
+        {% set imageAlt = entry.featuredImage[0].imageAlt ? entry.featuredImage[0].imageAlt : entry.postEntrySeo.seoTitle %}
         {% set vars = {
           'image': entry.featuredImage[0],
           'lazyImage': true,
           'classes': 'post-intro__image--asset',
-          'title': entry.title
+          'title': imageAlt,
         }%}
         {% include 'utils/images/home-feature-pic' with vars %}
       </div>

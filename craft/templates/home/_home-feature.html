@@ -4,7 +4,8 @@
             {% set vars = {
             'image': image,
             'classes': 'home-feature__asset',
-            'title': post.title,
+            'title': post.postEntrySeo.seoTitle,
+            'nopin': true
             }%}
             {% include 'utils/images/home-feature-pic' with vars %}
         </a>
