@@ -2,10 +2,9 @@
     <div class="home-feature__inner-wrapper">
         <a href="{{url}}" class="home-feature__image">
             {% set vars = {
-            'image': image,
-            'classes': 'home-feature__asset',
-            'title': post.postEntrySeo.seoTitle,
-            'nopin': true
+              'image': image,
+              'classes': 'home-feature__asset',
+              'title': post.postEntrySeo.seoTitle,
             }%}
             {% include 'utils/images/home-feature-pic' with vars %}
         </a>
