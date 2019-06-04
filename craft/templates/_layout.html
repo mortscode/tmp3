@@ -9,7 +9,7 @@
 
 {% if entry is defined %}
     {% set section = entry.getSection() %}
-    {% if section.handle in ['homepage', 'about', 'archive', 'contact', 'searchResults', 'newsletter', 'privacyPolicy'] %}
+    {% if section.handle in ['about', 'archive', 'contact', 'searchResults', 'newsletter', 'privacyPolicy'] %}
       {% set noPinPage = true %}
     {% endif %}
     {% if section.handle == 'postEntries' %}
