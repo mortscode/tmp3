@@ -1,6 +1,6 @@
 
 <div class="post-card {% if homePage %}first-loop{% endif %} {% if index > 6 %}after-featured{% endif %} js-scrolls animate -fade-up" data-offset="0.92">
-  <a href="{{url}}" class="post-card__image">
+  <a href="{{url}}" class="post-card__image" nopin="nopin">
     {% set vars = {
       'image': image,
       'classes': 'post-card__asset',
