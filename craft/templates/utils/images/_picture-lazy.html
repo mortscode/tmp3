@@ -1,4 +1,6 @@
-{% set pinDescription = entry.postEntrySeo.seoTitle ? entry.postEntrySeo.seoTitle : entry.title %}
+{% set pageRef = post is defined ? post : entry %}
+
+{% set pinDescription = pageRef.postEntrySeo.seoTitle ? pageRef.postEntrySeo.seoTitle : pageRef.title %}
 
 {% set pinId = null %}
 
@@ -26,12 +28,12 @@
     data-sizes="100vw"
     data-srcset="{{ craft.imager.srcset(transformedImages) }}"
     data-src="{{ transformedImages[0].url }}"
-    alt="{{ title ? title : entry.title }}"
+    alt="{{ title ? title : pageRef.title }}"
     {% if nopin is defined and true %}
       nopin="nopin"
     {% else %}
       data-pin-media="{{ image.url }}"
-      data-pin-url="{{ entry.url }}"
+      data-pin-url="{{ pageRef.url }}"
       data-pin-description="{{ pinDescription }} by The Modern Proper"
       {% if pinId %}
         data-pin-id="{{ pinId }}"
