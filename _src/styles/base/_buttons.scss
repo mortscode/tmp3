@@ -1,80 +1,79 @@
 .btn {
-  @include appearance(none);
-  border: 0;
-  border-radius: 0;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: $sans;
-  font-size: rem(18);
-  letter-spacing: em(0.5);
-  -webkit-font-smoothing: antialiased;
-  font-weight: 600;
-  line-height: 1;
-  padding: rem(21) rem(60);
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  transition: background-color $ease-fast, padding $ease-fast, width $ease-fast;
+    @include appearance(none);
+    border: 0;
+    border-radius: 0;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: $sans;
+    font-size: rem(18);
+    letter-spacing: em(0.5);
+    -webkit-font-smoothing: antialiased;
+    font-weight: 600;
+    line-height: 1;
+    padding: rem(21) rem(60);
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    transition: background-color $ease-fast, padding $ease-fast, width $ease-fast;
 
-  @include bp($lg) {
-    padding: rem(18) rem(50);
-  }
-
-  @include bp($md) {
-    padding: rem(18) rem(40);
-    font-size: rem(16);
-  }
-
-  @include bp($sm) {
-    padding: rem(18);
-    font-size: rem(13);
-    width: 100%;
-  }
-
-  &.pop {
-    background-color: $action-color;
-
-    &:hover,
-    &:focus {
-      background-color: darken($action-color, 15%);
-      color: #fff;
+    @include bp($lg) {
+        padding: rem(18) rem(50);
     }
-  }
 
-  &.gray {
-    background-color: lighten($tmp-gray, 10%);
-
-    &:hover,
-    &:focus {
-      background-color: $action-color;
-      color: #fff;
+    @include bp($md) {
+        padding: rem(18) rem(40);
+        font-size: rem(16);
     }
-  }
 
-  &.light {
-    background-color: $tmp-light;
-    color: $tmp-gray;
-
-    &:hover,
-    &:focus {
-      background-color: $white;
+    @include bp($sm) {
+        padding: rem(18);
+        width: 100%;
     }
-  }
 
-  &.small {
-    font-size: rem(12);
-    padding: rem(12) rem(36);
-  }
+    &.pop {
+        background-color: $action-color;
 
-  &.remove {
-    display: none;
-  }
+        &:hover,
+        &:focus {
+            background-color: darken($action-color, 15%);
+            color: #fff;
+        }
+    }
 
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
+    &.gray {
+        background-color: lighten($tmp-gray, 10%);
+
+        &:hover,
+        &:focus {
+            background-color: $action-color;
+            color: #fff;
+        }
+    }
+
+    &.light {
+        background-color: $tmp-light;
+        color: $tmp-gray;
+
+        &:hover,
+        &:focus {
+            background-color: $white;
+        }
+    }
+
+    &.small {
+        font-size: rem(14);
+        padding: rem(9) rem(36);
+    }
+
+    &.remove {
+        display: none;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
 }

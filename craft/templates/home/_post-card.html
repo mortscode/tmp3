@@ -8,7 +8,9 @@
     }
 ) %}
 <div class="post-card {% if homePage %}first-loop{% endif %} {% if index > 6 %}after-featured{% endif %} js-scrolls animate -fade-up" data-offset="0.92">
-  <a href="{{url}}" class="post-card__image lazyload">
+  <a href="{{url}}" class="post-card__link post-card__link--outer" title="{{ title }}"></a>
+  <div href="{{url}}" class="post-card__image lazyload">
+    <a href="{{url}}" class="post-card__link post-card__link--inner" title="{{ title }}"></a>
     {% set vars = {
       'image': image,
       'classes': 'post-card__asset',
@@ -17,12 +19,10 @@
     {% include 'utils/images/post-card-pic' with vars %}
     <div class="post-card__image--border"></div>
     <span class="post-card__image--cta">Read post</span>
-  </a>
+  </div>
   <div class="post-card__text">
-    <a href="{{url}}">
-      <h2 class="post-card__title">{{title}}</h2>
-    </a>
+    <h2 class="post-card__title">{{title}}</h2>
     <p class="post-card__summary js-avoid-orphan">{{summary}}</p>
-    <a href="{{url}}" class="post-card__read-post">Read post</a>
+    <a href="{{url}}" class="post-card__read-post btn pop small" title="{{ title }}">Read post&nbsp;&#8594;</a>
   </div>
 </div>
