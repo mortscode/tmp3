@@ -8,13 +8,13 @@
     }
 ) %}
 <div class="post-card {% if homePage %}first-loop{% endif %} {% if index > 6 %}after-featured{% endif %} js-scrolls animate -fade-up" data-offset="0.92">
-  <a href="{{url}}" class="post-card__image lazyload" data-bg="{{postImage[0]}}" title="{{ imageAlt }}">
-    {# {% set vars = {
+  <a href="{{url}}" class="post-card__image lazyload">
+    {% set vars = {
       'image': image,
       'classes': 'post-card__asset',
       'title': imageAlt,
     }%}
-    {% include 'utils/images/post-card-pic' with vars %} #}
+    {% include 'utils/images/post-card-pic' with vars %}
     <div class="post-card__image--border"></div>
     <span class="post-card__image--cta">Read post</span>
   </a>
