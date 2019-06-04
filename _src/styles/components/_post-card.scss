@@ -4,6 +4,7 @@
     flex-direction: column;
     margin-bottom: rem(60);
     order: 1;
+    position: relative;
     @include bp($xl) {
         margin-bottom: rem(40);
     }
@@ -22,6 +23,43 @@
     }
     &.after-featured {
         order: 3;
+    }
+    &__link {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+
+        &:hover,
+        &:focus {
+            ~ .post-card__image > .post-card__image--border {
+                border: 5px solid $white;
+                @include bp($lg) {
+                    border: 3px solid white;
+                }
+            }
+            ~ .post-card__image > .post-card__image--cta {
+                transform: none;
+            }
+            ~ .post-card__text > .post-card__title {
+                color: $tmp-brand;
+            }
+        }
+        &--outer {
+            @include bp($sm) {
+                display: none;
+            }
+        }
+
+        &--inner {
+            display: none;
+            @include bp($sm) {
+                display: block;
+            }
+        }
     }
     &__image {
         background-color: rgba($tmp-gray, 0.1);
@@ -62,18 +100,6 @@
                 padding: rem(8) 0;
             }
         }
-        &:hover,
-        &:focus {
-            .post-card__image--border {
-                border: 5px solid $white;
-                @include bp($lg) {
-                    border: 3px solid white;
-                }
-            }
-            .post-card__image--cta {
-                transform: none;
-            }
-        }
     }
     &__asset {
         @include lazy-photo;
@@ -98,12 +124,12 @@
         color: $tmp-dark;
         margin-bottom: rem(12);
         transition: color $ease-fast;
-        &:hover {
-            color: $tmp-brand;
-        }
     }
     &__summary {
         @extend %text-sm;
+        @include bp($sm) {
+            margin-bottom: rem(18);
+        }
     }
 
     &__read-post {
