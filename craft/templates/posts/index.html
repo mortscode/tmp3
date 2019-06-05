@@ -1,6 +1,6 @@
 {% extends "_layout" %}
 
-{% set photoArray = [entry.featuredImage[0].url] %}
+{% set photoArray = [entry.featuredImage[0].url('facebookSeo'), entry.featuredImage[0].url] %}
 
 {% for block in entry.postBuilder.with(['photos:imageFiles']) %}
   {% if block.type.handle == 'photos' %}
@@ -14,7 +14,7 @@
 
 {% set seomaticMeta = seomaticMeta | merge({
     og: {
-        image: photoArray[0:6]
+        image: photoArray[0:6],
     }
 }) %}
 
@@ -80,9 +80,15 @@
 {% endblock %}
 
 {% block richPin %}
+  <meta property="og:site_name" content="themodernproper.com" />
   <meta itemscope itemtype="http://schema.org/Recipe" />
   <meta itemprop="url" content="{{ entry.url }}" />
-  <meta itemprop="image" content="{{ entry.featuredImage[0].url }}" />
+  {% for photoUrl in photoArray[0:6] %}
+    <meta itemprop="image" content="{{ photoUrl }}" />
+  {% endfor %}
+  <meta itemprop="name" content="{{ entry.title }}" />
+  <meta itemprop="description" content="{{ entry.postSummary }}" />
+  <meta itemprop="recipeYield" content="Serves {{ entry.recipeServings }}" />
 {% endblock %}
 
 {% if entry.recipeBuilder|length %}
