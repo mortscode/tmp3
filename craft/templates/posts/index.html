@@ -1,5 +1,23 @@
 {% extends "_layout" %}
 
+{% set photoArray = [entry.featuredImage[0].url] %}
+
+{% for block in entry.postBuilder.with(['photos:imageFiles']) %}
+  {% if block.type.handle == 'photos' %}
+    {% for photo in block.imageFiles %}
+      {% if photo.height > photo.width %}
+        {% set photoArray = photoArray|merge([photo.url]) %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+{% set seomaticMeta = seomaticMeta | merge({
+    og: {
+        image: photoArray[0:6]
+    }
+}) %}
+
 {% block content %}
   {% set recipe = entry.recipeBuilder|length or entry.recipeMethod|length %}
   <article class="post-entry">

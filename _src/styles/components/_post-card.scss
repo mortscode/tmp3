@@ -36,6 +36,9 @@
                 @include bp($lg) {
                     border: 3px solid white;
                 }
+                @include bp($sm) {
+                    border: 0;
+                }
             }
             .post-card__image--cta {
                 transform: none;
@@ -71,6 +74,9 @@
             @include bp($lg) {
                 font-size: rem(16);
                 padding: rem(8) 0;
+            }
+            @include bp($sm) {
+                display: none;
             }
         }
     }
