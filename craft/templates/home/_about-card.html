@@ -1,14 +1,15 @@
+{% set image = homeTmp.homeTmpImage[0] %}
+{% set aboutImage = craft.imager.transformImage(image,
+        [
+            { width: 900, ratio: 3 / 4 },
+        ],
+        {
+            format: 'jpg',
+            position: image.focalPoint
+        }
+    ) %}
 <article class="about-card js-scrolls animate -fade-up" data-offset="0.9">
-  <div class="about-card__image">
-    {% set vars = {
-      'image': homeTmp.homeTmpImage[0],
-      'classes': 'about-card__image--asset',
-      'picClasses': 'about-card__image--wrapper',
-      'title': homeTmp.homeTmpTitle,
-      'nopin': true
-    }%}
-    {% include 'utils/images/about-card-pic' with vars %}
-  </div>
+  <div class="about-card__image" nopin="nopin" style="background-image:url('{{aboutImage[0]}}')"></div>
   <div class="about-card__text">
     <h3 class="about-card__text--title js-avoid-orphan">{{homeTmp.homeTmpTitle|raw}}</h3>
     <p class="about-card__text--body">{{homeTmp.homeTmpBlurb}}</p>

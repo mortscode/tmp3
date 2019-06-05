@@ -24,52 +24,25 @@
     &.after-featured {
         order: 3;
     }
-    &__link {
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 1;
-
-        &:hover,
-        &:focus {
-            ~ .post-card__image > .post-card__image--border {
-                border: 5px solid $white;
-                @include bp($lg) {
-                    border: 3px solid white;
-                }
-            }
-            ~ .post-card__image > .post-card__image--cta {
-                transform: none;
-            }
-            ~ .post-card__text > .post-card__title {
-                color: $tmp-brand;
-            }
-        }
-        &--outer {
-            @include bp($sm) {
-                display: none;
-            }
-        }
-
-        &--inner {
-            display: none;
-            @include bp($sm) {
-                display: block;
-            }
-        }
-    }
     &__image {
         background-color: rgba($tmp-gray, 0.1);
         flex: 0 0 auto;
         overflow: hidden;
         position: relative;
-        &::after {
-            content: "";
-            display: block;
-            padding-bottom: (1000 / 667) * 100%;
+        &:hover,
+        &:focus {
+            .post-card__image--border {
+                border: 5px solid $white;
+                @include bp($lg) {
+                    border: 3px solid white;
+                }
+            }
+            .post-card__image--cta {
+                transform: none;
+            }
+            ~ .post-card__text .post-card__title {
+                color: $tmp-brand;
+            }
         }
         &--border {
             position: absolute;
@@ -103,15 +76,10 @@
     }
     &__asset {
         @include lazy-photo;
-        position: absolute;
         width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
+        max-width: 100%;
+        height: auto;
         vertical-align: bottom;
-        pointer-events: none;
     }
     &__text {
         display: flex;
@@ -121,9 +89,16 @@
     }
     &__title {
         @extend %title-md;
-        color: $tmp-dark;
         margin-bottom: rem(12);
-        transition: color $ease-fast;
+
+        &--link {
+            color: $tmp-dark;
+            transition: color $ease-fast;
+            &:hover,
+            &:focus {
+                color: $tmp-brand;
+            }
+        }
     }
     &__summary {
         @extend %text-sm;
