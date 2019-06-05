@@ -20,11 +20,13 @@
 
 {% block content %}
   {% set recipe = entry.recipeBuilder|length or entry.recipeMethod|length %}
-  <article class="post-entry">
+  {% set articleType = recipe ? 'Recipe' : 'Article' %}
+  <meta property="og:site_name" content="themodernproper.com" />
+  <article class="post-entry" itemscope itemtype="http://schema.org/{{articleType}}">
     <div class="post-intro">
       <div class="post-intro__title" itemprop="name">
         <time class="post-intro__title--date">{{entry.postDate.format('F d, Y')}}</time>
-        <h1 class="post-intro__title--text">{{entry.title}}</h1>
+        <h1 itemprop="name" class="post-intro__title--text">{{entry.title}}</h1>
         {% if entry.postAuthor|length %}
           <span class="post-intro__title--author author">Story by {{entry.postAuthor}}</span>
         {% endif %}
@@ -80,7 +82,6 @@
 {% endblock %}
 
 {% block richPin %}
-  <meta property="og:site_name" content="themodernproper.com" />
   <meta itemscope itemtype="http://schema.org/Recipe" />
   <meta itemprop="url" content="{{ entry.url }}" />
   {% for photoUrl in photoArray[0:6] %}
