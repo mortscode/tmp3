@@ -14,7 +14,7 @@
         node.parentNode.insertBefore(script, node);
     })();
 
-    {% if entry.hideAds %}
+    {% if entry is defined and entry.hideAds %}
         adthrive.cmd.push(function() {
             adthrive.disableAds();
         });
