@@ -5,7 +5,7 @@
   ],
   limit: 18
 }) %}
-
+<h1 class="-off-screen">Welcome to The Modern Proper{% if currentPageNum > 1 %}: Page {{ currentPageNum }}{% endif %}</h1>
 <div id="home-posts" class="home-posts js-home-posts">
   {% paginate allPosts as posts %}
   {% include 'home/_posts' %}
