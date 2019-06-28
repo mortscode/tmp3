@@ -6,6 +6,10 @@
 {% extends "_layout" %}
 {% set title = "Categories" %}
 
+{% set seomaticMeta = seomaticMeta | merge({
+    seoTitle: "Recipe Category: " ~ category
+}) %}
+
 {% block content %}
   {% set entries = craft.entries.relatedTo(category) %}
   <div class="results">
