@@ -13,6 +13,10 @@
 
 {% set entries = craft.entries(results) %}
 
+{% set seomaticMeta = seomaticMeta | merge({
+    seoTitle: "Search Results: " ~ query
+}) %}
+
 {% block content %}
   <div class="results">
     <div class="results__wrapper">
