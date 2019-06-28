@@ -8,9 +8,10 @@
 
 {% set seoEntries = craft.entries.section('postEntries') %}
 {% set currentFirstImage = seoEntries[0].featuredImage[0] %}
+{% set currentPageNum = craft.request.getPageNum() %}
 
 {% set seomaticMeta = { 
-    seoTitle: seomaticMeta.seoTitle,
+    seoTitle: currentPageNum > 1 ? "Home: Page " ~ currentPageNum : seomaticMeta.seoTitle,
     seoDescription: seomaticMeta.seoDescription,
     seoKeywords: seomaticMeta.seoKeywords,
     seoImage: currentFirstImage.url('standardTall'),
