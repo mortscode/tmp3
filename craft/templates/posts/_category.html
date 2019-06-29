@@ -8,6 +8,7 @@
 
 {% set seomaticMeta = seomaticMeta | merge({
     seoTitle: "Recipe Category: " ~ category
+    seoDescription: "A category search for The Modern Proper recipes matching " ~ category
 }) %}
 
 {% block content %}
