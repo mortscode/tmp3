@@ -15,6 +15,7 @@
 
 {% set seomaticMeta = seomaticMeta | merge({
     seoTitle: "Search Results: " ~ query
+    seoDescription: "Search results for The Modern Proper's posts matching " ~ query
 }) %}
 
 {% block content %}
