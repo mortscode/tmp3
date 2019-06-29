@@ -14,7 +14,7 @@
 {% set entries = craft.entries(results) %}
 
 {% set seomaticMeta = seomaticMeta | merge({
-    seoTitle: "Search Results: " ~ query
+    seoTitle: "Search Results: " ~ query,
     seoDescription: "Search results for The Modern Proper's posts matching " ~ query
 }) %}
 
