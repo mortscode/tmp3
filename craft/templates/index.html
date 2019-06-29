@@ -9,10 +9,11 @@
 {% set seoEntries = craft.entries.section('postEntries') %}
 {% set currentFirstImage = seoEntries[0].featuredImage[0] %}
 {% set currentPageNum = craft.request.getPageNum() %}
+{% set altDescription = "The Modern Proper's recipies: Page " %}
 
 {% set seomaticMeta = { 
     seoTitle: currentPageNum > 1 ? "Home: Page " ~ currentPageNum : seomaticMeta.seoTitle,
-    seoDescription: seomaticMeta.seoDescription,
+    seoDescription: currentPageNum > 1 ? altDescription ~ currentPageNum : seomaticMeta.seoDescription,
     seoKeywords: seomaticMeta.seoKeywords,
     seoImage: currentFirstImage.url('standardTall'),
     canonicalUrl: seomaticMeta.canonicalUrl,
