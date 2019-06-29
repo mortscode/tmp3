@@ -5,27 +5,18 @@
         "italic",
         "underline",
         "lists",
-        "link"
+        "link",
+        "html"
     ],
-    "formatting": [
-        "p"
-    ],
+    "formatting": ["p"],
     "formattingAdd": {
         "Heading": {
             "title": "H2",
-            "args": [
-                "h2",
-                "class",
-                "-post-headline"
-            ]
+            "args": ["h2", "class", "-post-headline"]
         },
         "Subhead": {
             "title": "H3",
-            "args": [
-                "h3",
-                "class",
-                "-post-subhead"
-            ]
+            "args": ["h3", "class", "-post-subhead"]
         }
     },
     "toolbarFixed": true
