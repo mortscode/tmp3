@@ -1,5 +1,5 @@
 <section class="staff">
-    <h1 class="staff__headline">{{ entry.staffHeadline }}</h1>
+    <h2 class="staff__headline">{{ entry.staffHeadline }}</h2>
     <ul class="staff__bios">
       {% for bio in entry.staffBios %}
         <li class="staff__bios--bio-wrapper">
@@ -10,7 +10,7 @@
             'nopin': true
           }%}
           {% include 'utils/images/staff-photo-pic' with vars %}
-          <h2 class="staff__bios--bio-name">{{ bio.fullName }}</h2>
+          <h3 class="staff__bios--bio-name">{{ bio.fullName }}</h3>
           <p class="staff__bios--bio-text">{{ bio.bio }}</p>
         </li>
       {% endfor %}

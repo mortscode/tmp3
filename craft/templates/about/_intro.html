@@ -1,7 +1,7 @@
 <section class="about__intro">
   {% for intro in entry.aboutIntro %}
-    <h1 class="about__intro--headline">{{ intro.headline }}</h1>
-    <h2 class="about__intro--subhead">{{ intro.subhead }}</h2>
+    <h2 class="about__intro--headline">{{ intro.headline }}</h2>
+    <h3 class="about__intro--subhead">{{ intro.subhead }}</h3>
     {% set image = intro.image[0] %}
     {% set vars = {
       'image': image,
