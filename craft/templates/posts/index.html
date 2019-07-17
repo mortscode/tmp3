@@ -80,6 +80,13 @@
   {% include 'posts/_fixed-share' %}
 {% endblock %}
 
+{% if entry.recipeBuilder|length or entry.recipeMethod|length %}
+  {% block postMeta %}
+    <meta itemprop="url" content="{{ entry.url }}" />
+  {% endblock %}
+{% endif %}
+
+
 {# {% block richPin %}
   <meta itemscope itemtype="http://schema.org/Recipe" />
   <meta itemprop="url" content="{{ entry.url }}" />
