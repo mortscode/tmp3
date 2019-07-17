@@ -22,7 +22,7 @@
   {% set recipe = entry.recipeBuilder|length or entry.recipeMethod|length %}
   {% set articleType = recipe ? 'Recipe' : 'Article' %}
   <meta property="og:site_name" content="themodernproper.com" />
-  <article class="post-entry" itemscope itemtype="http://schema.org/{{articleType}}">
+  <div class="post-entry" itemscope itemtype="http://schema.org/{{articleType}}">
     <div class="post-intro">
       <div class="post-intro__title">
         <time class="post-intro__title--date">{{entry.postDate.format('F d, Y')}}</time>
@@ -71,7 +71,7 @@
         {% include 'posts/_recipe-builder' %}
       {% endif %}
     </div>
-  </article>
+  </div>
   
   {% include 'posts/_more-posts' %}
 
