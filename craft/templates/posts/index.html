@@ -24,7 +24,7 @@
   <meta property="og:site_name" content="themodernproper.com" />
   <article class="post-entry" itemscope itemtype="http://schema.org/{{articleType}}">
     <div class="post-intro">
-      <div class="post-intro__title" itemprop="name">
+      <div class="post-intro__title">
         <time class="post-intro__title--date">{{entry.postDate.format('F d, Y')}}</time>
         <h1 itemprop="name" class="post-intro__title--text">{{entry.title}}</h1>
         {% if entry.postAuthor|length %}
@@ -81,7 +81,7 @@
   {% include 'posts/_fixed-share' %}
 {% endblock %}
 
-{% block richPin %}
+{# {% block richPin %}
   <meta itemscope itemtype="http://schema.org/Recipe" />
   <meta itemprop="url" content="{{ entry.url }}" />
   {% for photoUrl in photoArray[0:6] %}
@@ -100,7 +100,7 @@
       {% endfor %}
     {% endfor %}
   {% endblock %}
-{% endif %}
+{% endif %} #}
 
 {% block footerJs %}
 {% include 'posts/scripts/_pinterest' %}
