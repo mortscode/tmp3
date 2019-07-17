@@ -21,7 +21,6 @@
 {% block content %}
   {% set recipe = entry.recipeBuilder|length or entry.recipeMethod|length %}
   {% set articleType = recipe ? 'Recipe' : 'Article' %}
-  <meta property="og:site_name" content="themodernproper.com" />
   <div class="post-entry" itemscope itemtype="http://schema.org/{{articleType}}">
     <div class="post-intro">
       <div class="post-intro__title">
