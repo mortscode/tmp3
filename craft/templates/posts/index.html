@@ -83,6 +83,7 @@
 {% if entry.recipeBuilder|length or entry.recipeMethod|length %}
   {% block postMeta %}
     <meta itemprop="url" content="{{ entry.url }}" />
+    <meta itemprop="image" content="{{ entry.featuredImage[0].url }}" />
   {% endblock %}
 {% endif %}
 
