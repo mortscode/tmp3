@@ -49,7 +49,6 @@
         }%}
         {% include 'utils/images/home-feature-pic' with vars %}
       </div>
-      <span class="-off-screen" itemprop="description" aria-hidden="true">{{ entry.postSummary }}</span>
       {% if recipe %}
         <button class="post-intro__title--mobile-jump js-scroll-to btn gray small" data-scroll-target='recipe'>Jump to recipe</button>
       {% endif %}
@@ -84,6 +83,7 @@
 {% if entry.recipeBuilder|length or entry.recipeMethod|length %}
   {% block postMeta %}
     <meta itemprop="name" content="{{ entry.postEntrySeo.seoTitle }}" />
+    <meta itemprop="description" content="{{ entry.postSummary }}" />
     <meta itemprop="url" content="{{ entry.url }}" />
     <meta itemprop="image" content="{{ entry.featuredImage[0].url }}" />
     <meta itemprop="dateCreated" content="{{ entry.postDate.iso8601() }}" />
