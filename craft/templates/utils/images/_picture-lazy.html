@@ -3,7 +3,6 @@
 {% set pinDescription = pageRef.postEntrySeo.seoTitle ? pageRef.postEntrySeo.seoTitle : pageRef.title %}
 
 {% set pinId = null %}
-{% set include_itemprop = itemprop is defined ? itemprop : null %}
 
 {% if image.pinUrl %}
   {% set parseUrl = image.pinUrl|split('/') %}
@@ -22,9 +21,6 @@
     type="image/webp">
   {% endif %}
   <img
-    {% if include_itemprop %}
-      itemprop="image" 
-    {% endif %}
     class="{{ classes }} lazyload"
     src="{{ craft.imager.base64Pixel(2,1) }}"
     srcset="{{ craft.imager.base64Pixel(2,1) }}"
