@@ -20,7 +20,7 @@
       
         <table class="ingredients-list" style="width:100%">
         {% for ingredient in block.list %}
-          <span itemprop="ingredients" class="-off-screen" aria-hidden="true">{% if ingredient.amount %}{{ ingredient.amount }} {% endif %}{{ ingredient.ingredient }}</span>
+          <span itemprop="recipeIngredient" class="-off-screen" aria-hidden="true">{% if ingredient.amount %}{{ ingredient.amount }} {% endif %}{{ ingredient.ingredient }}</span>
           <tr class="row">
             <td class="amount">{{ ingredient.amount }}</td>
             {% if ingredient.linkUrl|length %}

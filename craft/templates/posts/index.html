@@ -27,7 +27,7 @@
         <time class="post-intro__title--date">{{entry.postDate.format('F d, Y')}}</time>
         <h1 itemprop="name" class="post-intro__title--text">{{entry.title}}</h1>
         {% if entry.postAuthor|length %}
-          <span class="post-intro__title--author author">Story by {{entry.postAuthor}}</span>
+          <span class="post-intro__title--author author">Story by <span itemprop="author">{{entry.postAuthor}}</span></span>
         {% endif %}
         {% include 'posts/_share' %}
         {% if recipe %}
@@ -49,6 +49,7 @@
         }%}
         {% include 'utils/images/home-feature-pic' with vars %}
       </div>
+      <span class="-off-screen" itemprop="description" aria-hidden="true">{{ entry.postSummary }}</span>
       {% if recipe %}
         <button class="post-intro__title--mobile-jump js-scroll-to btn gray small" data-scroll-target='recipe'>Jump to recipe</button>
       {% endif %}
@@ -84,30 +85,13 @@
   {% block postMeta %}
     <meta itemprop="url" content="{{ entry.url }}" />
     <meta itemprop="image" content="{{ entry.featuredImage[0].url }}" />
-  {% endblock %}
-{% endif %}
-
-
-{# {% block richPin %}
-  <meta itemscope itemtype="http://schema.org/Recipe" />
-  <meta itemprop="url" content="{{ entry.url }}" />
-  {% for photoUrl in photoArray[0:6] %}
-    <meta itemprop="image" content="{{ photoUrl }}" />
-  {% endfor %}
-  <meta itemprop="name" content="{{ entry.title }}" />
-  <meta itemprop="description" content="{{ entry.postSummary }}" />
-  <meta itemprop="recipeYield" content="Serves {{ entry.recipeServings }}" />
-{% endblock %}
-
-{% if entry.recipeBuilder|length %}
-  {% block richPinIngredients %}
-    {% for block in entry.recipeBuilder %}
-      {% for item in block.list %}
-        <meta itemprop="ingredients" content="{{ item.amount }} {{ item.ingredient }}" />
-      {% endfor %}
+    <meta itemprop="dateCreated" content="{{ entry.postDate.iso8601() }}" />
+    <meta itemprop="dateModified" content="{{ entry.dateUpdated.iso8601() }}" />
+    {% for imageUrl in photoArray[1:7] %}
+      <meta itemprop="image" content="{{ imageUrl }}" />
     {% endfor %}
   {% endblock %}
-{% endif %} #}
+{% endif %}
 
 {% block footerJs %}
 {% include 'posts/scripts/_pinterest' %}
