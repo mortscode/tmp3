@@ -25,9 +25,9 @@
     <div class="post-intro">
       <div class="post-intro__title">
         <time class="post-intro__title--date">{{entry.postDate.format('F d, Y')}}</time>
-        <h1 itemprop="name" class="post-intro__title--text">{{entry.title}}</h1>
+        <h1 class="post-intro__title--text">{{entry.title}}</h1>
         {% if entry.postAuthor|length %}
-          <span class="post-intro__title--author author">Story by <span itemprop="author">{{entry.postAuthor}}</span></span>
+          <span class="post-intro__title--author author">Story by {{entry.postAuthor}}</span>
         {% endif %}
         {% include 'posts/_share' %}
         {% if recipe %}
@@ -83,6 +83,7 @@
 
 {% if entry.recipeBuilder|length or entry.recipeMethod|length %}
   {% block postMeta %}
+    <meta itemprop="name" content="{{ entry.postEntrySeo.seoTitle }}" />
     <meta itemprop="url" content="{{ entry.url }}" />
     <meta itemprop="image" content="{{ entry.featuredImage[0].url }}" />
     <meta itemprop="dateCreated" content="{{ entry.postDate.iso8601() }}" />
@@ -90,6 +91,19 @@
     {% for imageUrl in photoArray[1:7] %}
       <meta itemprop="image" content="{{ imageUrl }}" />
     {% endfor %}
+    {% if entry.recipeBuilder|length %}
+      {% for block in entry.recipeBuilder %}	
+        {% for item in block.list %}	
+          <meta itemprop="recipeIngredient" content="{{ item.amount }} {{ item.ingredient }}" />
+        {% endfor %}	
+      {% endfor %}
+    {% endif %}
+    {% if entry.recipeMethod|length %}
+      <meta itemprop="recipeInstructions" content="{{ entry.recipeMethod|striptags }}">
+    {% endif %}
+    {% if entry.recipeServings > 0 %}
+      <meta itemprop="recipeYield" content="{{ entry.recipeServings }} servings">
+    {% endif %}
   {% endblock %}
 {% endif %}
 
