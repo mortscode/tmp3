@@ -29,20 +29,19 @@
           <span itemprop="dateCreated">{{ entry.postDate.iso8601() }}</span>
           <span itemprop="dateModified">{{ entry.dateUpdated.iso8601() }}</span>
           {% if entry.recipeBuilder|length %}
-          <ul>
-            {% for block in entry.recipeBuilder %}	
-              {% for item in block.list %}	
-                <li itemprop="recipeIngredient">{{ item.amount }} {{ item.ingredient }}</li>
-              {% endfor %}	
+            {% for block in entry.recipeBuilder %}
+              <span>{{ block.listTitle }}</span>
+              <ul>
+                {% for item in block.list %}	
+                  <li itemprop="recipeIngredient">{% if item.amount %}{{ item.amount }} {% endif %}{{ item.ingredient }}</li>
+                {% endfor %}	
+              </ul>
+              <ul>
+                {% for item in block.list %}	
+                  <li itemprop="ingredients">{% if item.amount %}{{ item.amount }} {% endif %}{{ item.ingredient }}</li>
+                {% endfor %}	
+              </ul>
             {% endfor %}
-          </ul>
-          <ul>
-            {% for block in entry.recipeBuilder %}	
-              {% for item in block.list %}	
-                <li itemprop="ingredients">{{ item.amount }} {{ item.ingredient }}</li>
-              {% endfor %}	
-            {% endfor %}
-          </ul>
           {% endif %}
           {% if entry.recipeMethod|length %}
             <span itemprop="recipeInstructions" >{{ entry.recipeMethod|striptags }}</span>
