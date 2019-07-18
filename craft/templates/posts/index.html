@@ -25,7 +25,7 @@
     <div class="post-intro">
       <div class="post-intro__title">
         <time class="post-intro__title--date">{{entry.postDate.format('F d, Y')}}</time>
-        <h1 itemprop="name" class="post-intro__title--text">{{entry.title}}</h1>
+        <h1 class="post-intro__title--text">{{entry.title}}</h1>
         {% if entry.postAuthor|length %}
           <span class="post-intro__title--author author">Story by {{entry.postAuthor}}</span>
         {% endif %}
@@ -82,32 +82,30 @@
 
 {% if entry.recipeBuilder|length or entry.recipeMethod|length %}
   {% block postMeta %}
+    <meta itemprop="name" content="{{ entry.postEntrySeo.seoTitle }}" />
+    <meta itemprop="description" content="{{ entry.postSummary }}" />
     <meta itemprop="url" content="{{ entry.url }}" />
     <meta itemprop="image" content="{{ entry.featuredImage[0].url }}" />
+    <meta itemprop="dateCreated" content="{{ entry.postDate.iso8601() }}" />
+    <meta itemprop="dateModified" content="{{ entry.dateUpdated.iso8601() }}" />
+    {% for imageUrl in photoArray[1:7] %}
+      <meta itemprop="image" content="{{ imageUrl }}" />
+    {% endfor %}
+    {% if entry.recipeBuilder|length %}
+      {% for block in entry.recipeBuilder %}	
+        {% for item in block.list %}	
+          <meta itemprop="recipeIngredient" content="{{ item.amount }} {{ item.ingredient }}" />
+        {% endfor %}	
+      {% endfor %}
+    {% endif %}
+    {% if entry.recipeMethod|length %}
+      <meta itemprop="recipeInstructions" content="{{ entry.recipeMethod|striptags }}">
+    {% endif %}
+    {% if entry.recipeServings > 0 %}
+      <meta itemprop="recipeYield" content="{{ entry.recipeServings }} servings">
+    {% endif %}
   {% endblock %}
 {% endif %}
-
-
-{# {% block richPin %}
-  <meta itemscope itemtype="http://schema.org/Recipe" />
-  <meta itemprop="url" content="{{ entry.url }}" />
-  {% for photoUrl in photoArray[0:6] %}
-    <meta itemprop="image" content="{{ photoUrl }}" />
-  {% endfor %}
-  <meta itemprop="name" content="{{ entry.title }}" />
-  <meta itemprop="description" content="{{ entry.postSummary }}" />
-  <meta itemprop="recipeYield" content="Serves {{ entry.recipeServings }}" />
-{% endblock %}
-
-{% if entry.recipeBuilder|length %}
-  {% block richPinIngredients %}
-    {% for block in entry.recipeBuilder %}
-      {% for item in block.list %}
-        <meta itemprop="ingredients" content="{{ item.amount }} {{ item.ingredient }}" />
-      {% endfor %}
-    {% endfor %}
-  {% endblock %}
-{% endif %} #}
 
 {% block footerJs %}
 {% include 'posts/scripts/_pinterest' %}
