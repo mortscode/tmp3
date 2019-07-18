@@ -22,6 +22,36 @@
   {% set recipe = entry.recipeBuilder|length or entry.recipeMethod|length %}
   {% set articleType = recipe ? 'Recipe' : 'Article' %}
   <div class="post-entry" itemscope itemtype="http://schema.org/{{articleType}}">
+    <div class="schema-info -off-screen" aria-hidden="true">
+      {% if recipe is defined %}
+          <span itemprop="name">{{ entry.postEntrySeo.seoTitle }}</span>
+          <span itemprop="description">{{ entry.postSummary }}</span>
+          <span itemprop="dateCreated">{{ entry.postDate.iso8601() }}</span>
+          <span itemprop="dateModified">{{ entry.dateUpdated.iso8601() }}</span>
+          {% if entry.recipeBuilder|length %}
+          <ul>
+            {% for block in entry.recipeBuilder %}	
+              {% for item in block.list %}	
+                <li itemprop="recipeIngredient">{{ item.amount }} {{ item.ingredient }}</li>
+              {% endfor %}	
+            {% endfor %}
+          </ul>
+          <ul>
+            {% for block in entry.recipeBuilder %}	
+              {% for item in block.list %}	
+                <li itemprop="ingredients">{{ item.amount }} {{ item.ingredient }}</li>
+              {% endfor %}	
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if entry.recipeMethod|length %}
+            <span itemprop="recipeInstructions" >{{ entry.recipeMethod|striptags }}</span>
+          {% endif %}
+          {% if entry.recipeServings > 0 %}
+            <span itemprop="recipeYield">{{ entry.recipeServings }} servings</span>
+          {% endif %}
+      {% endif %}
+    </div>
     <div class="post-intro">
       <div class="post-intro__title">
         <time class="post-intro__title--date">{{entry.postDate.format('F d, Y')}}</time>
@@ -80,30 +110,12 @@
   {% include 'posts/_fixed-share' %}
 {% endblock %}
 
-{% if entry.recipeBuilder|length or entry.recipeMethod|length %}
+{% if recipe is defined %}
   {% block postMeta %}
-    <meta itemprop="name" content="{{ entry.postEntrySeo.seoTitle }}" />
-    <meta itemprop="description" content="{{ entry.postSummary }}" />
     <meta itemprop="url" content="{{ entry.url }}" />
-    <meta itemprop="image" content="{{ entry.featuredImage[0].url }}" />
-    <meta itemprop="dateCreated" content="{{ entry.postDate.iso8601() }}" />
-    <meta itemprop="dateModified" content="{{ entry.dateUpdated.iso8601() }}" />
     {% for imageUrl in photoArray[1:7] %}
       <meta itemprop="image" content="{{ imageUrl }}" />
     {% endfor %}
-    {% if entry.recipeBuilder|length %}
-      {% for block in entry.recipeBuilder %}	
-        {% for item in block.list %}	
-          <meta itemprop="recipeIngredient" content="{{ item.amount }} {{ item.ingredient }}" />
-        {% endfor %}	
-      {% endfor %}
-    {% endif %}
-    {% if entry.recipeMethod|length %}
-      <meta itemprop="recipeInstructions" content="{{ entry.recipeMethod|striptags }}">
-    {% endif %}
-    {% if entry.recipeServings > 0 %}
-      <meta itemprop="recipeYield" content="{{ entry.recipeServings }} servings">
-    {% endif %}
   {% endblock %}
 {% endif %}
 
