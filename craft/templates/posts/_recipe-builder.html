@@ -11,7 +11,6 @@
       {% endif %}
 
       {% for block in entry.recipeBuilder %}
-
         {% if block.listTitle|length %}
           <h3 class="ingredients-title">{{ block.listTitle }}</h3>
         {% else %}
@@ -19,7 +18,7 @@
         {% endif %}
       
         <table class="ingredients-list" style="width:100%">
-        {% for ingredient in block.list %}
+        {% for ingredient in block.list %}          
           <tr class="row">
             <td class="amount">{{ ingredient.amount }}</td>
             {% if ingredient.linkUrl|length %}
@@ -30,11 +29,9 @@
           </tr>
         {% endfor %}
         </table>
-
       {% endfor %}
 
       {% if entry.recipeMethod|length %}
-      
         <h3>Method</h3>
         <div class="method">
           {{ entry.recipeMethod }}
