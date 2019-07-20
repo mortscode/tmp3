@@ -16,24 +16,33 @@
   {% endif %}
 {% endfor %}
 
-{% if entry.recipeBuilder|length %}
-  {% for block in entry.recipeBuilder %}
-    {% if loop|length > 1 and block.listTitle|length == 0 or loop.first %}
-      {% for ingredient in block.list %}
-        {% set fullIngredient = ingredient.amount ? ingredient.amount ~ " " ~ ingredient.ingredient : ingredient.ingredient %}
-        {% set ingredientsArray = ingredientsArray|merge([fullIngredient]) %}
-      {% endfor %}
-    {% endif %}
-  {% endfor %}
-{% endif %}
-
 {% set seomaticMeta = seomaticMeta | merge({
     og: {
         image: photoArray[0:6],
     }
 }) %}
 
+{% if seomaticMainEntityOfPage is defined %}
+    {% set seomaticMainEntityOfPage = seomaticMainEntityOfPage | merge({'image': photoArray[1:7] }) %}
+{% endif %}
+
 {% block content %}
+{% if entry.recipeBuilder|length %}
+  <div class="-off-screen" aria-hidden="true" itemtype="http://schema.org/Recipe">
+    <meta class="-off-screen" itemprop="url" content="{{ entry.url }}" />
+    <span class="-off-screen" itemprop="name">{{ entry.postEntrySeo.seoTitle is defined ? entry.postEntrySeo.seoTitle : entry.title }}</span>
+    <span class="-off-screen" itemprop="recipeYield">{{ entry.recipeServings > 0 ? "Serves " ~ entry.recipeServings : "" }}</span>
+    {% for block in entry.recipeBuilder %}
+      {% if loop|length > 1 and block.listTitle|length == 0 or loop.first %}
+        {% for ingredient in block.list %}
+          {% set fullIngredient = ingredient.amount ? ingredient.amount ~ " " ~ ingredient.ingredient : ingredient.ingredient %}
+          {% set ingredientsArray = ingredientsArray|merge([fullIngredient]) %}
+          <span class="-off-screen" itemprop="ingredients">{{ fullIngredient }}</span>
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
   <div class="post-entry">
     <div class="post-intro">
       <div class="post-intro__title">
@@ -93,7 +102,7 @@
   {% include 'posts/_fixed-share' %}
 {% endblock %}
 
-{% set recipeJSONLD = {
+{# {% set recipeJSONLD = {
 	"type": "Recipe",
 	"author": entry.postAuthor|length ? entry.postAuthor ~ " at The Modern Proper" : "The Modern Proper",
   "datePublished": entry.postDate.iso8601(),
@@ -103,13 +112,13 @@
   "name": entry.postEntrySeo.seoTitle is defined ? entry.postEntrySeo.seoTitle : entry.title,
   "recipeInstructions": entry.recipeMethod|length ? entry.recipeMethod|striptags : "",
   "recipeYield": entry.recipeServings > 0 ? "Serves " ~ entry.recipeServings : "",
-} %}
+} %} #}
 
-{% block postMeta %}
+{# {% block postMeta %}
   {% if recipe is defined %}
     {{ recipeJSONLD | renderJSONLD }}
   {% endif %}
-{% endblock %}
+{% endblock %} #}
 
 {% block footerJs %}
   {% include 'posts/scripts/_pinterest' %}
