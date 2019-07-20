@@ -27,22 +27,6 @@
 {% endif %}
 
 {% block content %}
-{% if entry.recipeBuilder|length %}
-  <div class="-off-screen" aria-hidden="true" itemscope itemtype="http://schema.org/Recipe">
-    <meta class="-off-screen" itemprop="url" content="{{ entry.url }}" />
-    <span class="-off-screen" itemprop="name">{{ entry.postEntrySeo.seoTitle is defined ? entry.postEntrySeo.seoTitle : entry.title }}</span>
-    <span class="-off-screen" itemprop="recipeYield">{{ entry.recipeServings > 0 ? "Serves " ~ entry.recipeServings : "" }}</span>
-    {% for block in entry.recipeBuilder %}
-      {% if loop|length > 1 and block.listTitle|length == 0 or loop.first %}
-        {% for ingredient in block.list %}
-          {% set fullIngredient = ingredient.amount ? ingredient.amount ~ " " ~ ingredient.ingredient : ingredient.ingredient %}
-          {% set ingredientsArray = ingredientsArray|merge([fullIngredient]) %}
-          <span class="-off-screen" itemprop="ingredients">{{ fullIngredient }}</span>
-        {% endfor %}
-      {% endif %}
-    {% endfor %}
-  </div>
-{% endif %}
   <div class="post-entry">
     <div class="post-intro">
       <div class="post-intro__title">
@@ -114,11 +98,24 @@
   "recipeYield": entry.recipeServings > 0 ? "Serves " ~ entry.recipeServings : "",
 } %} #}
 
-{# {% block postMeta %}
-  {% if recipe is defined %}
-    {{ recipeJSONLD | renderJSONLD }}
+{% block postSchema %}
+  {% if recipe %}
+    <div class="-off-screen" aria-hidden="true" itemscope itemtype="http://schema.org/Recipe">
+      <meta class="-off-screen" itemprop="url" content="{{ entry.url }}" />
+      <span class="-off-screen" itemprop="name">{{ entry.postEntrySeo.seoTitle is defined ? entry.postEntrySeo.seoTitle : entry.title }}</span>
+      <span class="-off-screen" itemprop="recipeYield">{{ entry.recipeServings > 0 ? "Serves " ~ entry.recipeServings : "" }}</span>
+      {% for block in entry.recipeBuilder %}
+        {% if loop|length > 1 and block.listTitle|length == 0 or loop.first %}
+          {% for ingredient in block.list %}
+            {% set fullIngredient = ingredient.amount ? ingredient.amount ~ " " ~ ingredient.ingredient : ingredient.ingredient %}
+            {% set ingredientsArray = ingredientsArray|merge([fullIngredient]) %}
+            <span class="-off-screen" itemprop="ingredients">{{ fullIngredient }}</span>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
   {% endif %}
-{% endblock %} #}
+{% endblock %}
 
 {% block footerJs %}
   {% include 'posts/scripts/_pinterest' %}
