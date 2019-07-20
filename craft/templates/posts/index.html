@@ -97,10 +97,13 @@
           {% for ingredient in block.list %}
             {% set fullIngredient = ingredient.amount ? ingredient.amount ~ " " ~ ingredient.ingredient : ingredient.ingredient %}
             {% set ingredientsArray = ingredientsArray|merge([fullIngredient]) %}
-            <span class="-off-screen" itemprop="ingredients">{{ fullIngredient }}</span>
+            <span class="-off-screen" itemprop="recipeIngredient">{{ fullIngredient }}</span>
           {% endfor %}
         {% endif %}
       {% endfor %}
+      {% if entry.recipeMethod|length %}
+        <span class="-off-screen" itemprop="recipeInstructions">{{ entry.recipeMethod|striptags }}</span>
+      {% endif %}
     </div>
   {% endif %}
 {% endblock %}
