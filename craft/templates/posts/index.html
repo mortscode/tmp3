@@ -1,6 +1,10 @@
 {% extends "_layout" %}
 
+{% set recipe = entry.recipeBuilder|length or entry.recipeMethod|length %}
+{% set articleType = recipe ? 'Recipe' : 'Article' %}
+
 {% set photoArray = [entry.featuredImage[0].url('facebookSeo'), entry.featuredImage[0].url] %}
+{% set ingredientsArray = [] %}
 
 {% for block in entry.postBuilder.with(['photos:imageFiles']) %}
   {% if block.type.handle == 'photos' %}
@@ -12,6 +16,17 @@
   {% endif %}
 {% endfor %}
 
+{% if entry.recipeBuilder|length %}
+  {% for block in entry.recipeBuilder %}
+    {% if loop|length > 1 and block.listTitle|length == 0 or loop.first %}
+      {% for ingredient in block.list %}
+        {% set fullIngredient = ingredient.amount ? ingredient.amount ~ " " ~ ingredient.ingredient : ingredient.ingredient %}
+        {% set ingredientsArray = ingredientsArray|merge([fullIngredient]) %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
 {% set seomaticMeta = seomaticMeta | merge({
     og: {
         image: photoArray[0:6],
@@ -19,39 +34,7 @@
 }) %}
 
 {% block content %}
-  {% set recipe = entry.recipeBuilder|length or entry.recipeMethod|length %}
-  {% set articleType = recipe ? 'Recipe' : 'Article' %}
-  <div class="post-entry" itemscope itemtype="http://schema.org/{{articleType}}">
-    {% if recipe is defined %}
-      <div class="schema-info -off-screen" aria-hidden="true">
-        <meta itemprop="url" content="{{ entry.url }}"/>
-        <span itemprop="name">{{ entry.postEntrySeo.seoTitle }}</span>
-        <span itemprop="description">{{ entry.postSummary }}</span>
-        <span itemprop="dateCreated">{{ entry.postDate.iso8601() }}</span>
-        <span itemprop="dateModified">{{ entry.dateUpdated.iso8601() }}</span>
-        {% if entry.recipeBuilder|length %}
-          {% for block in entry.recipeBuilder %}
-            <span>{{ block.listTitle }}</span>
-            <ul>
-              {% for item in block.list %}	
-                <li itemprop="recipeIngredient">{% if item.amount %}{{ item.amount }} {% endif %}{{ item.ingredient }}</li>
-              {% endfor %}	
-            </ul>
-            <ul>
-              {% for item in block.list %}	
-                <li itemprop="ingredients">{% if item.amount %}{{ item.amount }} {% endif %}{{ item.ingredient }}</li>
-              {% endfor %}	
-            </ul>
-          {% endfor %}
-        {% endif %}
-        {% if entry.recipeMethod|length %}
-          <span itemprop="recipeInstructions" >{{ entry.recipeMethod|striptags }}</span>
-        {% endif %}
-        {% if entry.recipeServings > 0 %}
-          <span itemprop="recipeYield">{{ entry.recipeServings }} servings</span>
-        {% endif %}
-      </div>
-    {% endif %}
+  <div class="post-entry">
     <div class="post-intro">
       <div class="post-intro__title">
         <time class="post-intro__title--date">{{entry.postDate.format('F d, Y')}}</time>
@@ -110,17 +93,27 @@
   {% include 'posts/_fixed-share' %}
 {% endblock %}
 
-{% if recipe is defined %}
-  {% block postMeta %}
-    {% for imageUrl in photoArray[1:7] %}
-      <meta itemprop="image" content="{{ imageUrl }}" />
-    {% endfor %}
-  {% endblock %}
-{% endif %}
+{% set recipeJSONLD = {
+	"type": "Recipe",
+	"author": entry.postAuthor|length ? entry.postAuthor ~ " at The Modern Proper" : "The Modern Proper",
+  "datePublished": entry.postDate.iso8601(),
+  "description": entry.postSummary,
+  "image": photoArray[1:7],
+  "recipeIngredient": ingredientsArray,
+  "name": entry.postEntrySeo.seoTitle is defined ? entry.postEntrySeo.seoTitle : entry.title,
+  "recipeInstructions": entry.recipeMethod|length ? entry.recipeMethod|striptags : "",
+  "recipeYield": entry.recipeServings > 0 ? "Serves " ~ entry.recipeServings : "",
+} %}
+
+{% block postMeta %}
+  {% if recipe is defined %}
+    {{ recipeJSONLD | renderJSONLD }}
+  {% endif %}
+{% endblock %}
 
 {% block footerJs %}
-{% include 'posts/scripts/_pinterest' %}
-{% include 'posts/scripts/_disqus' %}
-{% include 'posts/scripts/_facebook' %}
-{% include 'posts/scripts/_twitter' %}
+  {% include 'posts/scripts/_pinterest' %}
+  {% include 'posts/scripts/_disqus' %}
+  {% include 'posts/scripts/_facebook' %}
+  {% include 'posts/scripts/_twitter' %}
 {% endblock %}
