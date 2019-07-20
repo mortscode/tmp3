@@ -88,7 +88,7 @@
 
 {% block postSchema %}
   {% if recipe %}
-    <div class="-off-screen" itemscope itemtype="http://schema.org/Recipe">
+    <div class="-off-screen" aria-hidden="true" itemscope itemtype="http://schema.org/Recipe">
       <meta itemprop="url" content="{{ entry.url }}" />
       <span class="-off-screen" itemprop="name">{{ entry.postEntrySeo.seoTitle is defined ? entry.postEntrySeo.seoTitle : entry.title }}</span>
       <span class="-off-screen" itemprop="recipeYield">{{ entry.recipeServings > 0 ? "Serves " ~ entry.recipeServings : "" }}</span>
