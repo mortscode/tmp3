@@ -86,22 +86,10 @@
   {% include 'posts/_fixed-share' %}
 {% endblock %}
 
-{# {% set recipeJSONLD = {
-	"type": "Recipe",
-	"author": entry.postAuthor|length ? entry.postAuthor ~ " at The Modern Proper" : "The Modern Proper",
-  "datePublished": entry.postDate.iso8601(),
-  "description": entry.postSummary,
-  "image": photoArray[1:7],
-  "recipeIngredient": ingredientsArray,
-  "name": entry.postEntrySeo.seoTitle is defined ? entry.postEntrySeo.seoTitle : entry.title,
-  "recipeInstructions": entry.recipeMethod|length ? entry.recipeMethod|striptags : "",
-  "recipeYield": entry.recipeServings > 0 ? "Serves " ~ entry.recipeServings : "",
-} %} #}
-
 {% block postSchema %}
   {% if recipe %}
-    <div class="-off-screen" aria-hidden="true" itemscope itemtype="http://schema.org/Recipe">
-      <meta class="-off-screen" itemprop="url" content="{{ entry.url }}" />
+    <div class="-off-screen" itemscope itemtype="http://schema.org/Recipe">
+      <meta itemprop="url" content="{{ entry.url }}" />
       <span class="-off-screen" itemprop="name">{{ entry.postEntrySeo.seoTitle is defined ? entry.postEntrySeo.seoTitle : entry.title }}</span>
       <span class="-off-screen" itemprop="recipeYield">{{ entry.recipeServings > 0 ? "Serves " ~ entry.recipeServings : "" }}</span>
       {% for block in entry.recipeBuilder %}
