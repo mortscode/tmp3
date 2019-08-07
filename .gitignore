@@ -28,9 +28,6 @@ Thumbs.db
 .settings
 .tmproj
 *.esproj
-.babelrc
-.eslintrc
-.scss-lint.yml
 nbproject
 *.sublime-workspace
 *.sublime-project
