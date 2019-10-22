@@ -19,7 +19,8 @@
     <div class="archive__wrapper">
       <h1 class="archive__title">Post archive: <span class="message">{{ archive|length }} {{ random(snark).description }}</span></h1>
       <ul class="archive__list">
-        {% for entry in archive %}
+        {% paginate archive.limit(60) as posts %}
+        {% for entry in posts %}
         <li class="archive__list-item">
           <a href="{{entry.url}}" class="archive__list-item--link">
             {% if entry.featuredImage | length %}
@@ -34,5 +35,6 @@
         {% endfor %}
       </ul>
     </div>
+    {% include 'home/_paginate' %} 
   </div>
 {% endblock %}
