@@ -24,9 +24,6 @@
     }
 }) %}
 
-
-
-
 {% if seomaticMainEntityOfPage is defined %}
     {% set seomaticMainEntityOfPage = seomaticMainEntityOfPage | merge({'image': photoArray[1:7] }) %}
     {% if entry.recipeServings > 0 %}
@@ -117,18 +114,18 @@
   {% if recipe %}
     <div class="-off-screen" aria-hidden="true" itemscope itemtype="http://schema.org/Recipe">
       <meta itemprop="url" content="{{ entry.url }}" />
-      <span class="-off-screen" itemprop="name">{{ entry.postEntrySeo.seoTitle is defined ? entry.postEntrySeo.seoTitle : entry.title }}</span>
-      <span class="-off-screen" itemprop="recipeYield">{{ entry.recipeServings > 0 ? "Serves " ~ entry.recipeServings : "" }}</span>
+      <span itemprop="name">{{ entry.postEntrySeo.seoTitle is defined ? entry.postEntrySeo.seoTitle : entry.title }}</span>
+      <span itemprop="recipeYield">{{ entry.recipeServings > 0 ? "Serves " ~ entry.recipeServings : "" }}</span>
       {% for block in entry.recipeBuilder %}
         {% if loop|length > 1 and block.listTitle|length == 0 or loop.first %}
           {% for ingredient in block.list %}
             {% set fullIngredient = ingredient.amount ? ingredient.amount ~ " " ~ ingredient.ingredient : ingredient.ingredient %}
-            <span class="-off-screen" itemprop="recipeIngredient">{{ fullIngredient }}</span>
+            <span itemprop="recipeIngredient">{{ fullIngredient }}</span>
           {% endfor %}
         {% endif %}
       {% endfor %}
       {% if entry.recipeMethod|length %}
-        <span class="-off-screen" itemprop="recipeInstructions">{{ rawMethodText }}</span>
+        <span itemprop="recipeInstructions">{{ rawMethodText }}</span>
       {% endif %}
     </div>
   {% endif %}
