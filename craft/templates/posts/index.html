@@ -5,6 +5,8 @@
 
 {% set photoArray = [entry.featuredImage[0].url('facebookSeo'), entry.featuredImage[0].url] %}
 {% set ingredientsArray = [] %}
+{% set rawMethodText = null %}
+{% set methodArray = [] %}
 
 {% for block in entry.postBuilder.with(['photos:imageFiles']) %}
   {% if block.type.handle == 'photos' %}
@@ -22,8 +24,33 @@
     }
 }) %}
 
+
+
+
 {% if seomaticMainEntityOfPage is defined %}
     {% set seomaticMainEntityOfPage = seomaticMainEntityOfPage | merge({'image': photoArray[1:7] }) %}
+    {% if entry.recipeServings > 0 %}
+      {% set servings = entry.recipeServings ~ " servings" %}
+      {% set seomaticMainEntityOfPage = seomaticMainEntityOfPage | merge({'recipeYield': servings }) %}
+    {% endif %}
+    {% for block in entry.recipeBuilder %}
+        {% if loop|length > 1 and block.listTitle|length == 0 or loop.first %}
+          {% for ingredient in block.list %}
+            {% set fullIngredient = ingredient.amount ? ingredient.amount ~ " " ~ ingredient.ingredient : ingredient.ingredient %}
+            {% set ingredientsArray = ingredientsArray|merge([fullIngredient]) %}
+            {% set seomaticMainEntityOfPage = seomaticMainEntityOfPage | merge({'recipeIngredient': ingredientsArray }) %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+      {% if entry.recipeMethod|length %}
+        {% set rawMethodText = entry.recipeMethod|striptags %}
+        {% for item in rawMethodText|split(". ") %}
+          {% if item|trim|length > 0 %}
+            {% set methodArray = methodArray|merge([{'@type': "HowToStep", "text": item}]) %}
+          {% endif %}
+        {% endfor %}
+        {% set seomaticMainEntityOfPage = seomaticMainEntityOfPage | merge({'recipeInstructions': methodArray }) %}
+      {% endif %}
 {% endif %}
 
 {% block content %}
@@ -96,13 +123,12 @@
         {% if loop|length > 1 and block.listTitle|length == 0 or loop.first %}
           {% for ingredient in block.list %}
             {% set fullIngredient = ingredient.amount ? ingredient.amount ~ " " ~ ingredient.ingredient : ingredient.ingredient %}
-            {% set ingredientsArray = ingredientsArray|merge([fullIngredient]) %}
             <span class="-off-screen" itemprop="recipeIngredient">{{ fullIngredient }}</span>
           {% endfor %}
         {% endif %}
       {% endfor %}
       {% if entry.recipeMethod|length %}
-        <span class="-off-screen" itemprop="recipeInstructions">{{ entry.recipeMethod|striptags }}</span>
+        <span class="-off-screen" itemprop="recipeInstructions">{{ rawMethodText }}</span>
       {% endif %}
     </div>
   {% endif %}
