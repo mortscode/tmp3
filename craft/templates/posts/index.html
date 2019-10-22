@@ -27,7 +27,7 @@
 {% if seomaticMainEntityOfPage is defined %}
     {% set seomaticMainEntityOfPage = seomaticMainEntityOfPage | merge({'image': photoArray[1:7] }) %}
     {% if entry.recipeServings > 0 %}
-      {% set servings = entry.recipeServings ~ " servings" %}
+      {% set servings = "Serves " ~ entry.recipeServings %}
       {% set seomaticMainEntityOfPage = seomaticMainEntityOfPage | merge({'recipeYield': servings }) %}
     {% endif %}
     {% for block in entry.recipeBuilder %}
@@ -120,13 +120,10 @@
         {% if loop|length > 1 and block.listTitle|length == 0 or loop.first %}
           {% for ingredient in block.list %}
             {% set fullIngredient = ingredient.amount ? ingredient.amount ~ " " ~ ingredient.ingredient : ingredient.ingredient %}
-            <span itemprop="recipeIngredient">{{ fullIngredient }}</span>
+            <span itemprop="ingredients">{{ fullIngredient }}</span>
           {% endfor %}
         {% endif %}
       {% endfor %}
-      {% if entry.recipeMethod|length %}
-        <span itemprop="recipeInstructions">{{ rawMethodText }}</span>
-      {% endif %}
     </div>
   {% endif %}
 {% endblock %}
