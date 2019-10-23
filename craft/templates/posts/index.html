@@ -1,7 +1,7 @@
 {% extends "_layout" %}
 
-{% set recipe = entry.recipeBuilder|length or entry.recipeMethod|length %}
-{% set articleType = recipe ? 'Recipe' : 'Article' %}
+{% set postHasRecipe = entry.recipeBuilder|length > 0 ? true : false %}
+{% set articleType = postHasRecipe ? 'Recipe' : 'Article' %}
 
 {% set photoArray = [entry.featuredImage[0].url('facebookSeo'), entry.featuredImage[0].url] %}
 {% set ingredientsArray = [] %}
@@ -60,7 +60,7 @@
           <span class="post-intro__title--author author">Story by {{entry.postAuthor}}</span>
         {% endif %}
         {% include 'posts/_share' %}
-        {% if recipe %}
+        {% if postHasRecipe %}
           {% spaceless %}
           <button class="post-intro__title--button js-scroll-to" data-scroll-target='recipe'>
             <div class="post-intro__title--button-text">Jump to recipe</div>
@@ -79,7 +79,7 @@
         }%}
         {% include 'utils/images/home-feature-pic' with vars %}
       </div>
-      {% if recipe %}
+      {% if postHasRecipe %}
         <button class="post-intro__title--mobile-jump js-scroll-to btn gray small" data-scroll-target='recipe'>Jump to recipe</button>
       {% endif %}
       <div class="post-intro__pintip">
@@ -96,34 +96,8 @@
     <div class="post js-fix-share-trigger">
       {% include 'posts/_post-builder' %}
 
-      {% if recipe %}
+      {% if postHasRecipe %}
         {% include 'posts/_recipe-builder' %}
-        <div class="-off-screen" aria-hidden="true">
-          {% for imageUrl in photoArray[0:6] %}
-            <img class="u-photo" src="{{ imageUrl }}" loading="lazy"/>
-          {% endfor %}
-          {% for block in entry.recipeBuilder %}
-            {% if loop|length > 1 and block.listTitle|length == 0 or loop.first %}
-              <h3>Ingredients</h3>
-              <ol>
-                {% for ingredient in block.list %}
-                  {% set fullIngredient = ingredient.amount ? ingredient.amount ~ " " ~ ingredient.ingredient : ingredient.ingredient %}
-                  <li class="p-ingredient">{{ fullIngredient }}</li>
-                {% endfor %}
-              </ol>
-            {% endif %}
-          {% endfor %}
-          {% if entry.recipeMethod|length %}
-            <h3>Instructions</h3>
-            <ol class="e-instructions">
-              {% for item in rawMethodText|split(". ") %}
-                {% if item|trim|length > 0 %}
-                  <li>{{ item }}</li>
-                {% endif %}
-              {% endfor %}
-            </ol>
-          {% endif %}
-        </div>
       {% endif %}
     </div>
   </article>

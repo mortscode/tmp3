@@ -43,3 +43,29 @@
       </div>
     </div>
 </div>
+<div class="-off-screen" aria-hidden="true">
+  {% for imageUrl in photoArray[0:6] %}
+    <img class="u-photo" src="{{ imageUrl }}" loading="lazy"/>
+  {% endfor %}
+  {% for block in entry.recipeBuilder %}
+    {% if loop|length > 1 and block.listTitle|length == 0 or loop.first %}
+      <h3>Ingredients</h3>
+      <ol>
+        {% for ingredient in block.list %}
+          {% set fullIngredient = ingredient.amount ? ingredient.amount ~ " " ~ ingredient.ingredient : ingredient.ingredient %}
+          <li class="p-ingredient">{{ fullIngredient }}</li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+  {% endfor %}
+  {% if entry.recipeMethod|length %}
+    <h3>Instructions</h3>
+    <ol class="e-instructions">
+      {% for item in rawMethodText|split(". ") %}
+        {% if item|trim|length > 0 %}
+          <li>{{ item }}</li>
+        {% endif %}
+      {% endfor %}
+    </ol>
+  {% endif %}
+</div>
