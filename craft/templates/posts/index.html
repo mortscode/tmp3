@@ -20,7 +20,7 @@
 
 {% set seomaticMeta = seomaticMeta | merge({
     og: {
-        image: photoArray[0:6],
+        image: photoArray[0:5],
     }
 }) %}
 
@@ -51,11 +51,11 @@
 {% endif %}
 
 {% block content %}
-  <div class="post-entry">
+  <article class="post-entry h-recipe">
     <div class="post-intro">
       <div class="post-intro__title">
         <time class="post-intro__title--date">{{entry.postDate.format('F d, Y')}}</time>
-        <h1 class="post-intro__title--text">{{entry.title}}</h1>
+        <h1 class="post-intro__title--text p-name">{{entry.title}}</h1>
         {% if entry.postAuthor|length %}
           <span class="post-intro__title--author author">Story by {{entry.postAuthor}}</span>
         {% endif %}
@@ -98,9 +98,35 @@
 
       {% if recipe %}
         {% include 'posts/_recipe-builder' %}
+        <div class="-off-screen" aria-hidden="true">
+          {% for imageUrl in photoArray[0:5] %}
+            <img class="u-photo" src="{{ imageUrl }}" loading="lazy"/>
+          {% endfor %}
+          {% for block in entry.recipeBuilder %}
+            {% if loop|length > 1 and block.listTitle|length == 0 or loop.first %}
+              <h3>Ingredients</h3>
+              <ol>
+                {% for ingredient in block.list %}
+                  {% set fullIngredient = ingredient.amount ? ingredient.amount ~ " " ~ ingredient.ingredient : ingredient.ingredient %}
+                  <li class="p-ingredient">{{ fullIngredient }}</li>
+                {% endfor %}
+              </ol>
+            {% endif %}
+          {% endfor %}
+          {% if entry.recipeMethod|length %}
+            <h3>Instructions</h3>
+            <ol class="e-instructions">
+              {% for item in rawMethodText|split(". ") %}
+                {% if item|trim|length > 0 %}
+                  <li>{{ item }}</li>
+                {% endif %}
+              {% endfor %}
+            </ol>
+          {% endif %}
+        </div>
       {% endif %}
     </div>
-  </div>
+  </article>
   
   {% include 'posts/_more-posts' %}
 
@@ -108,26 +134,6 @@
     <div id="disqus_thread" class="comments"></div>
   </div>
   {% include 'posts/_fixed-share' %}
-{% endblock %}
-
-{% block postSchema %}
-  {% if recipe %}
-    <div class="-off-screen" aria-hidden="true" itemscope itemtype="http://schema.org/Recipe">
-      <meta itemprop="url" content="{{ entry.url }}" />
-      <span itemprop="name">{{ entry.postEntrySeo.seoTitle is defined ? entry.postEntrySeo.seoTitle : entry.title }}</span>
-      <span itemprop="recipeYield">{{ entry.recipeServings > 0 ? "Serves " ~ entry.recipeServings : "" }}</span>
-      <ul>
-        {% for block in entry.recipeBuilder %}
-          {% if loop|length > 1 and block.listTitle|length == 0 or loop.first %}
-            {% for ingredient in block.list %}
-              {% set fullIngredient = ingredient.amount ? ingredient.amount ~ " " ~ ingredient.ingredient : ingredient.ingredient %}
-              <li itemprop="ingredients">{{ fullIngredient }}</li>
-            {% endfor %}
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
-  {% endif %}
 {% endblock %}
 
 {% block footerJs %}

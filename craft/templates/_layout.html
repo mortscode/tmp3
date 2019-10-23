@@ -23,7 +23,6 @@
         {% include 'partials/siteHead' %}
     </head>
     <body class="{% if section is defined and true %}page-{{ section.handle|lower }}{% endif %}{% if recipe is defined and true %} print-styles{% endif %}">
-        {% block postSchema %}{% endblock %}
         <div class="content tk-fade">
             {% include 'partials/header' %}
             {% include 'partials/navigation' %}
