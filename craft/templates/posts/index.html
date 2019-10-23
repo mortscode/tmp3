@@ -20,7 +20,7 @@
 
 {% set seomaticMeta = seomaticMeta | merge({
     og: {
-        image: photoArray[0:5],
+        image: photoArray[0:6],
     }
 }) %}
 
@@ -99,7 +99,7 @@
       {% if recipe %}
         {% include 'posts/_recipe-builder' %}
         <div class="-off-screen" aria-hidden="true">
-          {% for imageUrl in photoArray[0:5] %}
+          {% for imageUrl in photoArray[0:6] %}
             <img class="u-photo" src="{{ imageUrl }}" loading="lazy"/>
           {% endfor %}
           {% for block in entry.recipeBuilder %}
