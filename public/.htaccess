@@ -9,6 +9,7 @@
   RewriteRule ^posts\/chimichurri-marinated-shrimp-over-creamy-polenta https://themodernproper.com/posts/chimichurri-shrimp-with-creamy-polenta [L,R=301]
   RewriteRule ^posts\/one-pot-chicken-and-stuffing https://themodernproper.com/posts/one-pot-chicken-stuffing-casserole [L,R=301]
   RewriteRule ^posts\/one-pot-braised-kale-with-crispy-chicken https://themodernproper.com/posts/one-pot-braised-chicken-with-kale-and-white-beans [L,R=301]
+  RewriteRule ^posts\/glazed-carrots https://themodernproper.com/posts/brown-butter-glazed-carrots [L,R=301]
 
   #301 Redirects
   RewriteRule ^post\/(\d+)\/(.*)$ https:\/\/themodernproper\.com [L,R=301]
