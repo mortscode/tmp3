@@ -10,6 +10,9 @@
   RewriteRule ^posts\/one-pot-chicken-and-stuffing https://themodernproper.com/posts/one-pot-chicken-stuffing-casserole [L,R=301]
   RewriteRule ^posts\/one-pot-braised-kale-with-crispy-chicken https://themodernproper.com/posts/one-pot-braised-chicken-with-kale-and-white-beans [L,R=301]
   RewriteRule ^posts\/brown-butter-glazed-carrots https://themodernproper.com/posts/glazed-carrots [L,R=301]
+  
+  #301 Ad Thrive
+  RewriteRule ^ads.txt https://ads.adthrive.com/sites/5bc9ea708e337669d035c9c3/ads.txt [L,R=301]
 
   #301 Redirects
   RewriteRule ^post\/(\d+)\/(.*)$ https:\/\/themodernproper\.com [L,R=301]
